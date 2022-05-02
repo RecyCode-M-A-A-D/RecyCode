@@ -6,8 +6,8 @@ import javax.persistence.*;
 @Table(name = "posts_stats")
 public class PostStat {
     @Id
-    @OneToOne
-    Post post;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long someId;
 
     @Column(nullable = false)
     private long upVotesCount;
