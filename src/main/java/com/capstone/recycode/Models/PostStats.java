@@ -9,10 +9,10 @@ public class PostStats {
     @OneToOne
     Post post;
 
-    @Column
+    @Column(nullable = false)
     private long upVotesCount;
 
-    @Column
+    @Column(nullable = false)
     private long downVotesCount;
 
 }

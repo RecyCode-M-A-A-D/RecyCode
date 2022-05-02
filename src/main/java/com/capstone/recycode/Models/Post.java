@@ -9,16 +9,16 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long postsId;
 
-    @Column
+    @Column(nullable = false)
     private String title;
 
-    @Column
+    @Column(nullable = false)
     private String content;
 
-    @Column
+    @Column(nullable = false)
     private String description;
 
-    @Column
+    @Column(nullable = false)
     private String date_published;
 
     @OneToOne

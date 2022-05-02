@@ -3,13 +3,12 @@ package com.capstone.recycode.Models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "posts_dcategories")
-public class PostCategories {
+@Table(name = "posts_tags")
+public class PostTag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long category_id;
+    private long postsTagId;
 
     @OneToOne
-    Post post;
-
+    private Post post;
 }
