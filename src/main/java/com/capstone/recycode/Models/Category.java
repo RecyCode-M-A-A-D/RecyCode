@@ -4,10 +4,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "categories")
-public class Categories {
+public class Category {
     @Id
     @OneToOne
-    PostCategories postCategories;
+    PostCategory postCategories;
 
     @Column
     private String category;

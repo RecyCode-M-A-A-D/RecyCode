@@ -33,6 +33,7 @@ public class User {
     @Column
     private String githubURL;
 
+
     public User() {}
 
     public User(String userName, String firstName, String lastName, String email, String password) {

@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "posts_stats")
-public class PostStats {
+public class PostStat {
     @Id
     @OneToOne
     Post post;
