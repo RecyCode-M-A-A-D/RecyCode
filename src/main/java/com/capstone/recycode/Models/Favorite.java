@@ -11,7 +11,7 @@ public class Favorite {
     private long favoriteId;
 
     @Column(nullable = false)
-    private Date date_favored;
+    private String date_favored;
 
     @OneToOne
     User user;
