@@ -22,7 +22,7 @@
 
 				<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 					<li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
-					<li><a href="#" class="nav-link px-2 text-white">Profile</a></li>
+					<li><a href="/profile" class="nav-link px-2 text-white">Profile</a></li>
 					<li><a href="/post" class="nav-link px-2 text-white">Create A Post</a></li>
 					<!--						<li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>-->
 					<!--						<li><a href="#" class="nav-link px-2 text-white">About</a></li>-->
@@ -37,6 +37,11 @@
 
 					<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 						<li>
+							<form th:action="@{/about}" th:method="get">
+								<button class="btn btn-primary m-2 text-dark">About Us</button>
+							</form>
+						</li>
+						<li>
 							<form th:action="@{/login}" th:method="get">
 								<button class="btn btn-outline-light m-2">Login</button>
 							</form>
@@ -48,7 +53,7 @@
 						</li>
 						<li>
 							<form th:action="@{/logout}" th:method="post">
-								<button class="btn-danger btn m-2">Logout</button>
+								<button class="btn-danger btn m-2 text-dark">Logout</button>
 							</form>
 						</li>
 					</ul>
