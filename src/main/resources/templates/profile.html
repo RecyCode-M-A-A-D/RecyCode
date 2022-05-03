@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials :: head">
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Profile</title>
 </head>
+
+
 <body>
-$END$
+
+<nav th:replace="partials :: nav"></nav>
+
+<div class="container mb-5" id="avatar">
+    <div class="row">
+        <div class="col">
+            <img th:src="@{RecyCode (3).png}" height="500" width="500"/>
+        </div>
+    </div>
+</div>
+
+<h1 class="text-center">Your Profile</h1>
+
+
+<footer th:replace="partials :: footer"></footer>
+
 </body>
 </html>
