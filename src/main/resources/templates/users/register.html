@@ -9,7 +9,7 @@
 <h1 class="title">Create an account</h1>
 <form th:action="@{/register}" th:method="post" th:object="${user}">
 	<label th:for="username">Username</label>
-	<input type="text" id="username" th:field="*{username}">
+	<input type="text" id="username" th:field="*{userName}">
 
 	<label th:for="firstName">First Name</label>
 	<input type="text" id="firstName" th:field="*{firstName}">
