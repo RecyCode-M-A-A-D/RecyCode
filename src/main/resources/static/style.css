@@ -1,0 +1,14 @@
+/** CSS for avatar*/
+#avatar{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#doggo{
+    border-radius: 45%;
+}
+
+#codeblocks{
+    text-align: center;
+}
