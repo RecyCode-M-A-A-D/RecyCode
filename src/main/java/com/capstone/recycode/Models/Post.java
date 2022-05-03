@@ -1,6 +1,7 @@
 package com.capstone.recycode.Models;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -37,7 +38,7 @@ public class Post {
     private String description;
 
     @Column(nullable = false)
-    private String date_published;
+    private Date date_published;
 
     @OneToOne
     User user;
