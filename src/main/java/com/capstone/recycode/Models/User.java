@@ -44,7 +44,6 @@ public class User {
         this.email = email;
         this.password = password;
     }
-
     public long getId() {
         return id;
     }
@@ -115,5 +114,12 @@ public class User {
 
     public void setGithubURL(String githubURL) {
         this.githubURL = githubURL;
+    }
+
+    public User(User copy){
+        id = copy.id;
+        email = copy.email;
+        userName = copy.userName;
+        password = copy.password;
     }
 }
