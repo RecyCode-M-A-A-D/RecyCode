@@ -15,4 +15,7 @@ public class PostStat {
     @Column(nullable = false)
     private long downVotesCount;
 
+    @OneToOne
+    Post post;
+
 }
