@@ -15,6 +15,13 @@ public class PostController {
     private PostRepository postDao;
     private PostController(PostRepository postDao) {this.postDao = postDao;}
 
+
+    @GetMapping("/")
+    public String showPosts(Model model){
+        model.addAttribute("post", postDao.findAll());
+        return "homePage";
+    }
+
     @GetMapping("/post")
     public String showCreateAPost(Model model) {
         model.addAttribute("post", new Post());
