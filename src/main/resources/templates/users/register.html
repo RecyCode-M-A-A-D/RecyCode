@@ -12,19 +12,21 @@
 	<input type="text" id="username" th:field="*{username}">
 
 	<label th:for="firstName">First Name</label>
-	<input type="text" id="username" th:field="*{username}">
+	<input type="text" id="firstName" th:field="*{firstName}">
 
-	<label th:for="lastName">Username</label>
-	<input type="text" id="username" th:field="*{username}">
+	<label th:for="lastName">Last Name</label>
+	<input type="text" id="lastName" th:field="*{lastName}">
 
-	<label th:for="email">Username</label>
-	<input type="email" id="username" th:field="*{username}">
+	<label th:for="email">Email</label>
+	<input type="email" id="email" th:field="*{email}">
 
-	<label th:for="password">Username</label>
-	<input type="password" id="username" th:field="*{username}">
+	<label th:for="password">Password</label>
+	<input type="password" id="password" th:field="*{password}">
 
-	<label th:for="confirmPassword">Username</label>
-	<input type="password" id="username" th:field="*{username}">
+	<label th:for="confirmPassword">Confirm Password</label>
+	<input type="password" id="confirmPassword" th:field="*{password}">
+
+	<input type="submit" value="Register">
 </form>
 
 <footer th:replace="partials :: footer"></footer>
