@@ -21,33 +21,34 @@
 				</a>
 
 				<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-					<li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+					<li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
 					<li><a href="#" class="nav-link px-2 text-white">Profile</a></li>
-					<li><a href="#" class="nav-link px-2 text-white">Create A Post</a></li>
+					<li><a href="/post" class="nav-link px-2 text-white">Create A Post</a></li>
 					<!--						<li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>-->
 					<!--						<li><a href="#" class="nav-link px-2 text-white">About</a></li>-->
 				</ul>
 
-				<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-					<input type="search" class="form-control form-control-dark" placeholder="Search..."
-					       aria-label="Search">
-				</form>
+				<div class="d-flex">
+					<form class="col-12 col-lg-auto m-2">
+						<input type="search" class="form-control form-control-dark" placeholder="Search..."
+						       aria-label="Search">
+					</form>
 
-				<div class="text-end">
+
 					<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 						<li>
 							<form th:action="@{/login}" th:method="get">
-								<button class="btn btn-outline-light me-2">Login</button>
+								<button class="btn btn-outline-light m-2">Login</button>
 							</form>
 						</li>
 						<li>
-							<form th:action="@{/sign-up}" th:method="get">
-								<button class="btn btn-warning">Sign-up</button>
+							<form th:action="@{/register}" th:method="get">
+								<button class="btn btn-warning m-2">Sign-up</button>
 							</form>
 						</li>
 						<li>
 							<form th:action="@{/logout}" th:method="post">
-								<button class="btn-danger btn">Logout</button>
+								<button class="btn-danger btn m-2">Logout</button>
 							</form>
 						</li>
 					</ul>
