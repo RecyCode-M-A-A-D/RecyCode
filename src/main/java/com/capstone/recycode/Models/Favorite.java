@@ -3,10 +3,9 @@ package com.capstone.recycode.Models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "posts_fav")
-public class PostFavorites {
+@Table(name = "favorites")
+public class Favorite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long favoritesId;
-
+    private long favoriteId;
 }

@@ -8,20 +8,20 @@ import java.util.List;
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long postsId;
+    private long postId;
 
     @ManyToMany
     @JoinTable(
-            name = "posts_tags",
-            joinColumns = @JoinColumn(name = "posts_id"),
+            name = "post_tags",
+            joinColumns = @JoinColumn(name = "post_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
     private List<Tag> tags;
 
     @ManyToMany
     @JoinTable(
-            name = "posts_categories",
-            joinColumns = @JoinColumn(name = "posts_id"),
+            name = "post_categories",
+            joinColumns = @JoinColumn(name = "post_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
     private List<Category> categories;
