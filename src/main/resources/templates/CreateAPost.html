@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create A Post</title>
+</head>
+<body>
+<form th:action="@{/post}" method="post" th:object="${post}">
+    <label for="title">title</label>
+    <input type="text" id="title" name="title" aria-describedby="title" th:field="*{title}">
+    <label for="content">content</label>
+    <input type="text" id="content" name="content" aria-describedby="content" th:field="*{content}">
+    <label for="description">description</label>
+    <input type="text" id="description" name="description" aria-describedby="description" th:field="*{description}">
+    <label for="date_published">date_published</label>
+    <input type="date" id="date_published" name="date_published"
+           aria-describedby="date_published" th:field="*{date_published}">
+    <input type="submit">
+</form>
+</body>
+</html>
