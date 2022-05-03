@@ -6,10 +6,23 @@
 </head>
 
 <body>
-
+<!--this is used for testing-->
+<form th:action="@{/languages/search}" method="post">
+    <label for="category">Search by</label>
+    <input type="text" th:name="category" id="category">
+    <button type="submit">test</button>
+</form>
+<!--You will need seeder file to test-->
+<!--use this to see how it works only, not for final production-->
+<div th:text="${languages.category}"></div>
+<div th:each="post : ${posts}">
+    <p th:text="${post.title}"></p>
+    <p th:text="${post.content}"></p>
+    <p th:text="${post.description}"></p>
+    <p th:text="${post.date_published}"></p>
+</div>
 <nav th:replace="partials :: nav"></nav>
 
 <footer th:replace="partials :: footer"></footer>
-
 </body>
 </html>
