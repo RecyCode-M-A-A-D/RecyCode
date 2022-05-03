@@ -15,26 +15,27 @@ import java.util.List;
 @Controller
 public class LanguagesController {
     private CategoryRepository catDao;
+    /*postDao is only used for testing*/
     private PostRepository postDao;
 
     public LanguagesController(CategoryRepository catDao, PostRepository postDao) {
-        this.postDao = postDao;
         this.catDao = catDao;
+        this.postDao = postDao;
     }
 
     @GetMapping("/languages")
     public String showByCategory(Model model) {
-        model.addAttribute("languages", catDao.findByCategoryName("HTML"));
+        model.addAttribute("posts", postDao.findAll());
+        model.addAttribute("Languages", catDao.findByCategoryName("HTML"));
         return "languages";
     }
 
     @PostMapping("/languages/search")
     public String showLanguages(@RequestParam (name = "category") String category ,Model model){
-        System.out.println("cats");
         System.out.println(category);
         Category cat = catDao.findByCategoryName(category);
 
-        model.addAttribute("languages", cat);
+        model.addAttribute("Languages", cat);
         model.addAttribute("posts", cat.getPosts());
         return "languages";
     }
