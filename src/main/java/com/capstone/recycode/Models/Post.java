@@ -30,10 +30,10 @@ public class Post {
     @Column(nullable = false, length = 50)
     private String title;
 
+    @Lob
     @Column(nullable = false)
     private String content;
 
-    @Lob
     @Column(nullable = false)
     private String description;
 

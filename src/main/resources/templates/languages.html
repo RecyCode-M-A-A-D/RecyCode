@@ -14,13 +14,14 @@
 </form>
 <!--You will need seeder file to test-->
 <!--use this to see how it works only, not for final production-->
-<div th:text="${languages.category}"></div>
+<div th:text="${Languages.category}"></div>
 <div th:each="post : ${posts}">
     <p th:text="${post.title}"></p>
     <p th:text="${post.content}"></p>
     <p th:text="${post.description}"></p>
     <p th:text="${post.date_published}"></p>
 </div>
+
 <nav th:replace="partials :: nav"></nav>
 
 <footer th:replace="partials :: footer"></footer>
