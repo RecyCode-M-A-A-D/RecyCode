@@ -1,4 +1,10 @@
+html{
+    background-color: lightgrey;
+}
 
+nav {
+    background-color: lightgrey;
+}
 /** CSS for avatar*/
 #avatar{
     display: flex;
