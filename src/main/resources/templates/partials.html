@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <!--Head Partial-->
 <head th:fragment="head">
 	<meta charset="UTF-8">
@@ -17,8 +17,10 @@
 
 				<ul class="nav col-12 col-lg-auto mb-2 justify-content-center mb-md-0">
 					<li><a href="/" class="nav-link m-2 px-2 text-white btn btn-secondary">Home</a></li>
-					<li><a href="/profile" class="nav-link m-2 px-2 text-white btn btn-secondary">Profile</a></li>
-					<li><a href="/post" class="nav-link m-2 px-2 text-white btn btn-secondary">Create A Post</a></li>
+
+					<li><a sec:authorize="isAuthenticated()" href="/profile" class="nav-link m-2 px-2 text-white btn btn-secondary ">Profile</a></li>
+					<li ><a sec:authorize="isAuthenticated()" href="/post" class="nav-link m-2 px-2 text-white btn btn-secondary">Create A Post</a></li>
+
 					<!--						<li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>-->
 					<!--						<li><a href="#" class="nav-link px-2 text-white">About</a></li>-->
 				</ul>
@@ -36,17 +38,17 @@
 								<button class="btn btn-primary m-2 text-dark">About Us</button>
 							</form>
 						</li>
-						<li>
+						<li sec:authorize="isAnonymous()">
 							<form th:action="@{/login}" th:method="get">
 								<button class="btn btn-outline-light m-2">Login</button>
 							</form>
 						</li>
-						<li>
+						<li sec:authorize="isAnonymous()">
 							<form th:action="@{/register}" th:method="get">
 								<button class="btn btn-warning m-2">Sign-up</button>
 							</form>
 						</li>
-						<li>
+						<li sec:authorize="isAuthenticated()">
 							<form th:action="@{/logout}" th:method="post">
 								<button class="btn-danger btn m-2 text-dark">Logout</button>
 							</form>
