@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="partials :: head">
     <meta charset="UTF-8">
-    <title>Create A Post</title>
+    <title>Create a Post</title>
 </head>
 <body>
+
+<nav th:replace="partials :: nav"></nav>
+
 <form th:action="@{/post}" method="post" th:object="${post}">
     <label for="title">title</label>
     <input type="text" id="title" name="title" aria-describedby="title" th:field="*{title}">
@@ -15,7 +18,16 @@
     <label for="date_published">date_published</label>
     <input type="date" id="date_published" name="date_published"
            aria-describedby="date_published" th:field="*{date_published}">
+    <label for="category">Category</label>
+    <select name="category" id="category">
+        <option value="Java">Java</option>
+        <option value="HTML">HTML</option>
+        <option value="CSS">CSS</option>
+        <option value="JavaScript">JavaScript</option>
+    </select>
     <input type="submit">
 </form>
+
+<footer th:replace="partials :: footer"></footer>
 </body>
 </html>
