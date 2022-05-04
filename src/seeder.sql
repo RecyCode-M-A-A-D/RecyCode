@@ -247,3 +247,11 @@ VALUES (2, 3),
 (3, 4),
 (4, 3),
 (5, 4);
+
+INSERT INTO users (first_name, last_name, user_name, password, email)
+VALUES
+('Fred', 'Fredowski', 'fred', '$2a$10$WkPiJnOCCF8MWuEEbjrFk.en0tY.iAZxJxA7zqSO5/bZMwOyBm11e', 'fred@fred.com'),
+('Andrew', 'Lange', 'andrew', '$2a$10$Y1MAuX.1FY.Nw.Dzo8i/3uQtik/iXorFnp0.3SX6Djb5UV81C/VlG', 'andrew@andrew.com'),
+('Mario', 'Granados', 'mario', '$2a$10$cQJeEt4wR6HdAjETtcXGj.olyCfPi6JZao3sGXPdBc38oN3K1mnPC', 'mario@mario.com'),
+('Angel', 'Santana', 'angel', '$2a$10$3PM249xAfQW3Vt6Hvs5FdORywDFDjpHsQmuGiDbRPfvboDbsz8fnS', 'angel@angel.com'),
+('Danny', 'Turner', 'danny', '$2a$10$lc3Tq1jgPW4FcXi0JfjdL.nZ/6vj94DmnUL1ZYXYLGa2anBOi4txe', 'danny@danny.com')
