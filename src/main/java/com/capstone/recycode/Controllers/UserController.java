@@ -34,11 +34,7 @@ public class UserController {
         userDao.save(user);
         return "redirect:/login";
     }
-//    @GetMapping("/home")
-//    @ResponseBody
-//    public String homePage() {
-//
-//        System.out.println("endpoint");
-//        return "This is the landing page!";
-//    }
+
+
+
 }
