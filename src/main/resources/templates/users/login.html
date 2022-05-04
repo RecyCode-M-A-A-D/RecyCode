@@ -17,13 +17,6 @@
 
 <!--<section class="vh-100" style="background: linear-gradient(90deg, #4caf50, #ffc107, #03a9f4);">-->
 <section class="vh-100" style="background-color: lightgrey">
-	<div th:if="${param.error}">
-		Invalid Username and Password.
-	</div>
-
-	<div th:if="${param.logout}">
-		You have been logged out.
-	</div>
 	<div class="container py-5 h-100">
 		<div class="row d-flex justify-content-center align-items-center h-100">
 			<div class="col col-xl-10">
@@ -44,6 +37,12 @@
 									<div class="form-outline mb-4">
 										<input type="password" id="password" name="password" class="form-control form-control-lg" />
 										<label class="form-label" for="password">Password</label>
+									</div>
+									<div th:if="${param.error}">
+										Invalid Username and Password.
+									</div>
+									<div th:if="${param.logout}">
+										You have been logged out.
 									</div>
 									<div class="pt-1 mb-4">
 										<button class="btn btn-dark btn-lg btn-block" type="submit" value="login">Login</button>
