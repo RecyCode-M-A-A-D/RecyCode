@@ -15,6 +15,13 @@
     <label for="date_published">date_published</label>
     <input type="date" id="date_published" name="date_published"
            aria-describedby="date_published" th:field="*{date_published}">
+    <label for="category">Category</label>
+    <select name="category" id="category">
+        <option value="Java">Java</option>
+        <option value="HTML">HTML</option>
+        <option value="CSS">CSS</option>
+        <option value="JavaScript">JavaScript</option>
+    </select>
     <input type="submit">
 </form>
 </body>
