@@ -65,6 +65,10 @@ picture {
     display: block;
 }
 
+#recpic{
+border-radius: 45px;
+}
+
 /* Inherit fonts for inputs and buttons */
 input,
 button,
