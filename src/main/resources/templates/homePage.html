@@ -22,7 +22,7 @@
 		<div class="col" th:each="post : ${post}">
 			<div>
 				<div class="card-header p-3 border bg-light">
-					<h4>Category</h4>
+					<h4 th:text="*{post.title}"></h4>
 				</div>
 				<div class="card-body border">
 					<p th:text="${post.description}"></p>
