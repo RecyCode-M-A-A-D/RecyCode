@@ -2,8 +2,10 @@ package com.capstone.recycode.Controllers;
 
 import com.capstone.recycode.Models.Category;
 import com.capstone.recycode.Models.Post;
+import com.capstone.recycode.Models.User;
 import com.capstone.recycode.Repositories.CategoryRepository;
 import com.capstone.recycode.Repositories.PostRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +41,9 @@ public class PostController {
     @PostMapping("/post")
     public String createAPost(@RequestParam(name = "category") String categoryName,
                               @ModelAttribute Post post) {
+        //seeting current user to post
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        post.setUser(user);
 
         Category category = catDao.findByCategoryName(categoryName);
         List<Category> categories = new ArrayList<>();
