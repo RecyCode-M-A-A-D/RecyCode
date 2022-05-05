@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 @Controller
 @SessionAttributes("post")
@@ -48,6 +47,8 @@ public class PostController {
         Category category = catDao.findByCategoryName(categoryName);
         List<Category> categories = new ArrayList<>();
         categories.add(category);
+        //gets current date into the database
+        post.setDate_published(java.time.LocalDate.now().toString());
         post.setCategories(categories);
 
         postDao.save(post);

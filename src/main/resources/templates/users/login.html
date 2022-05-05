@@ -38,10 +38,10 @@
 										<input type="password" id="password" name="password" class="form-control form-control-lg" />
 										<label class="form-label" for="password">Password</label>
 									</div>
-									<div th:if="${param.error}">
+									<div class="text-danger" th:if="${param.error}">
 										Invalid Username and Password.
 									</div>
-									<div th:if="${param.logout}">
+									<div class="text-success" th:if="${param.logout}">
 										You have been logged out.
 									</div>
 									<div class="pt-1 mb-4">
