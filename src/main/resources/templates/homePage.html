@@ -22,7 +22,7 @@
 		<div class="col" th:each="post : ${post}">
 			<div>
 				<div class="card-header p-3 border bg-light">
-					<h4>HTML</h4>
+					<h4>Category</h4>
 				</div>
 				<div class="card-body border">
 					<p th:text="${post.description}"></p>
@@ -31,30 +31,30 @@
 				</div>
 			</div>
 		</div>
-		<div class="col" th:each="post : ${post}">
-			<div>
-				<div class="card-header p-3 border bg-light">
-					<h4>Java/JS</h4>
-				</div>
-				<div class="card-body border">
-					<p th:text="${post.description}"></p>
-					<p th:text="${post.content}"></p>
-					<p th:text="${post.date_published}"></p>
-				</div>
-			</div>
-		</div>
-		<div class="col" th:each="post : ${post}">
-			<div>
-				<div class="card-header p-3 border bg-light">
-					<h4>CSS</h4>
-				</div>
-				<div class="card-body border">
-					<p th:text="${post.description}"></p>
-					<p th:text="${post.content}"></p>
-					<p th:text="${post.date_published}"></p>
-				</div>
-			</div>
-		</div>
+<!--		<div class="col" th:each="post : ${post}">-->
+<!--			<div>-->
+<!--				<div class="card-header p-3 border bg-light">-->
+<!--					<h4>Java/JS</h4>-->
+<!--				</div>-->
+<!--				<div class="card-body border">-->
+<!--					<p th:text="${post.description}"></p>-->
+<!--					<p th:text="${post.content}"></p>-->
+<!--					<p th:text="${post.date_published}"></p>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		<div class="col" th:each="post : ${post}">-->
+<!--			<div>-->
+<!--				<div class="card-header p-3 border bg-light">-->
+<!--					<h4>CSS</h4>-->
+<!--				</div>-->
+<!--				<div class="card-body border">-->
+<!--					<p th:text="${post.description}"></p>-->
+<!--					<p th:text="${post.content}"></p>-->
+<!--					<p th:text="${post.date_published}"></p>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
 	</div>
 </div>
 
