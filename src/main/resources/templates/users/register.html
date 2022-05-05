@@ -32,6 +32,8 @@
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                                <!--error message when password fails-->
+                                <div class="text-danger text-center" th:text="${error}"></div>
 
                                 <form class="mx-1 mx-md-4" th:action="@{/register}" th:method="post"
                                       th:object="${user}">
@@ -40,7 +42,7 @@
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="text" id="username" class="form-control"
-                                                   th:field="*{userName}"/>
+                                                   th:field="*{userName}" required/>
                                             <label class="form-label" th:for="username">Username</label>
                                         </div>
                                     </div>
@@ -49,7 +51,7 @@
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="text" id="firstname" class="form-control"
-                                                   th:field="*{firstName}"/>
+                                                   th:field="*{firstName}" required/>
                                             <label class="form-label" th:for="firstname">First Name</label>
                                         </div>
                                     </div>
@@ -58,7 +60,7 @@
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="text" id="lastname" class="form-control"
-                                                   th:field="*{lastName}"/>
+                                                   th:field="*{lastName}" required/>
                                             <label class="form-label" th:for="lastname">Last Name</label>
                                         </div>
                                     </div>
@@ -66,7 +68,7 @@
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="email" id="email" class="form-control" th:field="*{email}"/>
+                                            <input type="email" id="email" class="form-control" th:field="*{email}" required/>
                                             <label class="form-label" th:for="email">Your Email</label>
                                         </div>
                                     </div>
@@ -74,8 +76,8 @@
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="password" id="password" class="form-control"
-                                                   th:field="*{password}"/>
+                                            <input type="password" id="password" class="form-control" name="password"
+                                                   th:field="*{password}" required/>
                                             <label class="form-label" th:for="password">Password</label>
                                         </div>
                                     </div>
@@ -83,8 +85,8 @@
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="password" id="confirmpassword" class="form-control"/>
-                                            <label class="form-label" th:for="confirmpassword">Confirm password</label>
+                                            <input type="password" id="confirm_password" class="form-control" name="confirm_password" required/>
+                                            <label for="confirm_password" class="form-label" th:for="confirmpassword">Confirm password</label>
                                         </div>
                                     </div>
 
