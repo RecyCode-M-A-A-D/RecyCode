@@ -1,5 +1,5 @@
 INSERT INTO posts (content, date_published, description, title)
-VALUES ('content', '2022-05-26', 'ssome desc', 'title'),
+VALUES ('content', '2022-05-26', 'some desc', 'title'),
         ('<!doctype html>
           <html lang="en">
           <head>

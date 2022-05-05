@@ -17,46 +17,65 @@
 	</div>
 </div>
 
-<div class="container px-4" id="codeblocks">
-	<div class="row gx-5">
-		<div class="col" th:each="post : ${post}">
-			<div>
-				<div class="card-header p-3 border bg-light">
-					<h4>HTML</h4>
-				</div>
-				<div class="card-body border">
-					<p th:text="${post.description}"></p>
-					<p th:text="${post.content}"></p>
-					<p th:text="${post.date_published}"></p>
-				</div>
-			</div>
-		</div>
-		<div class="col" th:each="post : ${post}">
-			<div>
-				<div class="card-header p-3 border bg-light">
-					<h4>Java/JS</h4>
-				</div>
-				<div class="card-body border">
-					<p th:text="${post.description}"></p>
-					<p th:text="${post.content}"></p>
-					<p th:text="${post.date_published}"></p>
-				</div>
-			</div>
-		</div>
-		<div class="col" th:each="post : ${post}">
-			<div>
-				<div class="card-header p-3 border bg-light">
-					<h4>CSS</h4>
-				</div>
-				<div class="card-body border">
-					<p th:text="${post.description}"></p>
-					<p th:text="${post.content}"></p>
-					<p th:text="${post.date_published}"></p>
-				</div>
+<div class="container bootstrap snippets bootdeys">
+	<div class="row">
+		<div class="col-md-4 col-sm-6 content-card" th:each="post : ${post}">
+			<div class="card-big-shadow">
+				<div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+					<div class="content">
+						<h6 class="category">Category</h6>
+						<h4 class="title" th:text="*{post.title}"><a href="#"></a></h4>
+						<p class="description" th:text="*{post.description}"></p>
+						<p class="description" th:text="*{post.content}"></p>
+						<p class="description" th:text="*{post.date_published}"></p>
+					</div>
+				</div> <!-- end card -->
 			</div>
 		</div>
 	</div>
 </div>
+
+
+<!--<div class="container px-4" id="codeblocks">-->
+<!--	<div class="row gx-5">-->
+<!--		<div class="col" th:each="post : ${post}">-->
+<!--			<div>-->
+<!--				<div class="card-header p-3 border bg-light">-->
+<!--					<h4 th:text="*{post.title}"></h4>-->
+<!--				</div>-->
+<!--				<div class="card-body border">-->
+<!--					<p th:text="${post.description}"></p>-->
+<!--					<p th:text="${post.content}"></p>-->
+<!--					<p th:text="${post.date_published}"></p>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		<div class="col" th:each="post : ${post}">-->
+<!--			<div>-->
+<!--				<div class="card-header p-3 border bg-light">-->
+<!--					<h4>Java/JS</h4>-->
+<!--				</div>-->
+<!--				<div class="card-body border">-->
+<!--					<p th:text="${post.description}"></p>-->
+<!--					<p th:text="${post.content}"></p>-->
+<!--					<p th:text="${post.date_published}"></p>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		<div class="col" th:each="post : ${post}">-->
+<!--			<div>-->
+<!--				<div class="card-header p-3 border bg-light">-->
+<!--					<h4>CSS</h4>-->
+<!--				</div>-->
+<!--				<div class="card-body border">-->
+<!--					<p th:text="${post.description}"></p>-->
+<!--					<p th:text="${post.content}"></p>-->
+<!--					<p th:text="${post.date_published}"></p>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--</div>-->
 
 <footer th:replace="partials :: footer"></footer>
 </body>
