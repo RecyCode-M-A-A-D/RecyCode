@@ -106,6 +106,40 @@ s
     </div>
 </div>
 
+<!--test fragment-->
+<div th:fragment="post_stat_fragment">
+    <div th:each="postStat : ${postStats}">
+        <p th:text="${postStat.getPost().getTitle()}"></p>
+        <p th:text="${postStat.getPost().getContent()}"></p>
+        <p th:text="${postStat.getPost().getDescription()}"></p>
+        <p th:text="${postStat.getPost().getDate_published()}"></p>
+        <!--this is for testing only-->
+        <span>postID </span>
+        <p th:text="${postStat.getPost().getPostId()}"></p>
+        <!--this is for testing only-->
+        <form th:action="@{/profile/upvote}" method="post">
+            <input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value" hidden>
+            <button type="submit" class="btn btn-secondary">
+				    <span>Up Votes
+                        <span th:text="${postStat.upVotesCount}"></span>
+				    </span>
+            </button>
+        </form>
+        <form th:action="@{/profile/downvote}" method="post">
+            <input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value" hidden>
+            <button type="submit" class="btn btn-secondary">
+				    <span>Down Votes
+					    -<span th:text="${postStat.downVotesCount}"></span>
+				    </span>
+            </button>
+        </form>
+    </div>
+</div>
+
+
+
+<!--ending test fragment ask mario for questions-->
+
 <!--Footer Partial-->
 <footer th:fragment="footer">
     <div class="container">
