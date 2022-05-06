@@ -53,7 +53,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/posts/create",
                         "/posts/{id}/edit",
-                        "/posts/{id}/delete"
+                        "/posts/{id}/delete",
+                        "/profile",
+                        "/profile/**" //cannot see anyones profile unless you are logged in
                 )
                 .authenticated()
         ;
