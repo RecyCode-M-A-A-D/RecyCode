@@ -34,7 +34,6 @@ public class OtherUsersController {
         User user = userDao.findUserByUserName(username);
         if(user != null) {
             model.addAttribute("posts", postDao.findPostsByUserId(user.getId()));
-            model.addAttribute("votes", postStatDao.findAllByPostId();
             return "otherUsers";
         } else {
             //error page;
