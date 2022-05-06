@@ -56,19 +56,20 @@ public class OtherUsersController {
 
 
     /*using profile as a return temporarily*/
+    /*probably need to return profile name*/
     @PostMapping("/profile/upvote")
     public String upVote(@RequestParam(name = "post_id_value") long postId) {
         PostStat postStat = postStatDao.findPostStatById(postId);
-        postStatDao.updateVotes(postStat.getUpVotesCount() + 1, postStat.getDownVotesCount(), postStat.getPost().getPostId());
-        System.out.println(postId);
+        postStat.setUpVotesCount(postStat.getUpVotesCount() + 1L);
+        postStatDao.updateVotes(postStat.getUpVotesCount(), postStat.getDownVotesCount(), postStat.getPost().getPostId());
         return "otherUsers";
     }
 
     @PostMapping("/profile/downvote")
     public String downVote(@RequestParam (name ="post_id_value") long postId) {
         PostStat postStat = postStatDao.findPostStatById(postId);
-        postStatDao.updateVotes(postStat.getUpVotesCount(), postStat.getDownVotesCount() + 1, postId);
-        System.out.println(postId);
+        postStat.setDownVotesCount(postStat.getDownVotesCount() + 1L);
+        postStatDao.updateVotes(postStat.getUpVotesCount(), postStat.getDownVotesCount(), postStat.getPost().getPostId());
         return "otherUsers";
     }
 }
