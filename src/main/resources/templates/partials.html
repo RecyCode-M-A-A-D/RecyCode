@@ -75,6 +75,16 @@
 		</div>
 	</header>
 </nav>
+s
+<div th:fragment="posts_fragment">
+	This is read from partials, I was too lazy to code this again - Mario
+	<div th:each="post : ${posts}">
+		<p th:text="${post.title}"></p>
+		<p th:text="${post.content}"></p>
+		<p th:text="${post.description}"></p>
+		<p th:text="${post.date_published}"></p>
+	</div>
+</div>
 
 
 <!--Footer Partial-->

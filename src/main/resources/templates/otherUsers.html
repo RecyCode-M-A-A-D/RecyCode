@@ -11,12 +11,14 @@
 <div class="container mb-5" id="avatar">
   <div class="row">
     <div class="col">
-      <img th:src="@{img/RecyCode (3).png}" height="500" width="500"/>
+      <img th:src="@{/img/RecyCode (3).png}" height="500" width="500" alt="RecyCode Logo"/>
     </div>
   </div>
 </div>
 
 <h1 class="text-center">Other User Profile</h1>
+
+<div th:replace="partials :: posts_fragment"></div>
 
 
 <footer th:replace="partials :: footer"></footer>
