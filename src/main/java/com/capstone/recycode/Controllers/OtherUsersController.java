@@ -44,7 +44,6 @@ public class OtherUsersController {
                 postStats.add(postStatDao.findPostStatById(posts.get(i).getPostId()));
             }
 
-            model.addAttribute("posts", posts);
             model.addAttribute("postStats", postStats);
             return "otherUsers";
 
@@ -60,7 +59,7 @@ public class OtherUsersController {
     @PostMapping("/profile/upvote")
     public String upVote(@RequestParam(name = "post_id_value") long postId) {
         PostStat postStat = postStatDao.findPostStatById(postId);
-        postStatDao.updateVotes(postStat.getUpVotesCount() + 1, postStat.getDownVotesCount(), postId);
+        postStatDao.updateVotes(postStat.getUpVotesCount() + 1, postStat.getDownVotesCount(), postStat.getPost().getPostId());
         System.out.println(postId);
         return "otherUsers";
     }
