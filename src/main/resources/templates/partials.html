@@ -121,7 +121,7 @@ s
             <input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value" hidden>
             <button type="submit" class="btn btn-secondary">
 				    <span>Up Votes
-                        <span th:text="${postStat.upVotesCount}"></span>
+                        <span th:text="${postStat.getUpVotesCount()}"></span>
 				    </span>
             </button>
         </form>
@@ -129,7 +129,7 @@ s
             <input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value" hidden>
             <button type="submit" class="btn btn-secondary">
 				    <span>Down Votes
-					    -<span th:text="${postStat.downVotesCount}"></span>
+					    -<span th:text="${postStat.getDownVotesCount()}"></span>
 				    </span>
             </button>
         </form>
