@@ -149,10 +149,20 @@ s
         <!--favorites button ends here-->
     </div>
 </div>
-
-
-
 <!--ending test fragment ask mario for questions-->
+
+<!--favorites fragment-->
+
+<div th:fragment="favorites">
+    <div th:each="favorite : ${favorites}">
+        <p th:text="${favorite.title}"></p>
+        <p th:text="${favorite.content}"></p>
+        <p th:text="${favorite.description}"></p>
+        <p th:text="${favorite.date_published}"></p>
+    </div>
+</div>
+
+<!--favorites fragment-->
 
 <!--Footer Partial-->
 <footer th:fragment="footer">
