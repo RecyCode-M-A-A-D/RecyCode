@@ -1,11 +1,15 @@
 package com.capstone.recycode.Controllers;
 
+import com.capstone.recycode.Models.Favorite;
 import com.capstone.recycode.Models.Post;
 import com.capstone.recycode.Models.PostStat;
 import com.capstone.recycode.Models.User;
+import com.capstone.recycode.Repositories.FavoritesRepository;
 import com.capstone.recycode.Repositories.PostRepository;
 import com.capstone.recycode.Repositories.PostStatRepository;
 import com.capstone.recycode.Repositories.UserRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,11 +27,16 @@ public class OtherUsersController {
     private PostRepository postDao;
     private UserRepository userDao;
     private PostStatRepository postStatDao;
+    private FavoritesRepository favDao;
 
-    public OtherUsersController(PostRepository postDao, UserRepository userDao, PostStatRepository postStatDao) {
+    public OtherUsersController(PostRepository postDao,
+                                UserRepository userDao,
+                                PostStatRepository postStatDao,
+                                FavoritesRepository favDao) {
         this.postDao = postDao;
         this.userDao = userDao;
         this.postStatDao = postStatDao;
+        this.favDao = favDao;
 
     }
 
@@ -47,7 +56,6 @@ public class OtherUsersController {
             model.addAttribute("postStats", postStats);
             return "otherUsers";
 
-
     }
 
 
@@ -66,6 +74,18 @@ public class OtherUsersController {
         PostStat postStat = postStatDao.findPostStatById(postId);
         postStat.setDownVotesCount(postStat.getDownVotesCount() + 1L);
         postStatDao.updateVotes(postStat.getUpVotesCount(), postStat.getDownVotesCount(), postStat.getPost().getPostId());
+        return "otherUsers";
+    }
+
+    @PostMapping("/profile/addToFavorites")
+    public String addToFavorites(@RequestParam( name = "post_id_value") Long postId) {
+        //save current time, user logged in, and post info into the users favorites
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println("postID");
+        System.out.println(postId);
+
+        favDao.save(new Favorite(java.time.LocalDate.now().toString(), user, postDao.getById(postId)));
+
         return "otherUsers";
     }
 }

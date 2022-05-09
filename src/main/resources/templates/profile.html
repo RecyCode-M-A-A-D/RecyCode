@@ -15,16 +15,22 @@
         </div>
     </div>
 </div>
+
 <div>
     This needs styling
     <div th:each="post : ${posts}">
         <p th:text="${post.title}"></p>
         <p th:text="${post.content}"></p>
         <p th:text="${post.description}"></p>
-        <p th:text="${post.date_published}"></p>
     </div>
+</div>
 
+<br>
 
+<div>
+    from partials favorites
+    <h4 class="display-5">Favorites</h4>
+    <div th:replace="partials :: favorites"></div>
 </div>
 
 <h1 class="text-center">Your Profile</h1>
