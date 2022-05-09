@@ -19,4 +19,42 @@ public class Favorite {
     @OneToOne
     Post post;
 
+    public Favorite() {};
+    public Favorite(String date_favored, User user, Post post) {
+        this.date_favored = date_favored;
+        this.user = user;
+        this.post = post;
+    }
+
+    public long getFavoriteId() {
+        return favoriteId;
+    }
+
+    public void setFavoriteId(long favoriteId) {
+        this.favoriteId = favoriteId;
+    }
+
+    public String getDate_favored() {
+        return date_favored;
+    }
+
+    public void setDate_favored(String date_favored) {
+        this.date_favored = date_favored;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
 }
