@@ -42,7 +42,7 @@ public class OtherUsersController {
 
     @GetMapping("/profile/{username}")
     public String viewUsersProfile(Model model, @PathVariable String username){
-        User user = userDao.findByUserName(username);
+        User user = userDao.findUserByUserName(username);
 
             List<Post> posts = postDao.findPostsByUserId(user.getId());
             model.addAttribute("post", postDao.findPostsByUserId(user.getId()));
