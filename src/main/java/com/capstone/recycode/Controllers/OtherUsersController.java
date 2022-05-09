@@ -33,25 +33,21 @@ public class OtherUsersController {
 
     @GetMapping("/profile/{username}")
     public String viewUsersProfile(Model model, @PathVariable String username){
-        User user = userDao.findUserByUserName(username);
+        User user = userDao.findByUserName(username);
 
-        if(user != null) {
             List<Post> posts = postDao.findPostsByUserId(user.getId());
-            List<PostStat> postStats = new ArrayList<>();
+            model.addAttribute("post", postDao.findPostsByUserId(user.getId()));
+//            List<PostStat> postStats = new ArrayList<>();
+//
+//            for(int i = 0; i < posts.size(); i++) {
+//                System.out.println("test");
+//                postStats.add(postStatDao.findPostStatById(posts.get(i).getPostId()));
+//            }
 
-            for(int i = 0; i < posts.size(); i++) {
-                System.out.println("test");
-                postStats.add(postStatDao.findPostStatById(posts.get(i).getPostId()));
-            }
-
-            model.addAttribute("postStats", postStats);
+//            model.addAttribute("postStats", postStats);
             return "otherUsers";
 
-        } else {
-            //error page;
-            System.out.println("we need to make an error page");
-            return "otherUsers";
-        }
+
     }
 
 
