@@ -42,10 +42,10 @@ public class OtherUsersController {
 
     @GetMapping("/profile/{username}")
     public String viewUsersProfile(Model model, @PathVariable String username){
-        User user = userDao.findUserByUserName(username);
+        User user = userDao.findByUserName(username);
 
-        if(user != null) {
             List<Post> posts = postDao.findPostsByUserId(user.getId());
+            model.addAttribute("post", postDao.findPostsByUserId(user.getId()));
             List<PostStat> postStats = new ArrayList<>();
 
             for(int i = 0; i < posts.size(); i++) {
@@ -56,11 +56,6 @@ public class OtherUsersController {
             model.addAttribute("postStats", postStats);
             return "otherUsers";
 
-        } else {
-            //error page;
-            System.out.println("we need to make an error page");
-            return "/error";
-        }
     }
 
 
