@@ -17,6 +17,21 @@
 	</div>
 </div>
 
+<!--filter-->
+<form th:action="@{/languages/search}" method="Post">
+	<label for="category">Filter By</label>
+
+	<select name="category" id="category">
+		<option value="HTML">HTML</option>
+		<option value="Java">Java</option>
+		<option value="Css">Css</option>
+		<option value="JS">JS</option>
+		<input type="submit">
+	</select>
+</form>
+
+<!--filter-->
+
 <div class="container bootstrap snippets bootdeys">
 	<div class="row">
 		<div class="col-md-4 col-sm-6 content-card" th:each="post : ${post}">
