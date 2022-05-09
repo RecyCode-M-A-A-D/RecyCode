@@ -1,5 +1,13 @@
-INSERT INTO posts (content, date_published, description, title)
-VALUES ('content', '2022-05-26', 'some desc', 'title'),
+INSERT INTO users (first_name, last_name, user_name, password, email)
+VALUES
+('Fred', 'Fredowski', 'fred', '$2a$10$WkPiJnOCCF8MWuEEbjrFk.en0tY.iAZxJxA7zqSO5/bZMwOyBm11e', 'fred@fred.com'),
+('Andrew', 'Lange', 'andrew', '$2a$10$Y1MAuX.1FY.Nw.Dzo8i/3uQtik/iXorFnp0.3SX6Djb5UV81C/VlG', 'andrew@andrew.com'),
+('Mario', 'Granados', 'mario', '$2a$10$cQJeEt4wR6HdAjETtcXGj.olyCfPi6JZao3sGXPdBc38oN3K1mnPC', 'mario@mario.com'),
+('Angel', 'Santana', 'angel', '$2a$10$3PM249xAfQW3Vt6Hvs5FdORywDFDjpHsQmuGiDbRPfvboDbsz8fnS', 'angel@angel.com'),
+('Danny', 'Turner', 'danny', '$2a$10$lc3Tq1jgPW4FcXi0JfjdL.nZ/6vj94DmnUL1ZYXYLGa2anBOi4txe', 'danny@danny.com');
+
+INSERT INTO posts (content, date_published, description, title, user_id)
+VALUES ('content', '2022-05-26', 'some desc', 'title', 1),
         ('<!doctype html>
           <html lang="en">
           <head>
@@ -29,7 +37,7 @@ VALUES ('content', '2022-05-26', 'some desc', 'title'),
               </div>
           </div>
           </body>
-          </html>', '2022-05-03', 'Some HTML for a hero with custom css', 'Hero.html'),
+          </html>', '2022-05-03', 'Some HTML for a hero with custom css', 'Hero.html', 2),
           ('
 .hero_container {
     width: inherit;
@@ -74,7 +82,7 @@ VALUES ('content', '2022-05-26', 'some desc', 'title'),
     .hero_container {
         padding: 5vh;
     }
-}', '2022-05-03', 'CSS for the Hero file I made', 'Hero.css'),
+}', '2022-05-03', 'CSS for the Hero file I made', 'Hero.css', 3),
 ('<!DOCTYPE html>
   <html lang="en">
   <head>
@@ -149,7 +157,7 @@ VALUES ('content', '2022-05-26', 'some desc', 'title'),
   </footer>
 
   </body>
-  </html>', '2022-05-06', 'some footer I made last night', 'Footer.html'),
+  </html>', '2022-05-06', 'some footer I made last night', 'Footer.html', 4),
   (':root {
         --buttonColor: #DA4167;
         --buttonHover: #93B5C6;
@@ -232,14 +240,14 @@ VALUES ('content', '2022-05-26', 'some desc', 'title'),
         color: var(--headers);
         transition: 250ms;
         font-size: 25px;
-    }', '2022-05-06', 'CSS file for the footer I uploaded', 'Footer.css'),
+    }', '2022-05-06', 'CSS file for the footer I uploaded', 'Footer.css', 5);
 
 
 INSERT INTO categories (category)
 VALUES ('Java'),
 ('JavaScript'),
 ('HTML'),
-('CSS'),
+('CSS');
 
 /* running tests for categories */
 INSERT INTO post_categories (post_id, category_id)
@@ -247,19 +255,13 @@ VALUES (1, 1),
 (2, 3),
 (3, 4),
 (4, 3),
-(5, 4),
+(5, 4);
 
-INSERT INTO users (first_name, last_name, user_name, password, email)
-VALUES
-('Fred', 'Fredowski', 'fred', '$2a$10$WkPiJnOCCF8MWuEEbjrFk.en0tY.iAZxJxA7zqSO5/bZMwOyBm11e', 'fred@fred.com'),
-('Andrew', 'Lange', 'andrew', '$2a$10$Y1MAuX.1FY.Nw.Dzo8i/3uQtik/iXorFnp0.3SX6Djb5UV81C/VlG', 'andrew@andrew.com'),
-('Mario', 'Granados', 'mario', '$2a$10$cQJeEt4wR6HdAjETtcXGj.olyCfPi6JZao3sGXPdBc38oN3K1mnPC', 'mario@mario.com'),
-('Angel', 'Santana', 'angel', '$2a$10$3PM249xAfQW3Vt6Hvs5FdORywDFDjpHsQmuGiDbRPfvboDbsz8fnS', 'angel@angel.com'),
-('Danny', 'Turner', 'danny', '$2a$10$lc3Tq1jgPW4FcXi0JfjdL.nZ/6vj94DmnUL1ZYXYLGa2anBOi4txe', 'danny@danny.com'),
+
 
 INSERT INTO post_stats (down_votes_count, up_votes_count, post_post_id )
 VALUES (0,0,1),
 (0,0,2),
 (0,0,3),
 (0,0,4),
-(0,0,5),
+(0,0,5);
