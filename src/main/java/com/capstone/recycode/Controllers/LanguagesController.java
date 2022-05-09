@@ -20,7 +20,7 @@ public class LanguagesController {
     /*postDao is only used for testing*/
     private PostRepository postDao;
     private UserRepository userDao;
-
+    private UserRepository userDao;
     public LanguagesController(CategoryRepository catDao, PostRepository postDao, UserRepository userDao) {
         this.catDao = catDao;
         this.postDao = postDao;
@@ -43,6 +43,7 @@ public class LanguagesController {
         model.addAttribute("posts", cat.getPosts());
         return "languages";
     }
+
     @PostMapping("/search/results")
     public String search(@RequestParam(name = "searched_value") String searchedValue, Model m) {
         List<User> users = userDao.findSimilarUsersByName(searchedValue);
@@ -66,6 +67,6 @@ public class LanguagesController {
             m.addAttribute("error", true);
         }
 
-        return "Languages";
+        return "languages";
     }
 }
