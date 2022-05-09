@@ -20,7 +20,6 @@ public class LanguagesController {
     /*postDao is only used for testing*/
     private PostRepository postDao;
     private UserRepository userDao;
-    private UserRepository userDao;
     public LanguagesController(CategoryRepository catDao, PostRepository postDao, UserRepository userDao) {
         this.catDao = catDao;
         this.postDao = postDao;
