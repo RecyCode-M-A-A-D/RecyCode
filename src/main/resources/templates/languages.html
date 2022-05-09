@@ -6,17 +6,19 @@
 </head>
 <body>
 <nav th:replace="partials :: nav"></nav>
+f
 
-<form th:action="@{/languages/search}" method="Post">
-    <label for="cats">Filter By</label>
-    <select name="category" id="cats">
-        <option value="HTML">HTML</option>
-        <option value="Java">Java</option>
-        <option value="CSS">Css</option>
-        <option value="JavaScript">JS</option>
-        <input type="submit">
-    </select>
-</form>
+<div th:if="${post != null}">
+    <form th:action="@{/languages/search}" method="Post">
+        <label for="cats">Filter By</label>
+        <select name="category" id="cats">
+            <option value="HTML">HTML</option>
+            <option value="Java">Java</option>
+            <option value="CSS">Css</option>
+            <option value="JavaScript">JS</option>
+            <input type="submit">
+        </select>
+    </form>
 
     <div th:text="${Languages.category}"></div>
     <div th:each="post : ${posts}">
@@ -26,6 +28,7 @@
         <p th:text="${post.date_published}"></p>
     </div>
 </div>
+
 
 <!--we could either style tihs page to show search results or just put this fragment somewhere else-->
 <div th:include="partials :: search"></div>
