@@ -37,14 +37,14 @@ public class OtherUsersController {
 
             List<Post> posts = postDao.findPostsByUserId(user.getId());
             model.addAttribute("post", postDao.findPostsByUserId(user.getId()));
-//            List<PostStat> postStats = new ArrayList<>();
-//
-//            for(int i = 0; i < posts.size(); i++) {
-//                System.out.println("test");
-//                postStats.add(postStatDao.findPostStatById(posts.get(i).getPostId()));
-//            }
+            List<PostStat> postStats = new ArrayList<>();
 
-//            model.addAttribute("postStats", postStats);
+            for(int i = 0; i < posts.size(); i++) {
+                System.out.println("test");
+                postStats.add(postStatDao.findPostStatById(posts.get(i).getPostId()));
+            }
+
+            model.addAttribute("postStats", postStats);
             return "otherUsers";
 
 
