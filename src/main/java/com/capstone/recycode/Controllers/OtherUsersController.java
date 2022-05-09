@@ -41,20 +41,32 @@ public class OtherUsersController {
     }
 
     @GetMapping("/profile/{username}")
-    public String viewUsersProfile(Model model, @PathVariable String username){
+    public String viewUsersProfile(Model model, @PathVariable String username) {
         User user = userDao.findUserByUserName(username);
+        List<Favorite> favorites = favDao.findFavoritesByUserId(user.getId());
+        List<Post> favoritePosts = new ArrayList<>();
 
-            List<Post> posts = postDao.findPostsByUserId(user.getId());
-            model.addAttribute("post", postDao.findPostsByUserId(user.getId()));
-            List<PostStat> postStats = new ArrayList<>();
+        List<Post> posts = postDao.findPostsByUserId(user.getId());
+        model.addAttribute("post", postDao.findPostsByUserId(user.getId()));
+        List<PostStat> postStats = new ArrayList<>();
 
-            for(int i = 0; i < posts.size(); i++) {
-                System.out.println("test");
-                postStats.add(postStatDao.findPostStatById(posts.get(i).getPostId()));
-            }
+        for (int i = 0; i < posts.size(); i++) {
+            System.out.println("test");
+            postStats.add(postStatDao.findPostStatById(posts.get(i).getPostId()));
+        }
 
-            model.addAttribute("postStats", postStats);
-            return "otherUsers";
+
+        for (int i = 0; i < favorites.size(); i++) {
+            favoritePosts.add(favorites.get(i).getPost());
+        }
+
+        for (int i = 0; i < favorites.size(); i++) {
+            favoritePosts.add(favorites.get(i).getPost());
+        }
+
+        model.addAttribute("postStats", postStats);
+        model.addAttribute("favorites", favoritePosts);
+        return "otherUsers";
 
     }
 
@@ -70,7 +82,7 @@ public class OtherUsersController {
     }
 
     @PostMapping("/profile/downvote")
-    public String downVote(@RequestParam (name ="post_id_value") long postId) {
+    public String downVote(@RequestParam(name = "post_id_value") long postId) {
         PostStat postStat = postStatDao.findPostStatById(postId);
         postStat.setDownVotesCount(postStat.getDownVotesCount() + 1L);
         postStatDao.updateVotes(postStat.getUpVotesCount(), postStat.getDownVotesCount(), postStat.getPost().getPostId());
@@ -78,7 +90,7 @@ public class OtherUsersController {
     }
 
     @PostMapping("/profile/addToFavorites")
-    public String addToFavorites(@RequestParam( name = "post_id_value") Long postId) {
+    public String addToFavorites(@RequestParam(name = "post_id_value") Long postId) {
         //save current time, user logged in, and post info into the users favorites
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         System.out.println("postID");

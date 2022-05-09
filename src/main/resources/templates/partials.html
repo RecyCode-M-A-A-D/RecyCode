@@ -159,6 +159,10 @@ s
         <p th:text="${favorite.content}"></p>
         <p th:text="${favorite.description}"></p>
         <p th:text="${favorite.date_published}"></p>
+        <form th:action="@{/profile/favorites/delete}" method="post">
+            <input type="text" name="post_id_value" hidden>
+            <button type="submit" class="btn btn-danger">Remove From Favorites</button>
+        </form>
     </div>
 </div>
 

@@ -8,6 +8,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +37,11 @@ public class YourProfileController {
         model.addAttribute("posts", postDao.findPostsByUserId(user.getId()));
         model.addAttribute("favorites", favoritePosts);
         return "/profile";
+    }
+
+    @PostMapping("/profile/favorites/delete")
+    public String removeFromFavorites(@RequestParam(name = "post_id_value") Long id) {
+        return "profile";
     }
 
 }
