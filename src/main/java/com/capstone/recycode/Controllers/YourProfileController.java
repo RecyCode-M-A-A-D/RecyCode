@@ -24,4 +24,6 @@ public class YourProfileController {
         model.addAttribute("posts", postDao.findPostsByUserId(user.getId()));
         return "/profile";
     }
+
+
 }
