@@ -37,29 +37,5 @@ public class SearchController {
         return "SearchResults";
     }
 
-    @PostMapping("/search/results")
-    public String search(@RequestParam(name = "searched_value") String searchedValue, Model m) {
-        List<User> users = userDao.findSimilarUsersByName(searchedValue);
-        List<Post> posts = postDao.findSimilarPostsByTitle(searchedValue);
-        Category cat = catDao.findByCategoryName(searchedValue);
 
-        /*tags results will go here and we need an if statement for that as well*/
-
-        /*reason this is not an if else statement is to find anything related to the search result vs
-        * one thing related to the search result*/
-        if(users != null) {
-            m.addAttribute("searchedUsers", users );
-        }
-        if(posts != null) {
-            m.addAttribute("searchedPosts", posts);
-        }
-        if(cat != null){
-            m.addAttribute("searchedCategories", cat);
-        }
-        if(users != null && posts != null && cat != null){
-            m.addAttribute("error", true);
-        }
-
-        return "SearchResults";
-    }
 }
