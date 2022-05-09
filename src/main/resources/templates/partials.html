@@ -117,28 +117,52 @@ s
         <span>postID </span>
         <p th:text="${postStat.getPost().getPostId()}"></p>
         <!--this is for testing only-->
+
+        <!--upvites-->
         <form th:action="@{/profile/upvote}" method="post">
             <input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value" hidden>
             <button type="submit" class="btn btn-secondary">
-				    <span>Up Votes
+				    <span><i class="bi bi-caret-up-fill"></i> Like
                         <span th:text="${postStat.getUpVotesCount()}"></span>
 				    </span>
             </button>
         </form>
+        <!--downvotes-->
         <form th:action="@{/profile/downvote}" method="post">
             <input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value" hidden>
             <button type="submit" class="btn btn-secondary">
-				    <span>Down Votes
+				    <span><i class="bi bi-caret-down-fill"></i> Dislike
 					    -<span th:text="${postStat.getDownVotesCount()}"></span>
 				    </span>
             </button>
         </form>
+        <!--upvotes and downvotes end-->
+
+        <!--favorite button starts here-->
+        <form th:action="@{/profile/addToFavorites}" method="post">
+            <button class="btn btn-warning" type="submit">
+                <input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value" hidden>
+                <i class="bi bi-star"></i>
+                Add to Favorites
+            </button>
+        </form>
+        <!--favorites button ends here-->
+    </div>
+</div>
+<!--ending test fragment ask mario for questions-->
+
+<!--favorites fragment-->
+
+<div th:fragment="favorites">
+    <div th:each="favorite : ${favorites}">
+        <p th:text="${favorite.title}"></p>
+        <p th:text="${favorite.content}"></p>
+        <p th:text="${favorite.description}"></p>
+        <p th:text="${favorite.date_published}"></p>
     </div>
 </div>
 
-
-
-<!--ending test fragment ask mario for questions-->
+<!--favorites fragment-->
 
 <!--Footer Partial-->
 <footer th:fragment="footer">
