@@ -62,4 +62,14 @@ public class PostController {
         postStatDao.save(postStat);
         return "CreateAPost";
     }
+
+    @PostMapping("/edit/post")
+    public String editPost(@RequestParam(name = "title") String title,
+                           @RequestParam(name = "content") String content,
+                           @RequestParam(name = "description") String description,
+                           @RequestParam(name = "date_published") String date,
+                           @RequestParam(name = "post_id_value") Long postID) {
+        postDao.updatePost(title, content, description, date, postID);
+        return "profile";
+    }
 }

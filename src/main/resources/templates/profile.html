@@ -51,6 +51,16 @@
                             Add to Favorites
                         </button>
                     </form>
+                    <form th:action="@{/edit/post}" method="post" th:object="${updatePost}">
+                        <input type="text"  name="title">
+                        <input type="text" name="content">
+                        <input type="text" name="description">
+                        <input type="text" name="date_published">
+                        <button class="btn btn-secondary" type="submit">
+                            <input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value" hidden>
+                            Edit POst
+                        </button>
+                    </form>
                 </div>
             </div> <!-- end card -->
         </div>
