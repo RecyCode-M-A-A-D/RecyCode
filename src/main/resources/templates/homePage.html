@@ -18,15 +18,19 @@
 </div>
 
 <!--filter-->
-<form th:action="@{/languages/search}" method="Post">
+<form th:action="@{/languages/search}" method="post">
 	<label for="category">Filter By</label>
 
-	<select name="category" id="category">
+	<select aria-label="category selection"
+			class="form-select form-select-lg mb-3"
+			name="category"
+			id="category" onchange="this.form.submit()">
+
 		<option value="HTML">HTML</option>
 		<option value="Java">Java</option>
 		<option value="CSS">Css</option>
 		<option value="JavaScript">JS</option>
-		<input type="submit">
+
 	</select>
 </form>
 

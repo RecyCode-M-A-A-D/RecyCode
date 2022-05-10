@@ -35,6 +35,7 @@ public class LanguagesController {
 
     @PostMapping("/languages/search")
     public String showLanguages(@RequestParam (name = "category") String category, Model model){
+        System.out.println(category);
         Category cat = catDao.findByCategoryName(category);
 
         model.addAttribute("Languages", cat);
