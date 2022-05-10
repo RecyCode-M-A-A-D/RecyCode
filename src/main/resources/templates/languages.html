@@ -10,8 +10,8 @@ f
 
 <div th:if="${posts != null}">
     <form th:action="@{/languages/search}" method="Post">
-        <label for="cats">Filter By</label>
-        <select name="category" id="cats">
+        <label for="cats">Filter By</label
+        <select aria-label="category selection" class="form-select form-select-lg mb-3" name="category" id="cats">
             <option value="HTML">HTML</option>
             <option value="Java">Java</option>
             <option value="CSS">Css</option>
