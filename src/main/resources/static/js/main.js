@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', function () {
         container: '#inline',
         maxFiles: 20,
         uploadInBackground: false,
-        onUploadDone: (res) => console.log(res),
+        onUploadDone: (res) => console.log(res.filesUploaded[0].url),
     };
     client.picker(options).open();
 
