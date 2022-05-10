@@ -7,6 +7,8 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" th:href="@{/style.css}">
+    <script type="text/javascript" th:src="@{/js/config.js}"></script>
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
 
     <!--Styling for Dark Mode Button-->
     <style>
@@ -44,9 +46,9 @@
                 </ul>
 
                 <div class="d-flex">
-                    <form class="col-12 col-lg-auto m-2" style="width: 625px">
+                    <form class="col-12 col-lg-auto m-2" style="width: 625px" method="post" th:action="@{/search/results}">
                         <input type="search" class="form-control form-control-dark" placeholder="Search..."
-                               aria-label="Search">
+                               aria-label="Search" name="searched_value">
                     </form>
 
 
@@ -159,10 +161,46 @@ s
         <p th:text="${favorite.content}"></p>
         <p th:text="${favorite.description}"></p>
         <p th:text="${favorite.date_published}"></p>
+        <form th:action="@{/profile/favorites/delete}" method="post">
+            <input type="text" name="post_id_value" hidden>
+            <button type="submit" class="btn btn-danger">Remove From Favorites</button>
+        </form>
     </div>
 </div>
 
 <!--favorites fragment-->
+
+
+<!--search fragment-->
+
+<div th:fragment="search">
+    <div th:if="${searchedUsers != null}">
+        <div th:each="user : ${searchedUsers}">
+            <p th:text="${user.userName}"></p>
+        </div>
+    </div>
+    <div th:if="${searchedPosts != null}" >
+        <div th:each="post : ${searchedPosts}">
+            <p th:text="${post.title}"></p>
+            <p th:text="${post.content}"></p>
+            <p th:text="${post.description}"></p>
+            <p th:text="${post.date_published}"></p>
+        </div>
+    </div>
+    <div th:if="${searchedCategories != null}">
+        <div th:each="category : ${searchedCategories}">
+            <p th:text="${category.category}"></p>
+        </div>
+    </div>
+    <!--give error on this page-->
+    <div th:if="${error}">
+        <h4 class="display-4 text-center">No Results</h4>
+        <button onclick="history.back()" class="btn btn-primary">Go Back</button>
+    </div>
+
+</div>
+
+<!--search fragment-->
 
 <!--Footer Partial-->
 <footer th:fragment="footer">
@@ -174,7 +212,7 @@ s
                         <use xlink:href="#bootstrap"/>
                     </svg>
                 </a>
-                <span class="text-muted">&copy; 2022 RecyCode, Inc</span>
+                <span class="text-muted">2022 RecyCode</span>
             </div>
 
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
