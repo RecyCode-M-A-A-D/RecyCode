@@ -8,7 +8,7 @@
 <nav th:replace="partials :: nav"></nav>
 f
 
-<div th:if="${post != null}">
+<div th:if="${posts != null}">
     <form th:action="@{/languages/search}" method="Post">
         <label for="cats">Filter By</label>
         <select name="category" id="cats">
@@ -31,7 +31,9 @@ f
 
 
 <!--we could either style tihs page to show search results or just put this fragment somewhere else-->
-<div th:include="partials :: search"></div>
+<form th:action="@{/search/results}">
+    <div th:include="partials :: search"></div>
+</form>
 
 
 <div>
