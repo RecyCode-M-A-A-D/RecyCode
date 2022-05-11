@@ -78,7 +78,7 @@ public class OtherUsersController {
         PostStat postStat = postStatDao.findPostStatById(postId);
         postStat.setUpVotesCount(postStat.getUpVotesCount() + 1L);
         postStatDao.updateVotes(postStat.getUpVotesCount(), postStat.getDownVotesCount(), postStat.getPost().getPostId());
-        return "otherUsers";
+        return "redirect:";
     }
 
     @PostMapping("/profile/downvote")
@@ -86,7 +86,7 @@ public class OtherUsersController {
         PostStat postStat = postStatDao.findPostStatById(postId);
         postStat.setDownVotesCount(postStat.getDownVotesCount() + 1L);
         postStatDao.updateVotes(postStat.getUpVotesCount(), postStat.getDownVotesCount(), postStat.getPost().getPostId());
-        return "otherUsers";
+        return "redirect:";
     }
 
     @PostMapping("/profile/addToFavorites")
@@ -98,6 +98,6 @@ public class OtherUsersController {
 
         favDao.save(new Favorite(java.time.LocalDate.now().toString(), user, postDao.getById(postId)));
 
-        return "otherUsers";
+        return "redirect:";
     }
 }
