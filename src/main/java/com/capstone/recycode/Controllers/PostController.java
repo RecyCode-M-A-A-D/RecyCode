@@ -4,6 +4,7 @@ import com.capstone.recycode.Models.*;
 import com.capstone.recycode.Repositories.CategoryRepository;
 import com.capstone.recycode.Repositories.PostRepository;
 import com.capstone.recycode.Repositories.PostStatRepository;
+import com.capstone.recycode.Repositories.TagRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -19,13 +21,15 @@ public class PostController {
     private PostRepository postDao;
     private CategoryRepository catDao;
     private PostStatRepository postStatDao;
+    private TagRepository tagDao;
 
-    private PostController(PostRepository postDao, CategoryRepository catDao, PostStatRepository postStatDao) {
+    private PostController(PostRepository postDao, CategoryRepository catDao,
+                           PostStatRepository postStatDao, TagRepository tagDao) {
         this.postDao = postDao;
         this.catDao = catDao;
         this.postStatDao = postStatDao;
+        this.tagDao = tagDao;
     }
-
 
     @GetMapping("/")
     public String showPosts(Model model) {
@@ -41,7 +45,18 @@ public class PostController {
 
     @PostMapping("/post")
     public String createAPost(@RequestParam(name = "category") String categoryName,
+                              @RequestParam(name = "tag") String tag,
                               @ModelAttribute Post post) {
+        /*lets get the tags and separate it by commas*/
+        List<String> string = List.of(tag.split(", "));
+
+        List<Tag> tags = new ArrayList<>();
+
+        for (String s : string) {
+            tags.add(new Tag(s));
+            tagDao.save(new Tag(s));
+        }
+
         //seeting current user to post
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setUser(user);
