@@ -27,5 +27,16 @@ public interface PostRepository extends JpaRepository<Post, Long> {
                      @Param("date_published") String datePublished,
                      @Param("post_id") Long postId);
 
+    /*overloaded update Post with img*/
+    @Transactional
+    @Modifying(clearAutomatically = true, flushAutomatically = true)
+    @Query(value = "UPDATE posts SET title = ?1, content = ?2 , description = ?3, date_published = ?4, image_url = ?5 WHERE post_id  = ?6", nativeQuery = true)
+    void updatePost(@Param("title") String title,
+                    @Param("content") String content,
+                    @Param("description") String description,
+                    @Param("date_published") String datePublished,
+                    @Param("image_url") String imageURL,
+                    @Param("post_id") Long postId);
+
 /*    Post findPostsByUser(String userName);*/
 }
