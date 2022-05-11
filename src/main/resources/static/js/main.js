@@ -6,7 +6,10 @@ window.addEventListener('DOMContentLoaded', function () {
         container: '#inline',
         maxFiles: 20,
         uploadInBackground: false,
-        onUploadDone: (res) => console.log(res.filesUploaded[0].url),
+        onUploadDone: (res) => {let imgUrl = res.filesUploaded[0].url;
+            console.log(imgUrl);
+            document.getElementById("postImage").value = imgUrl;
+        }
     };
     client.picker(options).open();
 
