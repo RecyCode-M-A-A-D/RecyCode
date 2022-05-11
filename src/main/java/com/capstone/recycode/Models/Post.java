@@ -1,7 +1,6 @@
 package com.capstone.recycode.Models;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Entity
