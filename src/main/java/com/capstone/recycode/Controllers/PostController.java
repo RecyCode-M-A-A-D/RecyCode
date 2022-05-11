@@ -33,6 +33,12 @@ public class PostController {
         return "homePage";
     }
 
+    @GetMapping("/post/{id}")
+    public String showSinglePost(@PathVariable long id, Model model){
+        model.addAttribute("post", postDao.getById(id));
+        return "singlePost";
+    }
+
     @GetMapping("/post")
     public String showCreateAPost(Model model) {
         model.addAttribute("post", new Post());
