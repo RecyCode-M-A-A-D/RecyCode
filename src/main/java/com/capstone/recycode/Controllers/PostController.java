@@ -70,6 +70,6 @@ public class PostController {
                            @RequestParam(name = "date_published") String date,
                            @RequestParam(name = "post_id_value") Long postID) {
         postDao.updatePost(title, content, description, date, postID);
-        return "profile";
+        return "redirect:/profile";
     }
 }
