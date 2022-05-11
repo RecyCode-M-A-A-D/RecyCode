@@ -177,20 +177,23 @@ s
 <div th:fragment="search">
     <div th:if="${searchedUsers != null}">
         <div th:each="user : ${searchedUsers}">
-            <p th:text="${user.userName}"></p>
+            <span th:text="${user.avatarImg}"></span>
+            <span th:text="${user.linkedInURL}"></span>
+            <span th:text="${user.githubURL}"></span>
+            <span th:text="${user.userName}"></span>
         </div>
     </div>
     <div th:if="${searchedPosts != null}" >
         <div th:each="post : ${searchedPosts}">
-            <p th:text="${post.title}"></p>
-            <p th:text="${post.content}"></p>
-            <p th:text="${post.description}"></p>
-            <p th:text="${post.date_published}"></p>
+            <span th:text="${post.title}"></span>
+            <span th:text="${post.content}"></span>
+            <span th:text="${post.description}"></span>
+            <span th:text="${post.date_published}"></span>
         </div>
     </div>
     <div th:if="${searchedCategories != null}">
         <div th:each="category : ${searchedCategories}">
-            <p th:text="${category.category}"></p>
+            <span th:text="${category.category}"></span>
         </div>
     </div>
     <!--give error on this page-->
