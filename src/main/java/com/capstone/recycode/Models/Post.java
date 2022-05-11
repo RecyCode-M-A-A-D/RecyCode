@@ -30,8 +30,16 @@ public class Post {
     private String title;
 
     @Lob
-    @Column(nullable = false)
-    private String content;
+    @Column
+    private String html;
+
+    @Lob
+    @Column
+    private String css;
+
+    @Lob
+    @Column
+    private String js;
 
     @Column(nullable = false)
     private String description;
@@ -47,16 +55,20 @@ public class Post {
 
     public Post() {}
 
-    public Post(String title, String content, String description, String date_published) {
+    public Post(String title, String html, String css, String js, String description, String date_published) {
         this.title = title;
-        this.content = content;
+        this.html = html;
+        this.css = css;
+        this.js = js;
         this.description = description;
         this.date_published = date_published;
     }
 
-    public Post(String title, String content, String description, String date_published, String image_url) {
+    public Post(String title, String html, String css, String js, String description, String date_published, String image_url) {
         this.title = title;
-        this.content = content;
+        this.html = html;
+        this.css = css;
+        this.js = js;
         this.description = description;
         this.date_published = date_published;
         this.image_url = image_url;
@@ -65,9 +77,12 @@ public class Post {
     public Post(Post copy) {
         postId = copy.postId;
         title = copy.title;
-        content = copy.content;
+        html = copy.html;
+        css = copy.css;
+        js = copy.js;
         description = copy.description;
         date_published = copy.date_published;
+        image_url = copy.image_url;
     }
 
     public long getPostId() {
@@ -102,12 +117,28 @@ public class Post {
         this.title = title;
     }
 
-    public String getContent() {
-        return content;
+    public String getHtml() {
+        return html;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setHtml(String html) {
+        this.html = html;
+    }
+
+    public String getCss() {
+        return css;
+    }
+
+    public void setCss(String css) {
+        this.css = css;
+    }
+
+    public String getJs() {
+        return js;
+    }
+
+    public void setJs(String js) {
+        this.js = js;
     }
 
     public String getDescription() {
