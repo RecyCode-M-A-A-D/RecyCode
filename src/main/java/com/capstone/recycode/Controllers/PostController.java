@@ -47,15 +47,18 @@ public class PostController {
     public String createAPost(@RequestParam(name = "category") String categoryName,
                               @RequestParam(name = "tag") String tag,
                               @ModelAttribute Post post) {
+
         /*lets get the tags and separate it by commas*/
         List<String> string = List.of(tag.split(", "));
-
-        List<Tag> tags = new ArrayList<>();
+        List<Tag> t1 = new ArrayList<>();
+        List<Tag> t2;
 
         for (String s : string) {
-            tags.add(new Tag(s));
             tagDao.save(new Tag(s));
+            t2 = tagDao.findTagsByName(s);
+            t1.addAll(t2);
         }
+        post.setTags(t1);
 
         //seeting current user to post
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
