@@ -40,6 +40,9 @@ public class Post {
     @Column(nullable = false)
     private String date_published;
 
+    @Column
+    private String image_url;
+
     @OneToOne
     User user;
 
@@ -50,6 +53,14 @@ public class Post {
         this.content = content;
         this.description = description;
         this.date_published = date_published;
+    }
+
+    public Post(String title, String content, String description, String date_published, String image_url) {
+        this.title = title;
+        this.content = content;
+        this.description = description;
+        this.date_published = date_published;
+        this.image_url = image_url;
     }
 
     public Post(Post copy) {
@@ -122,5 +133,13 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 }
