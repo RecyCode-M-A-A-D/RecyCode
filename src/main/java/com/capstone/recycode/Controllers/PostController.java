@@ -37,6 +37,12 @@ public class PostController {
         return "homePage";
     }
 
+    @GetMapping("/post/{id}")
+    public String showSinglePost(@PathVariable long id, Model model){
+        model.addAttribute("post", postDao.getById(id));
+        return "singlePost";
+    }
+
     @GetMapping("/post")
     public String showCreateAPost(Model model) {
         model.addAttribute("post", new Post());
@@ -88,6 +94,6 @@ public class PostController {
                            @RequestParam(name = "date_published") String date,
                            @RequestParam(name = "post_id_value") Long postID) {
         postDao.updatePost(title, content, description, date, postID);
-        return "profile";
+        return "redirect:/profile";
     }
 }
