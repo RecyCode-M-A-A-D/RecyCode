@@ -60,8 +60,8 @@ public class YourProfileController {
 
         model.addAttribute("postStats", postStats);
         model.addAttribute("favorites", favoritePosts);
-
-        return "profile";
+        model.addAttribute("img", user);
+        return "/profile";
     }
 
     @PostMapping("/profile/favorites/delete")

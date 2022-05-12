@@ -8,6 +8,13 @@
 
 <nav th:replace="partials :: nav"></nav>
 
+<div class="container" id="userImage">
+    <img th:src="${img.getAvatarImg()}" height="200" width="200">
+    <form th:action="@{/editUser}" th:method="get">
+        <button class="btn btn-secondary mt-2">Edit Profile</button>
+    </form>
+</div>
+
 <div class="container mb-5" id="avatar">
     <div class="row">
         <div class="col">
@@ -16,7 +23,7 @@
     </div>
 </div>
 
-<div class="container bootstrap snippets bootdeys">
+<div class="container">
     <div class="row">
         <div class="col-md-4 col-sm-6 content-card" th:each="postStat : ${postStats}">
             <div class="card-big-shadow">
