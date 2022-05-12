@@ -55,7 +55,6 @@ public class OtherUsersController {
             postStats.add(postStatDao.findPostStatById(posts.get(i).getPostId()));
         }
 
-
         for (int i = 0; i < favorites.size(); i++) {
             favoritePosts.add(favorites.get(i).getPost());
         }

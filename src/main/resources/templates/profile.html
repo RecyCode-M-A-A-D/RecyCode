@@ -58,11 +58,7 @@
                             Add to Favorites
                         </button>
                     </form>
-                    <form th:action="@{/edit/post}" method="post" th:object="${updatePost}">
-                        <input type="text"  name="title">
-                        <input type="text" name="content">
-                        <input type="text" name="description">
-                        <input type="text" name="date_published">
+                    <form th:action="@{/edit/post}" method="post">
                         <button class="btn btn-secondary" type="submit">
                             <input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value" hidden>
                             Edit Post
@@ -76,7 +72,7 @@
 
 <!--favorites section-->
 <!--this partials is shared by the OtherUsers.html and Profile.html-->
-<h5 class="display-5">Favorites</h5>
+
 <div th:replace="partials :: favorites"></div>
 
 <!--ends favorites sections-->
