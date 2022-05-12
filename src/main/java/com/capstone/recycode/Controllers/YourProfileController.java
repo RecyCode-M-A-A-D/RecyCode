@@ -11,7 +11,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -67,7 +66,7 @@ public class YourProfileController {
 
     @PostMapping("/profile/favorites/delete")
     public String removeFromFavorites(@RequestParam(name = "post_id_value") Long id) {
+        favDao.removeFromFavoritesByPostId(id);
         return "profile";
     }
-
 }

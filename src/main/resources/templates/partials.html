@@ -112,7 +112,9 @@ s
     <div th:each="postStat : ${postStats}">
         <p th:text="${postStat.getPost().getTitle()}"></p>
         <p th:text="${postStat.getPost().getContent()}"></p>
-        <p th:text="${postStat.getPost().getDescription()}"></p>
+        <p th:text="${postStat.getPost().getHtml()}"></p>
+        <p th:text="${postStat.getPost().getCss()}"></p>
+        <p th:text="${postStat.getPost().getJs()}"></p>
         <p th:text="${postStat.getPost().getDate_published()}"></p>
         <!--this is for testing only-->
         <span>postID </span>
@@ -164,6 +166,10 @@ s
         <p th:text="${favorite.js}"></p>
         <p th:text="${favorite.description}"></p>
         <p th:text="${favorite.date_published}"></p>
+        <form th:action="@{profile/favorites/delete}" method="post">
+            <input type="text" hidden name="post_id_value" th:value="${favorite.postId}">
+            <button type="submit" class="btn btn-danger">Remove from Favorites</button>
+        </form>
     </div>
 </div>
 
