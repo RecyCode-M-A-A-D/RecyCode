@@ -35,7 +35,7 @@ public class UserController {
         if (userDao.findUserByUserName(user.getUserName()) == null || userDao.findUserByEmail(user.getEmail()) == null) {
 
             if (password.equals(confirmPass)) {
-                if (password.length() > 8) {
+                if (password.length() >= 8) {
                     model.addAttribute("user", user);
                     String hash = passwordEncoder.encode(user.getPassword());
                     user.setPassword(hash);
@@ -57,12 +57,32 @@ public class UserController {
     }
 
     @GetMapping("/editUser")
-    public String editUser(Model model) {
+    public String editUserGet(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
         return "/users/editUser";
+    }
+
+    @PostMapping("editUser")
+    public String editUserPost(Model model,
+                               @ModelAttribute User user,
+                               @RequestParam(name = "password") String password,
+                               @RequestParam(name = "confirm_password") String confirmPass) {
+        if (password.equals(confirmPass)) {
+            if (password.length() >= 8) {
+                model.addAttribute("user", user);
+                String hash = passwordEncoder.encode(user.getPassword());
+                user.setPassword(hash);
+                userDao.save(user);
+                return "redirect:/profile";
+            } else {
+                model.addAttribute("error", "Password must be 8 characters or more");
+                return "/users/editUser";
+            }
+        } else {
+            model.addAttribute("error", "Passwords do not match");
+            return "/users/editUser";
         }
-
-
+    }
 
 }
