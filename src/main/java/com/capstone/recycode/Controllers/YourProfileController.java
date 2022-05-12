@@ -11,7 +11,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -39,11 +38,16 @@ public class YourProfileController {
     @GetMapping("/profile")
     public String showProfile(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        //find all favorites from current user
         List<Favorite> favorites = favDao.findFavoritesByUserId(user.getId());
+
+        //create a list of posts
         List<Post> favoritePosts = new ArrayList<>();
 
+        //find all posts from user and pop them into the html
         List<Post> posts = postDao.findPostsByUserId(user.getId());
-        model.addAttribute("post", postDao.findPostsByUserId(user.getId()));
+        model.addAttribute("post", posts);
+
         List<PostStat> postStats = new ArrayList<>();
 
         for (int i = 0; i < posts.size(); i++) {
@@ -56,12 +60,13 @@ public class YourProfileController {
 
         model.addAttribute("postStats", postStats);
         model.addAttribute("favorites", favoritePosts);
-        return "/profile";
+
+        return "profile";
     }
 
     @PostMapping("/profile/favorites/delete")
     public String removeFromFavorites(@RequestParam(name = "post_id_value") Long id) {
-        return "profile";
+        favDao.removeFromFavoritesByPostId(id);
+        return "redirect:/profile";
     }
-
 }
