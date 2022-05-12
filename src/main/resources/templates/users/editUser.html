@@ -6,8 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-		<title>Create An Account!</title>
-	</head>
+	<title>Create An Account!</title>
+</head>
 <body>
 <nav th:replace="partials :: nav"></nav>
 
@@ -58,7 +58,8 @@
 									<div class="d-flex flex-row align-items-center mb-4">
 										<i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
 										<div class="form-outline flex-fill mb-0">
-											<input type="email" id="email" class="form-control" th:field="*{email}" required/>
+											<input type="email" id="email" class="form-control" th:field="*{email}"
+											       required/>
 											<label class="form-label" th:for="email">Your Email</label>
 										</div>
 									</div>
@@ -66,7 +67,7 @@
 									<div class="d-flex flex-row align-items-center mb-4">
 										<i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
 										<div class="form-outline flex-fill mb-0">
-											<input type="url" id="github" class="form-control" th:field="*{githubURL}" />
+											<input type="url" id="github" class="form-control" th:field="*{githubURL}"/>
 											<label class="form-label" th:for="github">Your Github URL</label>
 										</div>
 									</div>
@@ -74,7 +75,8 @@
 									<div class="d-flex flex-row align-items-center mb-4">
 										<i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
 										<div class="form-outline flex-fill mb-0">
-											<input type="url" id="linkedin" class="form-control" th:field="*{linkedInURL}"/>
+											<input type="url" id="linkedin" class="form-control"
+											       th:field="*{linkedInURL}"/>
 											<label class="form-label" th:for="linkedin">Your Linkedin URL</label>
 										</div>
 									</div>
@@ -95,13 +97,18 @@
 									<div class="d-flex flex-row align-items-center mb-4">
 										<i class="fas fa-key fa-lg me-3 fa-fw"></i>
 										<div class="form-outline flex-fill mb-0">
-											<input type="password" id="confirm_password" class="form-control" name="confirm_password" required/>
-											<label for="confirm_password" class="form-label" th:for="confirmpassword">Confirm password</label>
+											<input type="password" id="confirm_password" class="form-control"
+											       name="confirm_password" required/>
+											<label for="confirm_password" class="form-label" th:for="confirmpassword">Confirm
+												password</label>
 										</div>
 									</div>
 
+									<input type="text" id="userId" class="form-control"
+									       th:field="*{id}" th:value="*{id}" required hidden/>
+
 									<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-										<button type="submit" value="Register" class="btn btn-primary btn-lg">Submit
+										<button type="submit" value="Submit" class="btn btn-primary btn-lg">Submit
 										</button>
 									</div>
 
