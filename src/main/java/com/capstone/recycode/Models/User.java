@@ -121,5 +121,10 @@ public class User {
         email = copy.email;
         userName = copy.userName;
         password = copy.password;
+        firstName = copy.firstName;
+        lastName = copy.lastName;
+        avatarImg = copy.avatarImg;
+        githubURL = copy.githubURL;
+        linkedInURL = copy.linkedInURL;
     }
 }
