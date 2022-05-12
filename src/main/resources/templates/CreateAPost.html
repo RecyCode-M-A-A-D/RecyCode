@@ -30,10 +30,24 @@
 
 
 				<div class="form-group">
-					<label for="content">Content<span class="require">*</span></label>
+					<label for="html">HTML</label>
 					<br>
-					<textarea class="form-control" id="content" name="content" aria-describedby="content"
-					          th:field="*{content}"></textarea>
+					<textarea class="form-control" id="html" name="html" aria-describedby="html"
+					          th:field="*{html}"></textarea>
+				</div>
+
+				<div class="form-group">
+					<label for="css">CSS</label>
+					<br>
+					<textarea class="form-control" id="css" name="css" aria-describedby="css"
+					          th:field="*{css}"></textarea>
+				</div>
+
+				<div class="form-group">
+					<label for="js">JS</label>
+					<br>
+					<textarea class="form-control" id="js" name="js" aria-describedby="js"
+					          th:field="*{js}"></textarea>
 				</div>
 
 				<div class="form-group">
@@ -42,9 +56,12 @@
 					          aria-describedby="description" th:field="*{description}"></textarea>
 				</div>
 
-				<div class="form-group">
-					<input type="date" id="date_published" name="date_published"
-					       aria-describedby="date_published" th:field="*{date_published}" th:value="${date}" hidden>
+					<div class="form-group">
+						<label for="tag">Tags</label>
+						<input type="text" class="form-control" id="tag" name="tag"
+							   aria-describedby="tags">
+					</div>
+
 					<label for="category">Category</label>
 
 					<div class="form-group">
@@ -56,11 +73,11 @@
 						</select>
 					</div>
 
-					<div class="box">
-						<form id="pick-form">
+					<div id="inline" style="width:600px;height:500px;padding:20px;"></div>
 
-						</form>
-					</div>
+					<input type="text" id="postImage" name="postImage"
+					       th:field="*{image_url}" hidden>
+
 
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary">

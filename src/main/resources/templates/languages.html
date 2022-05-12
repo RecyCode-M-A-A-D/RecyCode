@@ -6,29 +6,30 @@
 </head>
 <body>
 <nav th:replace="partials :: nav"></nav>
-f
+test
+<form th:action="@{/languages/search}" method="Post">
+    <label for="cats">Filter By</label>
+    <select aria-label="category selection"
+            class="form-select form-select-lg mb-3"
+            name="category"
+            id="cats">
+        <option value="HTML">HTML</option>
+        <option value="Java">Java</option>
+        <option value="CSS">Css</option>
+        <option value="JavaScript">JS</option>
+    </select>
+    <input type="submit">
+</form>
 
 <div th:if="${posts != null}">
-    <form th:action="@{/languages/search}" method="Post">
-        <label for="cats">Filter By</label
-        <select aria-label="category selection" class="form-select form-select-lg mb-3" name="category" id="cats">
-            <option value="HTML">HTML</option>
-            <option value="Java">Java</option>
-            <option value="CSS">Css</option>
-            <option value="JavaScript">JS</option>
-            <input type="submit">
-        </select>
-    </form>
-
-    <div th:text="${Languages.category}"></div>
-    <div th:each="post : ${posts}">
-        <p th:text="${post.title}"></p>
-        <p th:text="${post.content}"></p>
-        <p th:text="${post.description}"></p>
-        <p th:text="${post.date_published}"></p>
-    </div>
+    <span th:text="${Languages.category}"></span>
+    <span th:each="post : ${posts}">
+        <span th:text="${post.title}"></span>
+<!--        <span th:text="${post.content}"></span>-->
+        <span th:text="${post.description}"></span>
+        <span th:text="${post.date_published}"></span>
+    </span>
 </div>
-
 
 <!--we could either style tihs page to show search results or just put this fragment somewhere else-->
 <form th:action="@{/search/results}">

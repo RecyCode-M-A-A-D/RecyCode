@@ -2,10 +2,15 @@ window.addEventListener('DOMContentLoaded', function () {
     const apikey = key;
     const client = filestack.init(apikey);
     const options = {
+        displayMode: 'inline',
+        container: '#inline',
         maxFiles: 20,
         uploadInBackground: false,
-        onOpen: () => console.log('opened!'),
-        onUploadDone: (res) => console.log(res),
+        onUploadDone: (res) => {let imgUrl = res.filesUploaded[0].url;
+            console.log(imgUrl);
+            document.getElementById("postImage").value = imgUrl;
+        }
     };
     client.picker(options).open();
+
 });

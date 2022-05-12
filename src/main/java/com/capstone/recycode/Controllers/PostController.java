@@ -4,8 +4,8 @@ import com.capstone.recycode.Models.*;
 import com.capstone.recycode.Repositories.CategoryRepository;
 import com.capstone.recycode.Repositories.PostRepository;
 import com.capstone.recycode.Repositories.PostStatRepository;
+import com.capstone.recycode.Repositories.TagRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,18 +19,26 @@ public class PostController {
     private PostRepository postDao;
     private CategoryRepository catDao;
     private PostStatRepository postStatDao;
+    private TagRepository tagDao;
 
-    private PostController(PostRepository postDao, CategoryRepository catDao, PostStatRepository postStatDao) {
+    private PostController(PostRepository postDao, CategoryRepository catDao,
+                           PostStatRepository postStatDao, TagRepository tagDao) {
         this.postDao = postDao;
         this.catDao = catDao;
         this.postStatDao = postStatDao;
+        this.tagDao = tagDao;
     }
-
 
     @GetMapping("/")
     public String showPosts(Model model) {
         model.addAttribute("post", postDao.findAll());
         return "homePage";
+    }
+
+    @GetMapping("/post/{id}")
+    public String showSinglePost(@PathVariable long id, Model model){
+        model.addAttribute("post", postDao.getById(id));
+        return "singlePost";
     }
 
     @GetMapping("/post")
@@ -41,7 +49,21 @@ public class PostController {
 
     @PostMapping("/post")
     public String createAPost(@RequestParam(name = "category") String categoryName,
+                              @RequestParam(name = "tag") String tag,
                               @ModelAttribute Post post) {
+
+        /*lets get the tags and separate it by commas*/
+        List<String> string = List.of(tag.split(", "));
+        List<Tag> t1 = new ArrayList<>();
+        List<Tag> t2;
+
+        for (String s : string) {
+            tagDao.save(new Tag(s));
+            t2 = tagDao.findTagsByName(s);
+            t1.addAll(t2);
+        }
+        post.setTags(t1);
+
         //seeting current user to post
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setUser(user);
@@ -70,6 +92,6 @@ public class PostController {
                            @RequestParam(name = "date_published") String date,
                            @RequestParam(name = "post_id_value") Long postID) {
         postDao.updatePost(title, content, description, date, postID);
-        return "profile";
+        return "redirect:/profile";
     }
 }

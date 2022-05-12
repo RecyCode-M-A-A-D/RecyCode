@@ -24,13 +24,13 @@
 	<select aria-label="category selection"
 			class="form-select form-select-lg mb-3"
 			name="category"
-			id="category" onchange="this.form.submit()">
+			id="category">
 
 		<option value="HTML">HTML</option>
 		<option value="Java">Java</option>
 		<option value="CSS">Css</option>
 		<option value="JavaScript">JS</option>
-
+		<input type="submit">
 	</select>
 </form>
 
@@ -43,15 +43,38 @@
 				<div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
 					<div class="content">
 						<h6 class="category">Category</h6>
-						<h2 class="title mb-1" th:text="*{post.title}"><a href="#"></a></h2>
-						<p class="description" th:text="*{post.description}"></p>
-						<code class="" th:text="*{post.content}"></code>
+						<a th:href="@{|/post/${post.getPostId()}|}"><h2 class="title mb-1" th:text="*{post.title}"></h2></a>						<p class="description" th:text="*{post.description}"></p>
+						<img th:src="*{post.image_url}" class="" >
 						<p class="mt-3" th:text="*{post.date_published}"></p>
 						<a th:href="@{|/profile/*{post.user.getUserName()}|}"><p class="mt-3" th:text="*{post.user.getUserName()}"></p></a>
 					</div>
 				</div> <!-- end card -->
 			</div>
 		</div>
+
+<!--		Element tag "CODE" will display code to browser in code format -->
+<!--		<div class="col">-->
+<!--			<div>-->
+<!--				<div class="card-header p-3 border bg-light">-->
+<!--					<h4>CSS</h4>-->
+<!--				</div>-->
+<!--				<div class="card-body border">-->
+
+<!--					<pre>-->
+<!--					  <code>-->
+<!--						p {-->
+<!--						  color: red;-->
+<!--						  }-->
+<!--						body {-->
+<!--						  background-color: #eee;-->
+<!--						  }-->
+<!--					  </code>-->
+<!--					</pre>-->
+
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+
 	</div>
 </div>
 

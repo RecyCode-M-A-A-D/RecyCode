@@ -15,4 +15,34 @@ public class Tag {
 
     @Column(nullable = false, length = 50)
     private String tag;
+
+    public Tag() {}
+
+    public Tag(String tag) {
+        this.tag = tag;
+    }
+
+    public long getTagId() {
+        return tagId;
+    }
+
+    public void setTagId(long tagId) {
+        this.tagId = tagId;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 }
