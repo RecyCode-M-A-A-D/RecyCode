@@ -85,6 +85,11 @@ public class PostController {
         return "CreateAPost";
     }
 
+    @GetMapping("/edit/post/{id}")
+    public String editPostGet(@PathVariable long id, Model model)
+        {model.addAttribute("post", postDao.getById(id));
+        return "editPost";};
+
     @PostMapping("/edit/post")
     public String editPost(@RequestParam(name = "title") String title,
                            @RequestParam(name = "content") String content,
