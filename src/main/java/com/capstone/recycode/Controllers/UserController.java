@@ -2,6 +2,7 @@ package com.capstone.recycode.Controllers;
 
 import com.capstone.recycode.Models.User;
 import com.capstone.recycode.Repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,10 +51,18 @@ public class UserController {
             }
         } else {
             model.addAttribute("error", "Username or email already taken");
-            return "users/register";
+            return "/users/register";
         }
 
     }
+
+    @GetMapping("/editUser")
+    public String editUser(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", user);
+        return "/users/editUser";
+        }
+
 
 
 }
