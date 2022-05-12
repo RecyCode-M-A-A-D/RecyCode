@@ -67,6 +67,6 @@ public class YourProfileController {
     @PostMapping("/profile/favorites/delete")
     public String removeFromFavorites(@RequestParam(name = "post_id_value") Long id) {
         favDao.removeFromFavoritesByPostId(id);
-        return "profile";
+        return "redirect:/profile";
     }
 }
