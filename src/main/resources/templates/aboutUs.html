@@ -104,39 +104,23 @@
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script>
-    // target the attribute (this is where the data will be stored retrieved from the api)
     $("#blueman").attr('src', '??')
-
-    // now i'm going to make the request from the api
     $.ajax("https://dog.ceo/api/breeds/image/random");
-
-    // once the request is made I need to recieve the response by using .done method
     $.ajax("https://dog.ceo/api/breeds/image/random").done()
-
-    // .done accepts a function as a parameter so I need to pass in function in the .done()
     $.ajax("https://dog.ceo/api/breeds/image/random").done(function (data, status){
         console.log(data.message)
-        //link string retrieved "data.message" into value of element being changed(id="blueman")
         $("#blueman").attr("src", data.message)
         console.log(status)
     })
-
         .fail(function (){
             console.log("something went woof!?")
         })
 
     $("#skywalker").attr('src', '??')
-
-    // now i'm going to make the request from the api
     $.ajax("https://dog.ceo/api/breeds/image/random");
-
-    // once the request is made I need to recieve the response by using .done method
     $.ajax("https://dog.ceo/api/breeds/image/random").done()
-
-    // .done accepts a function as a parameter so I need to pass in function in the .done()
     $.ajax("https://dog.ceo/api/breeds/image/random").done(function (data, status){
         console.log(data.message)
-        //link string retrieved "data.message" into value of element being changed(id="blueman")
         $("#skywalker").attr("src", data.message)
         console.log(status)
     })
@@ -145,18 +129,12 @@
             console.log("something went woof!?")
         })
 
+
     $("#patawuan").attr('src', '??')
-
-    // now i'm going to make the request from the api
     $.ajax("https://dog.ceo/api/breeds/image/random");
-
-    // once the request is made I need to recieve the response by using .done method
     $.ajax("https://dog.ceo/api/breeds/image/random").done()
-
-    // .done accepts a function as a parameter so I need to pass in function in the .done()
     $.ajax("https://dog.ceo/api/breeds/image/random").done(function (data, status){
         console.log(data.message)
-        //link string retrieved "data.message" into value of element being changed(id="blueman")
         $("#patawuan").attr("src", data.message)
         console.log(status)
     })
