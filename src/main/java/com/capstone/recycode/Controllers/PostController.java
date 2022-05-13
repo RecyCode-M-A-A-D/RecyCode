@@ -36,7 +36,7 @@ public class PostController {
     }
 
     @GetMapping("/post/{id}")
-    public String showSinglePost(@PathVariable long id, Model model){
+    public String showSinglePost(@PathVariable long id, Model model) {
         model.addAttribute("post", postDao.getById(id));
         return "singlePost";
     }
@@ -80,23 +80,35 @@ public class PostController {
         postDao.save(post);
 
         //posts status will start at 0 since it is being created and has no views (stats)
-        PostStat postStat = new PostStat(0,0, post);
+        PostStat postStat = new PostStat(0, 0, post);
         postStatDao.save(postStat);
         return "redirect:/profile";
     }
 
     @GetMapping("/edit/post/{id}")
-    public String editPostGet(@PathVariable long id, Model model)
-        {model.addAttribute("post", postDao.getById(id));
-        return "editPost";};
+    public String editPostGet(@PathVariable long id, Model model) {
+        model.addAttribute("post", postDao.getById(id));
+        model.addAttribute("stat", postStatDao.findPostStatById(id));
+        return "editPost";
+    }
+
+
+//    @PostMapping("/edit/post")
+//    public String editPost(@RequestParam(name = "title") String title,
+//                           @RequestParam(name = "content") String content,
+//                           @RequestParam(name = "description") String description,
+//                           @RequestParam(name = "date_published") String date,
+//                           @RequestParam(name = "post_id_value") Long postID) {
+//        postDao.updatePost(title, content, description, date, postID);
+//        return "redirect:/profile";
+//    }
 
     @PostMapping("/edit/post")
-    public String editPost(@RequestParam(name = "title") String title,
-                           @RequestParam(name = "content") String content,
-                           @RequestParam(name = "description") String description,
-                           @RequestParam(name = "date_published") String date,
-                           @RequestParam(name = "post_id_value") Long postID) {
-        postDao.updatePost(title, content, description, date, postID);
+    public String editPost(@ModelAttribute Post post, @ModelAttribute PostStat postStat ,Model model) {
+        model.addAttribute("post", post);
+        model.addAttribute("stat", postStat);
+        postStatDao.save(postStat);
+        postDao.save(post);
         return "redirect:/profile";
     }
 }
