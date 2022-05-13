@@ -31,7 +31,7 @@
 <nav th:fragment="nav">
     <header class="p-3 bg-dark text-white rounded-pill mt-1 mx-2">
         <div class="container-fluid">
-            <div class="d-flex align-items-center justify-content-center">
+            <div class="d-flex align-items-center justify-content-center" id="navfrag">
 
                 <ul class="nav col-12 col-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="/" class="nav-link m-2 px-2 text-white btn btn-secondary">Home</a></li>
@@ -80,7 +80,7 @@
         </div>
     </header>
 </nav>
-s
+
 <div th:fragment="posts_fragment">
     This is read from partials, I was too lazy to code this again - Mario
     <div th:each="post : ${posts}">
