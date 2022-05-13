@@ -50,9 +50,9 @@ public class YourProfileController {
 
         List<PostStat> postStats = new ArrayList<>();
 
-//        for (int i = 0; i < posts.size(); i++) {
-//            postStats.add(postStatDao.findPostStatById(posts.get(i).getPostId()));
-//        }
+        for (int i = 0; i < posts.size(); i++) {
+            postStats.add(postStatDao.findPostStatById(posts.get(i).getPostId()));
+        }
 
         for (int i = 0; i < favorites.size(); i++) {
             favoritePosts.add(favorites.get(i).getPost());
