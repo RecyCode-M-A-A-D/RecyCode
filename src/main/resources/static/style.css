@@ -227,3 +227,13 @@ a:hover, a:focus {
 .card[data-color="orange"] .category {
     color: #e95e37;
 }
+
+/**NavBar breakpoint CSS**/
+@media screen and (min-width:1130px) {
+    #navfrag{
+        flex-direction: row;
+        justify-content: center;
+    }
+
+
+}

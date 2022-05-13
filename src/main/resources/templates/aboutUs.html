@@ -18,6 +18,15 @@
 
 
 <h1 class="title text-center mb-3">About Us</h1>
+
+
+<div class="card-deck row">
+    <div class="card col">
+        <img class="card-img-top" src="..." alt="Card image cap" id="patawuan">
+        <div class="card-body">
+            <h5 class="card-title">For Laura</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+
 <div class="container">
     <div class="card-deck row">
         <div class="card col">
@@ -31,6 +40,7 @@
                 <a href="/" class="btn btn-dark btn-lg"><i class="bi bi-github"></i></a>
                 <a href="/" class="btn btn-secondary btn-lg"><i class="bi bi-envelope-fill"></i></a>
             </div>
+
         </div>
         <div class="card col">
             <img class="card-img-top" src="..." alt="Card image cap">
@@ -44,6 +54,14 @@
                 <a href="/" class="btn btn-secondary btn-lg"><i class="bi bi-envelope-fill"></i></a>
             </div>
         </div>
+
+    </div>
+    <div class="card col">
+        <img class="card-img-top" src="..." alt="Card image cap" id="blueman">
+        <div class="card-body">
+            <h5 class="card-title">Also for Laura</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+
         <div class="card col">
             <img class="card-img-top" src="..." alt="Card image cap">
             <div class="card-body">
@@ -55,6 +73,7 @@
                 <a href="/" class="btn btn-dark btn-lg"><i class="bi bi-github"></i></a>
                 <a href="/" class="btn btn-secondary btn-lg"><i class="bi bi-envelope-fill"></i></a>
             </div>
+
         </div>
         <div class="card col">
             <img class="card-img-top" src="..." alt="Card image cap">
@@ -70,9 +89,9 @@
         </div>
     </div>
     <div class="card col">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" src="..." alt="Card image cap" id="skywalker">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
+            <h5 class="card-title">Yes, also for Laura</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
         </div>
         <div class="card-footer">
@@ -82,5 +101,47 @@
 </div>
 
 <footer th:replace="partials :: footer"></footer>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    $("#blueman").attr('src', '??')
+    $.ajax("https://dog.ceo/api/breeds/image/random");
+    $.ajax("https://dog.ceo/api/breeds/image/random").done()
+    $.ajax("https://dog.ceo/api/breeds/image/random").done(function (data, status){
+        console.log(data.message)
+        $("#blueman").attr("src", data.message)
+        console.log(status)
+    })
+        .fail(function (){
+            console.log("something went woof!?")
+        })
+
+    $("#skywalker").attr('src', '??')
+    $.ajax("https://dog.ceo/api/breeds/image/random");
+    $.ajax("https://dog.ceo/api/breeds/image/random").done()
+    $.ajax("https://dog.ceo/api/breeds/image/random").done(function (data, status){
+        console.log(data.message)
+        $("#skywalker").attr("src", data.message)
+        console.log(status)
+    })
+
+        .fail(function (){
+            console.log("something went woof!?")
+        })
+
+
+    $("#patawuan").attr('src', '??')
+    $.ajax("https://dog.ceo/api/breeds/image/random");
+    $.ajax("https://dog.ceo/api/breeds/image/random").done()
+    $.ajax("https://dog.ceo/api/breeds/image/random").done(function (data, status){
+        console.log(data.message)
+        $("#patawuan").attr("src", data.message)
+        console.log(status)
+    })
+
+        .fail(function (){
+            console.log("something went woof!?")
+        })
+</script>
 </body>
 </html>
