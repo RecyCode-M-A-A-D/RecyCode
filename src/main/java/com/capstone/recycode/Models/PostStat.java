@@ -26,6 +26,13 @@ public class PostStat {
         this.post = post;
     }
 
+    public PostStat(long statId, long upVotesCount, long downVotesCount, Post post) {
+        this.statId = statId;
+        this.upVotesCount = upVotesCount;
+        this.downVotesCount = downVotesCount;
+        this.post = post;
+    }
+
     public long getStatId() {
         return statId;
     }
