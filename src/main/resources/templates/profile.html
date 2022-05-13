@@ -45,7 +45,7 @@
                         </form>
                     </div>
                     <div class="d-flex justify-content-center align-items-center my-2">
-                        <form th:action="@{/edit/post}" method="post">
+                        <form th:action="@{|/edit/post/*{postStat.post.getPostId()}|}" method="get">
                             <button class="btn btn-secondary" type="submit">
                                 <input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value" hidden>
                                 Edit Post
