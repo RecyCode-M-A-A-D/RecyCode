@@ -11,13 +11,13 @@
 <div class="container mb-5" id="avatar">
     <div class="row">
         <div class="col">
-            <img th:src="@{/img/RecyCode (3).png}" height="500" width="500" alt="RecyCode Logo"/>
+            <img th:src="@{/img/RecyCodeLogo.png}" height="500" width="500" alt="RecyCode Logo"/>
         </div>
     </div>
 </div>
 
 <h1 class="text-center">Other User Profile</h1>
-<div class="container bootstrap snippets bootdeys">
+<div class="container">
     <div class="row">
         <div class="col-md-4 col-sm-6 content-card" th:each="postStat : ${postStats}">
             <div class="card-big-shadow">
@@ -26,32 +26,39 @@
                         <h6 class="category">Category</h6>
                         <h2 class="title mb-1" th:text="*{postStat.getPost().title}"><a href="#"></a></h2>
                         <p class="description" th:text="*{postStat.getPost().description}"></p>
-<!--                        <code class="" th:text="*{postStat.getPost().content}"></code>-->
+                        <!--                        <code class="" th:text="*{postStat.getPost().content}"></code>-->
                         <p class="mt-3" th:text="*{postStat.getPost().date_published}"></p>
                     </div>
-                    <form th:action="@{/profile/upvote}" method="post">
-                        <input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value" hidden>
-                        <button type="submit" class="btn btn-secondary">
-				    <span>Up Votes
-                        <span th:text="${postStat.getUpVotesCount()}"></span>
-				    </span>
-                        </button>
-                    </form>
-                    <form th:action="@{/profile/downvote}" method="post">
-                        <input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value" hidden>
-                        <button type="submit" class="btn btn-secondary">
-                            <span>Down Votes
+                    <div class="d-flex justify-content-center align-items-center my-2">
+                        <form th:action="@{/profile/addToFavorites}" method="post">
+                            <button class="btn btn-warning" type="submit">
+                                <input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value" hidden>
+                                <i class="bi bi-star"></i>
+                                Add to Favorites
+                            </button>
+                        </form>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-4">
+                        <form th:action="@{/profile/upvote}" method="post">
+                            <input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value" hidden>
+                            <button type="submit" class="btn btn-secondary">
+                                <span>
+                                    Likes
+                                    <i class="bi bi-caret-up-square"></i>
+                                    <span th:text="${postStat.getUpVotesCount()}"></span>
+                                </span>
+                            </button>
+                        </form>
+                        <form th:action="@{/profile/downvote}" method="post">
+                            <input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value" hidden>
+                            <button type="submit" class="btn btn-secondary">
+                            <span>Dislikes
+                                <i class="bi bi-caret-down-square"></i>
                                 -<span th:text="${postStat.getDownVotesCount()}"></span>
                             </span>
-                        </button>
-                    </form>
-                    <form th:action="@{/profile/addToFavorites}" method="post">
-                        <button class="btn btn-warning" type="submit">
-                            <input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value" hidden>
-                            <i class="bi bi-star"></i>
-                            Add to Favorites
-                        </button>
-                    </form>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div> <!-- end card -->
         </div>
@@ -60,8 +67,9 @@
 
 <!--favorites section-->
 <!--this partials is shared by the OtherUsers.html and Profile.html-->
-<h5 class="display-5">Favorites</h5>
-<div th:replace="partials :: favorites"></div>
+<div th:if="${favorites != null}">
+    <div th:replace="partials :: favorites"></div>
+</div>
 
 <!--ends favorites sections-->
 

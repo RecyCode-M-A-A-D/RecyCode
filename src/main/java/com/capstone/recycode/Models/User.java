@@ -44,6 +44,30 @@ public class User {
         this.email = email;
         this.password = password;
     }
+
+    public User(String userName, String firstName, String lastName, String email, String password, String avatarImg, String linkedInURL, String githubURL) {
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.avatarImg = avatarImg;
+        this.linkedInURL = linkedInURL;
+        this.githubURL = githubURL;
+    }
+
+    public User(long id, String userName, String firstName, String lastName, String email, String password, String avatarImg, String linkedInURL, String githubURL) {
+        this.id = id;
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.avatarImg = avatarImg;
+        this.linkedInURL = linkedInURL;
+        this.githubURL = githubURL;
+    }
+
     public long getId() {
         return id;
     }
@@ -121,5 +145,10 @@ public class User {
         email = copy.email;
         userName = copy.userName;
         password = copy.password;
+        firstName = copy.firstName;
+        lastName = copy.lastName;
+        avatarImg = copy.avatarImg;
+        githubURL = copy.githubURL;
+        linkedInURL = copy.linkedInURL;
     }
 }

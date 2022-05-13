@@ -6,7 +6,6 @@
 </head>
 <body>
 <nav th:replace="partials :: nav"></nav>
-test
 <form th:action="@{/languages/search}" method="Post">
     <label for="cats">Filter By</label>
     <select aria-label="category selection"
@@ -14,8 +13,7 @@ test
             name="category"
             id="cats">
         <option value="HTML">HTML</option>
-        <option value="Java">Java</option>
-        <option value="CSS">Css</option>
+        <option value="CSS">CSS</option>
         <option value="JavaScript">JS</option>
     </select>
     <input type="submit">
@@ -25,15 +23,96 @@ test
     <span th:text="${Languages.category}"></span>
     <span th:each="post : ${posts}">
         <span th:text="${post.title}"></span>
-<!--        <span th:text="${post.content}"></span>-->
+        <!--        <span th:text="${post.content}"></span>-->
         <span th:text="${post.description}"></span>
         <span th:text="${post.date_published}"></span>
     </span>
 </div>
 
+
 <!--we could either style tihs page to show search results or just put this fragment somewhere else-->
 <form th:action="@{/search/results}">
-    <div th:include="partials :: search"></div>
+    <div th:fragment="search">
+        <div th:if="${searchedUsers != null}" class="card">
+            <div class="card-body">
+                <h5 class="display-5">Users</h5>
+                <div th:each="user : ${searchedUsers}">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img th:src="${user.avatarImg}" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a th:href="@{|/profile/${user.userName}|}">
+                                            <span th:text="${user.userName}"></span>
+                                        </a>
+                                    </h5>
+                                    <p class="card-text"><span th:text="${user.githubURL}"></span></p>
+                                    <p class="card-text"><span th:text="${user.linkedInURL}"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--searched section-->
+        <div th:if="${searchedPosts != null}" class="card">
+            <h5 class="display-5">Code Snippets</h5>
+            <div class="card-body">
+                <div class="container bootstrap snippets bootdeys">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 content-card" th:each="post : ${searchedPosts}">
+                            <div class="card-big-shadow">
+                                <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+                                    <div class="content">
+                                        <h6 class="category">Category</h6>
+                                        <h2 class="title mb-1" th:text="*{post.title}"><a href="#"></a></h2>
+                                        <p class="description" th:text="*{post.description}"></p>
+                                        <!--                        <code class="" th:text="*{postStat.getPost().content}"></code>-->
+                                        <p class="mt-3" th:text="*{post.date_published}"></p>
+                                    </div>
+
+                                    <form th:action="@{/profile/addToFavorites}" method="post">
+                                        <button class="btn btn-warning" type="submit">
+                                            <input type="text" th:value="${post.getPostId()}" name="post_id_value" hidden>
+                                            <i class="bi bi-star"></i>
+                                            Add to Favorites
+                                        </button>
+                                    </form>
+                                </div>
+                            </div> <!-- end card -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${searchedCategories != null}" class="card">
+            <div class="card-body">
+                <h5 class="display-5">Categories</h5>
+                <div th:each="category : ${searchedCategories}">
+                    <span th:text="${category.category}"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="display-5">Related to: </h5>
+            </div>
+        </div>
+
+        <!--give error on this page-->
+        <div th:if="${error}">
+            <h4 class="display-4 text-center">No Results</h4>
+            <button onclick="history.back()" class="btn btn-primary">Go Back</button>
+        </div>
+
+    </div>
 </form>
 
 
