@@ -82,7 +82,7 @@ public class PostController {
         //posts status will start at 0 since it is being created and has no views (stats)
         PostStat postStat = new PostStat(0,0, post);
         postStatDao.save(postStat);
-        return "CreateAPost";
+        return "redirect:/profile";
     }
 
     @GetMapping("/edit/post/{id}")
