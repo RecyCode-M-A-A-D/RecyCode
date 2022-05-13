@@ -30,7 +30,7 @@
                 <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
                     <div class="content">
                         <h6 class="category">Category</h6>
-                        <h2 class="title mb-1" th:text="*{postStat.getPost().title}"><a href="#"></a></h2>
+                        <a th:href="@{|/post/${postStat.getPost().postId}|}"><h2 class="title mb-1" th:text="*{postStat.getPost().title}"></h2></a>
                         <p class="description" th:text="*{postStat.getPost().description}"></p>
 <!--                        <code class="" th:text="*{postStat.getPost().content}"></code>-->
                         <p class="mt-3" th:text="*{postStat.getPost().date_published}"></p>
