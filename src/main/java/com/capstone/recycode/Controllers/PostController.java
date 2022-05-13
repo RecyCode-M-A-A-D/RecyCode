@@ -88,7 +88,7 @@ public class PostController {
     @GetMapping("/edit/post/{id}")
     public String editPostGet(@PathVariable long id, Model model) {
         model.addAttribute("post", postDao.getById(id));
-        model.addAttribute("stat", postStatDao.findPostStatById(id));
+//        model.addAttribute("stat", postStatDao.findPostStatById(id));
         return "editPost";
     }
 
@@ -104,10 +104,10 @@ public class PostController {
 //    }
 
     @PostMapping("/edit/post")
-    public String editPost(@ModelAttribute Post post, @ModelAttribute PostStat postStat ,Model model) {
+    public String editPost(@ModelAttribute Post post, Model model) {
         model.addAttribute("post", post);
-        model.addAttribute("stat", postStat);
-        postStatDao.save(postStat);
+//        model.addAttribute("stat", postStat);
+//        postStatDao.save(postStat);
         postDao.save(post);
         return "redirect:/profile";
     }
