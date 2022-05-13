@@ -105,6 +105,12 @@ public class PostController {
 
     @PostMapping("/edit/post")
     public String editPost(@ModelAttribute Post post, Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        post.setUser(user);
+//        System.out.println(id);
+//        PostStat postStat = postStatDao.findPostStatByPostId(id);
+//        Long statId = postStat.getStatId();
+//        postStat.setStatId(statId);
         model.addAttribute("post", post);
 //        model.addAttribute("stat", postStat);
 //        postStatDao.save(postStat);
