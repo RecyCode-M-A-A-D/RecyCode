@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials :: head">
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Create a Post</title>
+	<title>Create a Post</title>
 
 </head>
 <body>
@@ -14,79 +14,81 @@
 
 
 <div class="container">
-    <div class="row">
+	<div class="row">
 
-        <div class="col-md-8 col-md-offset-2">
+		<div class="col-md-8 col-md-offset-2">
 
-            <h1>Edit Post</h1>
+			<h1>Edit Post</h1>
 
-            <form th:action="@{/post}" method="post" th:object="${post}" id="date_submit">
+			<form th:action="@{/edit/post}" method="post" th:object="${post}" id="date_submit">
 
-                <div class="form-group">
-                    <label for="title">Title<span class="require">*</span></label>
-                    <br>
-                    <input type="text" id="title" name="title" aria-describedby="title" th:field="*{title}"/>
-                </div>
-
-
-                <div class="form-group">
-                    <label for="html">HTML</label>
-                    <br>
-                    <textarea class="form-control" id="html" name="html" aria-describedby="html"
-                              th:field="*{html}"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="css">CSS</label>
-                    <br>
-                    <textarea class="form-control" id="css" name="css" aria-describedby="css"
-                              th:field="*{css}"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="js">JS</label>
-                    <br>
-                    <textarea class="form-control" id="js" name="js" aria-describedby="js"
-                              th:field="*{js}"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="description" class="require">Description</label>
-                    <textarea rows="5" class="form-control" id="description" name="description"
-                              aria-describedby="description" th:field="*{description}"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="tag">Tags</label>
-                    <input type="text" class="form-control" id="tag" name="tag"
-                           aria-describedby="tags">
-                </div>
-
-                <label for="category">Category</label>
-
-                <div class="form-group">
-                    <select name="category" id="category">
-                        <option value="Java">Java</option>
-                        <option value="HTML">HTML</option>
-                        <option value="CSS">CSS</option>
-                        <option value="JavaScript">JavaScript</option>
-                    </select>
-                </div>
-
-                <div id="inline" style="width:600px;height:500px;padding:20px;"></div>
-
-                <input type="text" id="postImage" name="postImage"
-                       th:field="*{image_url}" hidden>
+				<div class="form-group">
+					<label for="title">Title<span class="require">*</span></label>
+					<br>
+					<input type="text" id="title" name="title" aria-describedby="title" th:field="*{title}"/>
+				</div>
 
 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">
-                        Edit
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
+				<div class="form-group">
+					<label for="html">HTML</label>
+					<br>
+					<textarea class="form-control" id="html" name="html" aria-describedby="html"
+					          th:field="*{html}"></textarea>
+				</div>
+
+				<div class="form-group">
+					<label for="css">CSS</label>
+					<br>
+					<textarea class="form-control" id="css" name="css" aria-describedby="css"
+					          th:field="*{css}"></textarea>
+				</div>
+
+				<div class="form-group">
+					<label for="js">JS</label>
+					<br>
+					<textarea class="form-control" id="js" name="js" aria-describedby="js"
+					          th:field="*{js}"></textarea>
+				</div>
+
+				<div class="form-group">
+					<label for="description" class="require">Description</label>
+					<textarea rows="5" class="form-control" id="description" name="description"
+					          aria-describedby="description" th:field="*{description}"></textarea>
+				</div>
+
+				<div class="form-group">
+					<label for="tag">Tags</label>
+					<input type="text" class="form-control" id="tag" name="tag"
+					       aria-describedby="tags">
+				</div>
+
+				<label for="category">Category</label>
+
+				<div class="form-group">
+					<select name="category" id="category">
+						<option value="Java">Java</option>
+						<option value="HTML">HTML</option>
+						<option value="CSS">CSS</option>
+						<option value="JavaScript">JavaScript</option>
+					</select>
+				</div>
+
+				<div id="inline" style="width:600px;height:500px;padding:20px;"></div>
+
+				<input type="text" id="postImage" name="postImage"
+				       th:field="*{image_url}" hidden>
+
+<!--				<input type="text" id="postStatId" name="postStatId"-->
+<!--				       th:field="${stat.statId}" th:value="${stat.statId}" >-->
+
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">
+						Edit
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
 
 <footer th:replace="partials :: footer"></footer>
