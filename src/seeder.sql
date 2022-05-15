@@ -1105,7 +1105,8 @@ INSERT INTO post_categories (post_id, category_id)
 VALUES (1, 1),
 (2, 3),
 (3, 4),
-(4, 3);
+(4, 3),
+(5, 1);
 
 
 
@@ -1113,4 +1114,5 @@ INSERT INTO post_stats (down_votes_count, up_votes_count, post_post_id )
 VALUES (0,0,1),
 (0,0,2),
 (0,0,3),
-(0,0,4);
+(0,0,4),
+(0,0,5);
