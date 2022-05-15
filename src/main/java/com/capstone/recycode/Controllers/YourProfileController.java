@@ -60,7 +60,7 @@ public class YourProfileController {
 
         model.addAttribute("postStats", postStats);
         model.addAttribute("favorites", favoritePosts);
-        model.addAttribute("img", user);
+        model.addAttribute("user", user);
         return "/profile";
     }
 
