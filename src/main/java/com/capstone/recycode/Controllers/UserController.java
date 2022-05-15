@@ -31,6 +31,7 @@ public class UserController {
                            @RequestParam(name = "confirm_password") String confirmPass,
                            Model model,
                            @ModelAttribute User user) {
+
         //check if user already exsists
         if (userDao.findUserByUserName(user.getUserName()) == null || userDao.findUserByEmail(user.getEmail()) == null) {
 
@@ -39,6 +40,9 @@ public class UserController {
                     model.addAttribute("user", user);
                     String hash = passwordEncoder.encode(user.getPassword());
                     user.setPassword(hash);
+
+                    /*sets a default image for the user*/
+                    user.setAvatarImg("/img/default_avatar.png");
                     userDao.save(user);
                     return "redirect:/login";
                 } else {

@@ -1,10 +1,10 @@
 INSERT INTO users (first_name, last_name, user_name, password, email, avatar_img)
 VALUES
-('Fred', 'Fredowski', 'fred', '$2a$10$WkPiJnOCCF8MWuEEbjrFk.en0tY.iAZxJxA7zqSO5/bZMwOyBm11e', 'fred@fred.com',''),
+('Fred', 'Fredowski', 'fred', '$2a$10$WkPiJnOCCF8MWuEEbjrFk.en0tY.iAZxJxA7zqSO5/bZMwOyBm11e', 'fred@fred.com','/img/default_avatar.png'),
 ('Andrew', 'Lange', 'andrew', '$2a$10$Y1MAuX.1FY.Nw.Dzo8i/3uQtik/iXorFnp0.3SX6Djb5UV81C/VlG', 'andrew@andrew.com', 'https://cdn.filestackcontent.com/fVKOpE3dSbqs6q6S1JNg'),
-('Mario', 'Granados', 'mario', '$2a$10$cQJeEt4wR6HdAjETtcXGj.olyCfPi6JZao3sGXPdBc38oN3K1mnPC', 'mario@mario.com',''),
-('Angel', 'Santana', 'angel', '$2a$10$3PM249xAfQW3Vt6Hvs5FdORywDFDjpHsQmuGiDbRPfvboDbsz8fnS', 'angel@angel.com',''),
-('Danny', 'Turner', 'danny', '$2a$10$lc3Tq1jgPW4FcXi0JfjdL.nZ/6vj94DmnUL1ZYXYLGa2anBOi4txe', 'danny@danny.com','');
+('Mario', 'Granados', 'mario', '$2a$10$cQJeEt4wR6HdAjETtcXGj.olyCfPi6JZao3sGXPdBc38oN3K1mnPC', 'mario@mario.com','/img/default_avatar.png'),
+('Angel', 'Santana', 'angel', '$2a$10$3PM249xAfQW3Vt6Hvs5FdORywDFDjpHsQmuGiDbRPfvboDbsz8fnS', 'angel@angel.com','/img/default_avatar.png'),
+('Danny', 'Turner', 'danny', '$2a$10$lc3Tq1jgPW4FcXi0JfjdL.nZ/6vj94DmnUL1ZYXYLGa2anBOi4txe', 'danny@danny.com','/img/default_avatar.png');
 
 INSERT INTO posts (html, css, js, date_published, description, title, image_url, user_id)
 VALUES ('<section class="p-0 bg-img cover-background" style="background-image: url(https://bootdey.com/img/Content/bg1.jpg);">
