@@ -9,7 +9,9 @@
 <nav th:replace="partials :: nav"></nav>
 
 <div class="container" id="userImage">
-    <img th:src="${img.getAvatarImg()}" height="200" width="200">
+    <img th:src="${user.avatarImg}" height="200" width="200">
+    <a th:href="${user.linkedInURL}" class="btn btn-primary btn-lg"><i class="bi bi-linkedin"></i></a>
+    <a th:href="${user.githubURL}" class="btn btn-dark btn-lg"><i class="bi bi-github"></i></a>
     <form th:action="@{/editUser}" th:method="get">
         <button class="btn btn-secondary mt-2">Edit Profile</button>
     </form>
