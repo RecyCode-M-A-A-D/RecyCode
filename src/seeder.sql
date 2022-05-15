@@ -1089,7 +1089,7 @@ $cards
     x = setTimeout(function() {
       $card.addClass("animated");
     },2500);
-  });', 2022-05-14, 'Pokemon cards with effects', 'Pokemon Cards Holo', '', 2);
+  });', '2022-05-14', 'Pokemon cards with effects', 'Pokemon Cards Holo', '', 2);
 
 
 
