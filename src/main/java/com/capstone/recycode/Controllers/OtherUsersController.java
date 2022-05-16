@@ -43,6 +43,9 @@ public class OtherUsersController {
     @GetMapping("/profile/{username}")
     public String viewUsersProfile(Model model, @PathVariable String username) {
         User user = userDao.findUserByUserName(username);
+
+        model.addAttribute("user", user);
+
         List<Favorite> favorites = favDao.findFavoritesByUserId(user.getId());
         List<Post> favoritePosts = new ArrayList<>();
 
