@@ -8,15 +8,19 @@
 
 <nav th:replace="partials :: nav"></nav>
 
-<div class="container mb-5" id="avatar">
-    <div class="row">
-        <div class="col">
-            <img th:src="@{/img/RecyCodeLogo.png}" height="500" width="500" alt="RecyCode Logo"/>
+<div class="container" id="avatar">
+    <div class="row my-1">
+        <img th:src="${user.avatarImg}" height="200" width="200">
+        <h1 class="text-center my-2"><span th:text="${user.firstName}"></span> <span th:text="${user.lastName}"></span></h1>
+        <div class="container justify-content-around d-flex">
+            <a th:href="${user.linkedInURL}" class="btn btn-primary btn-lg"><i class="bi bi-linkedin"></i></a>
+            <a th:href="${user.githubURL}" class="btn btn-dark btn-lg"><i class="bi bi-github"></i></a>
         </div>
     </div>
+
 </div>
 
-<h1 class="text-center">Other User Profile</h1>
+<h3 class="text-center my-3"><span th:text="${user.userName}"></span>'s code</h3>
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-sm-6 content-card" th:each="postStat : ${postStats}">
