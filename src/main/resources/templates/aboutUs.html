@@ -10,9 +10,9 @@
 <nav th:replace="partials :: nav"></nav>
 <h1 class="title text-center mb-3">About Us</h1>
 
-<div class="container col">
-    <div class="row d-flex align-items-center justify-content-between">
-        <div class="col">
+<div class="container">
+    <div class="row align-items-center justify-content-between">
+        <div class="col-3 col-lg-3 col-md-12 col-sm-6">
             <div class="card">
                 <img th:src="@{img/Mario.jpeg}" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-3 col-lg-3 col-md-12 col-sm-6">
             <div class="card">
                 <img th:src="@{img/Andrew.jpeg}" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -38,14 +38,14 @@
                     <p class="card-text">Highly motivated Software Developer and Air Force Veteran with military aircraft...</p>
                 </div>
 
-                <div class="card-footer"style="text-align: center" >
+                <div class="card-footer" style="text-align: center" >
                     <a th:href="@{https://www.linkedin.com/in/andrew-lange13/}" class="btn btn-primary btn-lg"><i class="bi bi-linkedin"></i></a>
                     <a th:href="@{https://github.com/andrew-lange13}" class="btn btn-dark btn-lg"><i class="bi bi-github"></i></a>
                     <a href="mailto:alange20@gmail.com" class="btn btn-secondary btn-lg"><i class="bi bi-envelope-fill"></i></a>
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-3 col-lg-3 col-md-12 col-sm-6">
             <div class="card">
                 <img th:src="@{img/Angel.jpeg}" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -60,15 +60,19 @@
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-3 col-lg-3 col-md-12 col-sm-6">
             <div class="card">
                 <img th:src="@{img/Danielle.jpeg}" class="card-img-top" alt="..." style="height: 286px;">
                 <div class="card-body">
                     <h5 class="card-title">Danielle Turner</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <hr>
+                    <p class="card-text">Full stack software engineer with a BS in Computer Science and 14yr Navy Veteran.<br>
+                    When I'm not coding I'm taking in the sites in San Antonio.<br>
+                    I'm always open to networking, and I have a niche for learning.<br>
+                    Let's talk....hit the email button below and send me a message.</p>
+                    <hr>
                 </div>
-
-                <div class="card-body" style="text-align: center">
+                <div class="card-footer" style="text-align: center">
                     <a th:href="@{https://www.linkedin.com/in/danielle-turner7/}" class="btn btn-primary btn-lg"><i class="bi bi-linkedin"></i></a>
                     <a th:href="@{https://github.com/danielleturner}" class="btn btn-dark btn-lg"><i class="bi bi-github"></i></a>
                     <a href="mailto:danielle.7.turner@gmail.com" class="btn btn-secondary btn-lg"><i class="bi bi-envelope-fill"></i></a>
