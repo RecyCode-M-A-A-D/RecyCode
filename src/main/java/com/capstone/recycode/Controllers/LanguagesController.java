@@ -5,6 +5,7 @@ import com.capstone.recycode.Models.Post;
 import com.capstone.recycode.Models.User;
 import com.capstone.recycode.Repositories.CategoryRepository;
 import com.capstone.recycode.Repositories.PostRepository;
+import com.capstone.recycode.Repositories.PostStatRepository;
 import com.capstone.recycode.Repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,10 +21,13 @@ public class LanguagesController {
     /*postDao is only used for testing*/
     private PostRepository postDao;
     private UserRepository userDao;
-    public LanguagesController(CategoryRepository catDao, PostRepository postDao, UserRepository userDao) {
+    private PostStatRepository postStatDao;
+    public LanguagesController(CategoryRepository catDao, PostRepository postDao,
+                               UserRepository userDao, PostStatRepository postStatDao) {
         this.catDao = catDao;
         this.postDao = postDao;
         this.userDao = userDao;
+        this.postStatDao = postStatDao;
     }
 
     @GetMapping("/languages")
@@ -47,12 +51,15 @@ public class LanguagesController {
     public String search(@RequestParam(name = "searched_value") String searchedValue, Model m) {
         List<User> users = userDao.findSimilarUsersByName(searchedValue);
         List<Post> posts = postDao.findSimilarPostsByTitle(searchedValue);
+        List<Post> posts1 = postDao.findSimilarPostsByDescription(searchedValue);
         Category cat = catDao.findByCategoryName(searchedValue);
 
         /*tags results will go here and we need an if statement for that as well*/
 
         /*reason this is not an if else statement is to find anything related to the search result vs
          * one thing related to the search result*/
+        m.addAttribute("searchedDescription", posts1);
+
         if(users != null) {
             m.addAttribute("searchedUsers", users );
         }

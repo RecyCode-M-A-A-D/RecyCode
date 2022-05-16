@@ -92,11 +92,10 @@ public class OtherUsersController {
     public String addToFavorites(@RequestParam(name = "post_id_value") Long postId) {
         //save current time, user logged in, and post info into the users favorites
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println("postID");
         System.out.println(postId);
 
         favDao.save(new Favorite(java.time.LocalDate.now().toString(), user, postDao.getById(postId)));
 
-        return "redirect:";
+        return "redirect:/profile";
     }
 }

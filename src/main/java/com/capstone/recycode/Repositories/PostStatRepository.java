@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 public interface PostStatRepository extends JpaRepository<PostStat, Long> {
     @Query(value = "SELECT * FROM post_stats WHERE post_post_id = ?1 ", nativeQuery = true)
@@ -19,5 +20,8 @@ public interface PostStatRepository extends JpaRepository<PostStat, Long> {
     void updateVotes(@Param("up_votes_count") long upVotes,
                      @Param("down_votes_count") long downVotes,
                      @Param("post_post_id") long PostId);
+
+    @Query(value = "SELECT * FROM post_stats ORDER BY up_votes_count", nativeQuery = true)
+    List<PostStat> findAllOrderByUpVotes();
 
 }

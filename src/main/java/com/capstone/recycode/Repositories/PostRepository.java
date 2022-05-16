@@ -18,6 +18,9 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Query(value = "SELECT * FROM posts WHERE title LIKE %?1%", nativeQuery = true)
     List<Post> findSimilarPostsByTitle(@Param("title") String title);
 
+    @Query(value = "SELECT * FROM posts WHERE description LIKE %?1%", nativeQuery = true)
+    List<Post> findSimilarPostsByDescription(@Param("title") String title);
+
     @Transactional
     @Modifying(clearAutomatically = true, flushAutomatically = true)
     @Query(value = "UPDATE posts SET title = ?1, content = ?2 , description = ?3, date_published = ?4 WHERE post_id  = ?5", nativeQuery = true)
