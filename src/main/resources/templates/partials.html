@@ -29,93 +29,63 @@
 <nav th:fragment="nav">
     <header class="p-2 bg-dark text-white rounded-pill mt-1 mx-2">
         <div class="container-fluid">
-            <div class="d-flex align-items-center justify-content-center" id="navfrag">
+            <div class="d-flex align-items-center" id="navfrag">
 
-                <ul class="nav mb-2 justify-content-center align-items-center mb-md-0">
-                    <li><a href="/" class="nav-link m-2 px-2 text-white btn btn-secondary">Home</a></li>
+                <div class="nav mb-2 align-items-center mb-md-0">
+                    <button><a href="/" class="ms-auto nav-link m-2 px-2 text-white btn btn-secondary">Home</a></button>
 
-                    <li><a sec:authorize="isAuthenticated()" href="/profile"
-                           class="nav-link m-2 px-2 text-white btn btn-secondary ">Profile</a></li>
-                    <li><a sec:authorize="isAuthenticated()" href="/post"
-                           class="nav-link m-2 px-2 text-white btn btn-secondary">Create A Post</a></li>
+                    <button><a sec:authorize="isAuthenticated()" href="/profile"
+                           class="ms-auto nav-link m-2 px-2 text-white btn btn-secondary ">Profile</a></button>
 
+                    <button><a sec:authorize="isAuthenticated()" href="/post"
+                           class="ms-auto nav-link m-2 px-2 text-white btn btn-secondary">Create A Post</a></button>
 
-                    <li>
+                    <div>
                         <div class="col">
-                            <img th:src="@{img/navbarlogo.png}" class="rounded-circle" style="height: 70px; width: 70px"/>
+                            <img th:src="@{img/navbarlogo.png}" class="rounded-circle float-xl-none" style="height: 90px; width: 90px"/>
                         </div>
-                    </li>
+                    </div>
 
-                    <li>
-                        <form class="m-2" style="width: auto" method="post"
+                    <div>
+                        <form class="me-auto m-2" style="width: auto; height: auto" method="post"
                               th:action="@{/search/results}">
                             <input type="search" class="form-control form-control-dark" placeholder="Search..."
                                    aria-label="Search" name="searched_value">
                         </form>
-                    </li>
+                    </div>
 
-                    <li>
+                    <div>
                         <form th:action="@{/about}" th:method="get">
                             <button class="nav-link m-2 px-2 text-white btn btn-secondary">About Us</button>
                         </form>
-                    </li>
-
-                    <li sec:authorize="isAnonymous()">
-                        <form th:action="@{/login}" th:method="get">
-                            <button class="nav-link m-2 px-2 text-white btn btn-secondary">Login</button>
-                        </form>
-                    </li>
-
-                    <li sec:authorize="isAnonymous()">
-                        <form th:action="@{/register}" th:method="get">
-                            <button class="nav-link m-2 px-2 text-white btn btn-secondary">Sign-up</button>
-                        </form>
-                    </li>
-
-                    <li sec:authorize="isAuthenticated()">
-                        <form th:action="@{/logout}" th:method="post">
-                            <button class="nav-link m-2 px-2 text-white btn btn-secondary">Logout</button>
-                        </form>
-                    </li>
-
-                </ul>
-
-<!--                <div class="d-flex">-->
+                    </div>
 
 <!--                    <div>-->
-<!--                        <div class="row">-->
-
-<!--                        </div>-->
+<!--                        <button class="me-auto nav-link m-2 px-2 text-white btn btn-secondary">-->
+<!--                            <a th:action="@{/about}" th:method="get" >About Us</a>-->
+<!--                        </button>-->
 <!--                    </div>-->
 
-<!--                    <form class="m-2" style="width: auto" method="post"-->
-<!--                          th:action="@{/search/results}">-->
-<!--                        <input type="search" class="form-control form-control-dark" placeholder="Search..."-->
-<!--                               aria-label="Search" name="searched_value">-->
-<!--                    </form>-->
+                    <div sec:authorize="isAnonymous()">
+                        <form th:action="@{/login}" th:method="get">
+                            <button class="me-auto nav-link m-2 px-2 text-white btn btn-secondary">Login</button>
+                        </form>
+                    </div>
 
-<!--                    <ul class="nav mb-2 justify-content-center mb-md-0">-->
-<!--                        <li>-->
-<!--                            <form th:action="@{/about}" th:method="get">-->
-<!--                                <button class="nav-link m-2 px-2 text-white btn btn-secondary">About Us</button>-->
-<!--                            </form>-->
-<!--                        </li>-->
-<!--                        <li sec:authorize="isAnonymous()">-->
-<!--                            <form th:action="@{/login}" th:method="get">-->
-<!--                                <button class="nav-link m-2 px-2 text-white btn btn-secondary">Login</button>-->
-<!--                            </form>-->
-<!--                        </li>-->
-<!--                        <li sec:authorize="isAnonymous()">-->
-<!--                            <form th:action="@{/register}" th:method="get">-->
-<!--                                <button class="nav-link m-2 px-2 text-white btn btn-secondary">Sign-up</button>-->
-<!--                            </form>-->
-<!--                        </li>-->
-<!--                        <li sec:authorize="isAuthenticated()">-->
-<!--                            <form th:action="@{/logout}" th:method="post">-->
-<!--                                <button class="nav-link m-2 px-2 text-white btn btn-secondary">Logout</button>-->
-<!--                            </form>-->
-<!--                        </li>-->
-<!--                    </ul>-->
+                    <div sec:authorize="isAnonymous()">
+                        <form th:action="@{/register}" th:method="get">
+                            <button class="me-auto nav-link m-2 px-2 text-white btn btn-secondary">Sign-up</button>
+                        </form>
+                    </div>
+
+                    <div sec:authorize="isAuthenticated()">
+                        <form th:action="@{/logout}" th:method="post">
+                            <button class="me-auto nav-link m-2 px-2 text-white btn btn-secondary">Logout</button>
+                        </form>
+                    </div>
+
+                </div>
+
                 </div>
             </div>
     </header>
