@@ -11,6 +11,11 @@
 <th:block th:switch="${error}">
     <div th:case="'Not Found'">
         <h4 class="display-5 text-center text-danger">Oooops, Page Not Found</h4>
+        <div class="container" style="justify-items: center; margin-right: 120px" >
+            <div class="col" style="text-align: center">
+                <img src="" alt="" id="doggo">
+            </div>
+        </div>
         <p class="text-center">We were unable to find the page you are looking for</p>
     </div>
     <div th:case="'Forbidden'">
@@ -37,4 +42,22 @@
 
 <div th:replace="partials :: footer"></div>
 </body>
+
+
+
+</div>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    $("#doggo").attr('src', '??')
+    $.ajax("https://dog.ceo/api/breeds/image/random");
+    $.ajax("https://dog.ceo/api/breeds/image/random").done()
+    $.ajax("https://dog.ceo/api/breeds/image/random").done(function (data, status){
+        console.log(data.message)
+        $("#doggo").attr("src", data.message)
+        console.log(status)
+    })
+        .fail(function (){
+            console.log("something went woof!?")
+        })
+</script>
 </html>
