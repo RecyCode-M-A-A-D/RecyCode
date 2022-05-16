@@ -53,6 +53,7 @@ public class LanguagesController {
         List<Post> posts = postDao.findSimilarPostsByTitle(searchedValue);
         List<Post> posts1 = postDao.findSimilarPostsByDescription(searchedValue);
         Category cat = catDao.findByCategoryName(searchedValue);
+        List<Post> tag = postDao.findSimilarPostsByTags(searchedValue);
 
         /*tags results will go here and we need an if statement for that as well*/
 
@@ -69,7 +70,10 @@ public class LanguagesController {
         if(cat != null){
             m.addAttribute("searchedCategories", cat);
         }
-        if(users != null && posts != null && cat != null){
+        if(tag != null){
+            m.addAttribute("searchedTags", tag);
+        }
+        if(users != null && posts != null && cat != null && tag != null){
             m.addAttribute("error", true);
         }
 
