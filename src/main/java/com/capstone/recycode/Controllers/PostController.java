@@ -117,4 +117,11 @@ public class PostController {
         postDao.save(post);
         return "redirect:/profile";
     }
+
+    @GetMapping("/posts/{id}/delete")
+    public String deletePost(@PathVariable long id){
+        postStatDao.deleteById(id);
+        postDao.deleteById(id);
+        return "redirect:/profile";
+    }
 }
