@@ -274,4 +274,8 @@ a:hover, a:focus {
     display: unset;
 }
 
-/**/
+/* Center the dog api image inside this container */
+.imgcontainer {
+    display: flex;
+    justify-content: center;
+}
