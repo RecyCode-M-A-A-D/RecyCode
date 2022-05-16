@@ -2,11 +2,9 @@ package com.capstone.recycode.Controllers;
 
 import com.capstone.recycode.Models.Category;
 import com.capstone.recycode.Models.Post;
+import com.capstone.recycode.Models.Tag;
 import com.capstone.recycode.Models.User;
-import com.capstone.recycode.Repositories.CategoryRepository;
-import com.capstone.recycode.Repositories.PostRepository;
-import com.capstone.recycode.Repositories.PostStatRepository;
-import com.capstone.recycode.Repositories.UserRepository;
+import com.capstone.recycode.Repositories.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,12 +20,14 @@ public class LanguagesController {
     private PostRepository postDao;
     private UserRepository userDao;
     private PostStatRepository postStatDao;
+    private TagRepository tagDao;
     public LanguagesController(CategoryRepository catDao, PostRepository postDao,
-                               UserRepository userDao, PostStatRepository postStatDao) {
+                               UserRepository userDao, PostStatRepository postStatDao, TagRepository tagDao) {
         this.catDao = catDao;
         this.postDao = postDao;
         this.userDao = userDao;
         this.postStatDao = postStatDao;
+        this.tagDao = tagDao;
     }
 
     @GetMapping("/languages")
@@ -53,7 +53,7 @@ public class LanguagesController {
         List<Post> posts = postDao.findSimilarPostsByTitle(searchedValue);
         List<Post> posts1 = postDao.findSimilarPostsByDescription(searchedValue);
         Category cat = catDao.findByCategoryName(searchedValue);
-        List<Post> tag = postDao.findSimilarPostsByTags(searchedValue);
+        List<Post> tag = postDao.findPostsByTags(searchedValue);
 
         /*tags results will go here and we need an if statement for that as well*/
 
