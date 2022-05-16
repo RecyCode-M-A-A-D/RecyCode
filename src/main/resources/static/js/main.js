@@ -13,4 +13,9 @@ window.addEventListener('DOMContentLoaded', function () {
     };
     client.picker(options).open();
 
+    /*create a post pop up for tags;*/
+    document.getElementById("question").addEventListener("click", e => {
+        e.preventDefault();
+        document.getElementById("display_pop_up").className = "pop_up";
+    });
 });
