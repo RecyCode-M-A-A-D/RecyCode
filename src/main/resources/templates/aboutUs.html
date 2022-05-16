@@ -105,36 +105,5 @@
 
 <footer th:replace="partials :: footer"></footer>
 
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script>
-
-
-    $("#skywalker").attr('src', '??')
-    $.ajax("https://dog.ceo/api/breeds/image/random");
-    $.ajax("https://dog.ceo/api/breeds/image/random").done()
-    $.ajax("https://dog.ceo/api/breeds/image/random").done(function (data, status){
-        console.log(data.message)
-        $("#skywalker").attr("src", data.message)
-        console.log(status)
-    })
-
-        .fail(function (){
-            console.log("something went woof!?")
-        })
-
-
-    $("#patawuan").attr('src', '??')
-    $.ajax("https://dog.ceo/api/breeds/image/random");
-    $.ajax("https://dog.ceo/api/breeds/image/random").done()
-    $.ajax("https://dog.ceo/api/breeds/image/random").done(function (data, status){
-        console.log(data.message)
-        $("#patawuan").attr("src", data.message)
-        console.log(status)
-    })
-
-        .fail(function (){
-            console.log("something went woof!?")
-        })
-</script>
 </body>
 </html>
