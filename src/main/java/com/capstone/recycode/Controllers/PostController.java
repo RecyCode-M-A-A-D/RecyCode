@@ -104,9 +104,26 @@ public class PostController {
 //    }
 
     @PostMapping("/edit/post")
-    public String editPost(@ModelAttribute Post post, Model model) {
+    public String editPost(@ModelAttribute Post post, Model model, @RequestParam(name = "category") String categoryName, @RequestParam(name = "tag") String tag) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setUser(user);
+        /*lets get the tags and separate it by commas*/
+        List<String> string = List.of(tag.split(", "));
+        List<Tag> t1 = new ArrayList<>();
+        List<Tag> t2;
+
+        for (String s : string) {
+            tagDao.save(new Tag(s));
+            t2 = tagDao.findTagsByName(s);
+            t1.addAll(t2);
+        }
+        post.setTags(t1);
+        Category category = catDao.findByCategoryName(categoryName);
+        List<Category> categories = new ArrayList<>();
+        categories.add(category);
+        //gets current date into the database
+        post.setDate_published(java.time.LocalDate.now().toString());
+        post.setCategories(categories);
 //        System.out.println(id);
 //        PostStat postStat = postStatDao.findPostStatByPostId(id);
 //        Long statId = postStat.getStatId();
