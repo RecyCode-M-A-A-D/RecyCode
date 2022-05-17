@@ -1,9 +1,11 @@
 package com.capstone.recycode.Repositories;
 
+import com.capstone.recycode.Models.Post;
 import com.capstone.recycode.Models.PostStat;
 import com.capstone.recycode.Models.Tag;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;

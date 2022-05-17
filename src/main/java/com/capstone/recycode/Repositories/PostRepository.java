@@ -1,6 +1,7 @@
 package com.capstone.recycode.Repositories;
 
 import com.capstone.recycode.Models.Post;
+import com.capstone.recycode.Models.Tag;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -20,6 +21,9 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     @Query(value = "SELECT * FROM posts WHERE description LIKE %?1%", nativeQuery = true)
     List<Post> findSimilarPostsByDescription(@Param("title") String title);
+
+    @Query(value = "SELECT * FROM posts p JOIN post_tags pt ON p.post_id = pt.post_id JOIN tags t ON pt.tag_id = t.tag_id WHERE t.tag LIKE %?1%", nativeQuery = true)
+    List<Post> findPostsByTags(String tag);
 
     @Transactional
     @Modifying(clearAutomatically = true, flushAutomatically = true)
