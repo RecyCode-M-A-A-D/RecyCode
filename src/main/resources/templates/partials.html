@@ -75,6 +75,9 @@
                         <a class="btn btn-dark" sec:authorize="isAnonymous()" href="/login">Sign in</a>
                     </li>
                     <li class="nav-item">
+                        <a class="btn btn-outline-light" sec:authorize="isAnonymous()" href="/register">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
                         <form th:action="@{/logout}" method="post">
                             <button class="btn btn-dark" sec:authorize="isAuthenticated()" href="/logout">
                                 Logout
