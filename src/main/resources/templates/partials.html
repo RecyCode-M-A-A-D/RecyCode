@@ -26,14 +26,14 @@
 </head>
 <body>
 
-<nav th:fragment="nav">
+<nav th:fragment="nav" class="mb-5 sticky-lg-top sticky-md-top">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-dark nav-color">
         <div class="container">
             <a class="navbar-brand" href="/"
             ><img
                     id="recycode-logo"
-                    th:src="@{img/navbarlogo.png}"
+                    th:src="@{/img/navbarlogo.png}"
                     alt="RecyCode logo"
                     draggable="false"
                     height="80"
@@ -53,33 +53,34 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="navbar-nav ms-auto align-items-center">
-                    <form class="ms-auto" style="width: auto; height: auto" method="post"
+                    <form class="ms-auto form-floating" style="width: auto; height: auto" method="post"
                           th:action="@{/search/results}">
                         <input type="search" class="form-control form-control-dark" placeholder="Search..."
-                               aria-label="Search" name="searched_value">
+                               aria-label="Search" name="searched_value" id="search_bar">
+                        <label for="search_bar">Search</label>
                     </form>
                 </div>
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
-                        <a class="btn btn-dark mx-2" sec:authorize="isAuthenticated()" href="/post">
+                        <a class="btn btn-dark mx-1" sec:authorize="isAuthenticated()" href="/post">
                             <i class="bi bi-plus-circle-dotted"></i>Create</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-dark mx-2" sec:authorize="isAuthenticated()" href="/profile">
+                        <a class="btn btn-dark mx-1" sec:authorize="isAuthenticated()" href="/profile">
                             <i class="bi bi-person-circle"></i>Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-dark" href="/about">About</a>
+                        <a class="btn btn-dark mx-1" href="/about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-dark" sec:authorize="isAnonymous()" href="/login">Sign in</a>
+                        <a class="btn btn-dark mx-1" sec:authorize="isAnonymous()" href="/login">Sign in</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light" sec:authorize="isAnonymous()" href="/register">Sign Up</a>
+                        <a class="btn btn-outline-light mx-1" sec:authorize="isAnonymous()" href="/register">Sign Up</a>
                     </li>
                     <li class="nav-item">
                         <form th:action="@{/logout}" method="post">
-                            <button class="btn btn-dark" sec:authorize="isAuthenticated()" href="/logout">
+                            <button class="btn btn-dark mx-1" sec:authorize="isAuthenticated()" href="/logout">
                                 Logout
                             </button>
                         </form>
@@ -236,7 +237,7 @@
     <!--favorites fragment-->
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-12 col-sm-12 content-card" th:each="favorite : ${favorites}">
+            <div class="col-lg-4 col-md-12 col-sm-12 content-card" th:each="favorite : ${favorites}">
                 <div class="card-big-shadow">
                     <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
                         <div class="content">
