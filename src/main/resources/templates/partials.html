@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <!--Head Partial-->
 <head th:fragment="head">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -25,8 +26,69 @@
 </head>
 <body>
 
-<!--NAVBAR -->
 <nav th:fragment="nav">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark nav-color">
+        <div class="container">
+            <a class="navbar-brand" href="/"
+            ><img
+                    id="recycode-logo"
+                    th:src="@{img/navbarlogo.png}"
+                    alt="RecyCode logo"
+                    draggable="false"
+                    height="80"
+                    width="80"
+                    class="nav-img"
+            /></a>
+            <button
+                    class="navbar-toggler text-white btn btn-lg"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-nav ms-auto align-items-center">
+                    <form class="ms-auto" style="width: auto; height: auto" method="post"
+                          th:action="@{/search/results}">
+                        <input type="search" class="form-control form-control-dark" placeholder="Search..."
+                               aria-label="Search" name="searched_value">
+                    </form>
+                </div>
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="btn btn-dark mx-2" sec:authorize="isAuthenticated()" href="/post">
+                            <i class="bi bi-plus-circle-dotted"></i>Create</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-dark mx-2" sec:authorize="isAuthenticated()" href="/profile">
+                            <i class="bi bi-person-circle"></i>Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-dark" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-dark" sec:authorize="isAnonymous()" href="/login">Sign in</a>
+                    </li>
+                    <li class="nav-item">
+                        <form th:action="@{/logout}" method="post">
+                            <button class="btn btn-dark" sec:authorize="isAuthenticated()" href="/logout">
+                                Logout
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+</nav>
+<!--NAVBAR -->
+<!--<nav th:fragment="nav">
     <header class="p-2 bg-dark text-white rounded-pill mt-1 mx-2">
         <div class="container-fluid">
             <div class="d-flex align-items-center" id="navfrag">
@@ -60,11 +122,11 @@
                         </form>
                     </div>
 
-<!--                    <div>-->
-<!--                        <button class="me-auto nav-link m-2 px-2 text-white btn btn-secondary">-->
-<!--                            <a th:action="@{/about}" th:method="get" >About Us</a>-->
-<!--                        </button>-->
-<!--                    </div>-->
+&lt;!&ndash;                    <div>&ndash;&gt;
+&lt;!&ndash;                        <button class="me-auto nav-link m-2 px-2 text-white btn btn-secondary">&ndash;&gt;
+&lt;!&ndash;                            <a th:action="@{/about}" th:method="get" >About Us</a>&ndash;&gt;
+&lt;!&ndash;                        </button>&ndash;&gt;
+&lt;!&ndash;                    </div>&ndash;&gt;
 
                     <div sec:authorize="isAnonymous()">
                         <form th:action="@{/login}" th:method="get">
@@ -86,7 +148,8 @@
                 </div>
             </div>
     </header>
-</nav>
+</nav>-->
+<!--navbar ends here-->
 
 <div th:fragment="posts_fragment">
     This is read from partials, I was too lazy to code this again - Mario

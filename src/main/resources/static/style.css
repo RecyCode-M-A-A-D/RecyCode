@@ -279,3 +279,18 @@ a:hover, a:focus {
     display: flex;
     justify-content: center;
 }
+
+/*navbar*/
+
+.navbar-nav .nav-link {
+    color: #ffffff;
+}
+
+.nav-color {
+    color: #252422;
+}
+
+.nav-img {
+    border-radius: 50%;
+}
+/*navbar*/
