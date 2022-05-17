@@ -308,3 +308,19 @@ a:hover, a:focus {
 }
 
 /**/
+
+/*search bar*/
+#search_bar {
+    width: 200%;
+
+}
+@media screen and (max-width: 769px) {
+    #search_bar {
+        width: 100%;
+    }
+
+
+}
+
+
+/**/
