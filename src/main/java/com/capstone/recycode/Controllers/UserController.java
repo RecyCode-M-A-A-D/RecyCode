@@ -1,23 +1,35 @@
 package com.capstone.recycode.Controllers;
 
+import com.capstone.recycode.Models.Post;
+import com.capstone.recycode.Models.PostStat;
 import com.capstone.recycode.Models.User;
+import com.capstone.recycode.Repositories.PostRepository;
+import com.capstone.recycode.Repositories.PostStatRepository;
 import com.capstone.recycode.Repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class UserController {
 
     private UserRepository userDao;
+    private PostRepository postDao;
+
+    private PostStatRepository postStatDao;
 
     private PasswordEncoder passwordEncoder;
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder) {
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PostRepository postDao, PostStatRepository postStatDao) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
+        this.postDao = postDao;
+        this.postStatDao = postStatDao;
     }
 
     @GetMapping("/register")
@@ -87,6 +99,19 @@ public class UserController {
             model.addAttribute("error", "Passwords do not match");
             return "/users/editUser";
         }
+    }
+
+    @GetMapping("deleteUser")
+    public String deleteUser(){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<Post> postsToDelete = postDao.findPostsByUserId(user.getId());
+        for (Post post:postsToDelete
+             ) {
+            postStatDao.deleteById(post.getPostId());
+        }
+        postDao.deleteAll(postsToDelete);
+        userDao.deleteById(user.getId());
+        return "redirect:/";
     }
 
 }
