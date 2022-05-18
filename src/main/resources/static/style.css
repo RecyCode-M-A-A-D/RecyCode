@@ -101,11 +101,6 @@ body {
     position: relative;
 }
 
-.card-small-shadow {
-    max-width: 600px;
-    position: relative;
-}
-
 .coloured-cards .card {
     margin-top: 30px;
 }
@@ -322,5 +317,14 @@ a:hover, a:focus {
 
 }
 
+#cardImg {
+    width: 100%;
+    height: 20vh;
+    object-fit: cover;
+}
+
+#cardContent{
+    height: 40vh;
+}
 
 /**/
