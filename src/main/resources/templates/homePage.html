@@ -45,7 +45,7 @@
 <!--						<h6 class="category">Category</h6>-->
 						<a th:href="@{|/post/${post.getPostId()}|}"><h2 class="title mb-1" th:text="*{post.title}"></h2></a>
 						<p class="description" th:text="*{post.description}"></p>
-						<img th:src="*{post.image_url}" class="" id="cardImg" >
+						<img th:src="*{post.image_url}" class="img-fluid" id="cardImg" >
 						<p class="mt-3" th:text="*{post.date_published}"></p>
 						<a th:href="@{|/profile/*{post.user.getUserName()}|}"><p class="mt-3" th:text="*{post.user.getUserName()}"></p></a>
 						<ul class="mt-3 d-inline" th:each="tag : *{post.getTags()}">
