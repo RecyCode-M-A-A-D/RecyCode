@@ -18,34 +18,34 @@
 </div>
 
 <!--filter-->
-<form th:action="@{/languages/search}" method="post">
-	<label for="category">Filter By</label>
+<!--<form th:action="@{/languages/search}" method="post">-->
+<!--	<label for="category">Filter By</label>-->
 
-	<select aria-label="category selection"
-			class="form-select form-select-lg mb-3"
-			name="category"
-			id="category">
+<!--	<select aria-label="category selection"-->
+<!--			class="form-select form-select-lg mb-3"-->
+<!--			name="category"-->
+<!--			id="category">-->
 
-		<option value="HTML">HTML</option>
-		<option value="Java">Java</option>
-		<option value="CSS">CSS</option>
-		<option value="JavaScript">JS</option>
-		<input type="submit">
-	</select>
-</form>
+<!--		<option value="HTML">HTML</option>-->
+<!--		<option value="Java">Java</option>-->
+<!--		<option value="CSS">CSS</option>-->
+<!--		<option value="JavaScript">JS</option>-->
+<!--		<input type="submit">-->
+<!--	</select>-->
+<!--</form>-->
 
 <!--filter-->
 
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
-		<div class="col-lg-4 col-md-12 col-sm-6 content-card" th:each="post : ${post}">
-			<div class="card-small-shadow">
+		<div class=" col-lg-3 col-md-6 col-sm-12 content-card" th:each="post : ${post}">
+			<div class="card-big-shadow">
 				<div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
-					<div class="content">
-						<h6 class="category">Category</h6>
+					<div class="content" id="cardContent">
+<!--						<h6 class="category">Category</h6>-->
 						<a th:href="@{|/post/${post.getPostId()}|}"><h2 class="title mb-1" th:text="*{post.title}"></h2></a>
 						<p class="description" th:text="*{post.description}"></p>
-						<img th:src="*{post.image_url}" class="" >
+						<img th:src="*{post.image_url}" class="" id="cardImg" >
 						<p class="mt-3" th:text="*{post.date_published}"></p>
 						<a th:href="@{|/profile/*{post.user.getUserName()}|}"><p class="mt-3" th:text="*{post.user.getUserName()}"></p></a>
 						<ul class="mt-3 d-inline" th:each="tag : *{post.getTags()}">
