@@ -18,7 +18,7 @@
 
         <div class="col-md-8 col-md-offset-2">
 
-            <h1>Create post</h1>
+            <h1>Create Post</h1>
 
             <form th:action="@{/post}" method="post" th:object="${post}" id="date_submit">
 
@@ -85,11 +85,10 @@
                     </div>
                 </div>
 
-                <label for="category">Category</label>
+                <label for="category" hidden>Category</label>
 
-                <div class="form-group">
+                <div class="form-group" hidden>
                     <select name="category" id="category">
-                        <option value="Java">Java</option>
                         <option value="HTML">HTML</option>
                         <option value="CSS">CSS</option>
                         <option value="JavaScript">JavaScript</option>
@@ -104,7 +103,7 @@
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">
-                        Create
+                        Recycle
                     </button>
                 </div>
             </form>
