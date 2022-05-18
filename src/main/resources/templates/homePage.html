@@ -12,7 +12,7 @@
 <div class="container" id="avatar">
 	<div class="row">
 		<div class="col">
-			<img th:src="@{img/RecyCodeLogoFinal.png}" height="500" width="500" class="rounded-circle"/>
+			<img th:src="@{img/LogoTransparent.png}" height="500" width="500"/>
 		</div>
 	</div>
 </div>
@@ -40,7 +40,7 @@
 	<div class="row">
 		<div class=" col-lg-3 col-md-6 col-sm-12 content-card" th:each="post : ${post}">
 			<div class="card-big-shadow">
-				<div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+				<div class="card card-just-text" style="background-color: lightgrey" data-radius="none">
 					<div class="content" id="cardContent">
 <!--						<h6 class="category">Category</h6>-->
 						<a th:href="@{|/post/${post.getPostId()}|}"><h2 class="title mb-1" th:text="*{post.title}"></h2></a>
