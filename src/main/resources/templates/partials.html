@@ -62,9 +62,9 @@
                     </li>
                     <li class="nav-item">
                         <form th:action="@{/logout}" method="post">
-                            <button class="btn btn-outline-light mx-1" sec:authorize="isAuthenticated()" href="/logout">
+                            <a class="btn btn-outline-light mx-1" sec:authorize="isAuthenticated()" href="/logout">
                                 <i class="bi bi-box-arrow-left"></i> Logout
-                            </button>
+                            </a>
                         </form>
                     </li>
                 </ul>
