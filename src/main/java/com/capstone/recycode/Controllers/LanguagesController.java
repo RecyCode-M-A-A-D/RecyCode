@@ -61,19 +61,19 @@ public class LanguagesController {
          * one thing related to the search result*/
         m.addAttribute("searchedDescription", posts1);
 
-        if(users != null) {
+        if(users.size() > 0) {
             m.addAttribute("searchedUsers", users );
         }
-        if(posts != null) {
+        if(posts.size() > 0) {
             m.addAttribute("searchedPosts", posts);
         }
         if(cat != null){
             m.addAttribute("searchedCategories", cat);
         }
-        if(tag != null){
+        if(tag.size() > 0){
             m.addAttribute("searchedTags", tag);
         }
-        if(users != null && posts != null && cat != null && tag != null){
+        if(users.size() > 0 && posts.size() > 0 && cat != null && tag.size() > 0){
             m.addAttribute("error", true);
         }
 
