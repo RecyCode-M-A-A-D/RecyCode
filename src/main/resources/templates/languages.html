@@ -38,7 +38,7 @@
                 <div class="card-body">
                     <h5 class="display-5">Users</h5>
                     <div th:each="user : ${searchedUsers}">
-                        <div class="card mb-3" style="max-width: 540px;">
+                        <div class="card mb-3" style="max-width: 540px; background-color: #212529">
                             <div class="row g-0">
                                 <div class="col-md-4">
                                     <img th:src="${user.avatarImg}" class="img-fluid rounded-start" alt="...">
@@ -61,8 +61,8 @@
             </div>
 
             searched section
-            <div th:unless="${searchedPosts.isEmpty()}" class="card">
-                <h5 class="display-5">Code Snippets</h5>
+            <div th:unless="${searchedPosts.isEmpty()}" class="card bg-secondary">
+                <h5 class="display-5 m-3" style="color: #FF914D">Code Snippets</h5>
                 <div class="card-body">
                     <div class="container bootstrap snippets bootdeys">
                         <div class="row">
