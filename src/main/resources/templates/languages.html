@@ -7,38 +7,38 @@
 <body>
 <nav th:replace="partials :: nav"></nav>
 <div class="container">
-    <form th:action="@{/languages/search}" method="Post">
-        <label for="cats">Filter By</label>
-        <select aria-label="category selection"
-                class="form-select form-select-lg mb-3"
-                name="category"
-                id="cats">
-            <option value="HTML">HTML</option>
-            <option value="CSS">CSS</option>
-            <option value="JavaScript">JS</option>
-        </select>
-        <input type="submit">
-    </form>
+<!--    <form th:action="@{/languages/search}" method="Post">-->
+<!--        <label for="cats">Filter By</label>-->
+<!--        <select aria-label="category selection"-->
+<!--                class="form-select form-select-lg mb-3"-->
+<!--                name="category"-->
+<!--                id="cats">-->
+<!--            <option value="HTML">HTML</option>-->
+<!--            <option value="CSS">CSS</option>-->
+<!--            <option value="JavaScript">JS</option>-->
+<!--        </select>-->
+<!--        <input type="submit">-->
+<!--    </form>-->
 
-    <div th:if="${posts != null}">
-        <span th:text="${Languages.category}"></span>
-        <span th:each="post : ${posts}">
-        <span th:text="${post.title}"></span>
-            <!--        <span th:text="${post.content}"></span>-->
-        <span th:text="${post.description}"></span>
-        <span th:text="${post.date_published}"></span>
-    </span>
-    </div>
+<!--    <div th:if="${posts != null}">-->
+<!--        <span th:text="${Languages.category}"></span>-->
+<!--        <span th:each="post : ${posts}">-->
+<!--        <span th:text="${post.title}"></span>-->
+<!--            &lt;!&ndash;        <span th:text="${post.content}"></span>&ndash;&gt;-->
+<!--        <span th:text="${post.description}"></span>-->
+<!--        <span th:text="${post.date_published}"></span>-->
+<!--    </span>-->
+<!--    </div>-->
 
 
     <!--we could either style tihs page to show search results or just put this fragment somewhere else-->
     <form th:action="@{/search/results}">
         <div th:fragment="search">
-            <div th:if="${searchedUsers != null}" class="card">
+            <div th:unless="${searchedUsers.isEmpty()}" class="card">
                 <div class="card-body">
                     <h5 class="display-5">Users</h5>
                     <div th:each="user : ${searchedUsers}">
-                        <div class="card mb-3" style="max-width: 540px;">
+                        <div class="card mb-3" style="max-width: 540px; background-color: #212529">
                             <div class="row g-0">
                                 <div class="col-md-4">
                                     <img th:src="${user.avatarImg}" class="img-fluid rounded-start" alt="...">
@@ -60,9 +60,9 @@
                 </div>
             </div>
 
-            <!--searched section-->
-            <div th:if="${searchedPosts != null}" class="card">
-                <h5 class="display-5">Code Snippets</h5>
+            searched section
+            <div th:unless="${searchedPosts.isEmpty()}" class="card bg-secondary">
+                <h5 class="display-5 m-3" style="color: #FF914D">Code Snippets</h5>
                 <div class="card-body">
                     <div class="container bootstrap snippets bootdeys">
                         <div class="row">
@@ -93,7 +93,7 @@
             </div>
 
             <!--description search-->
-            <div th:if="${searchedPosts != null}" class="card">
+            <div th:unless="${searchedDescription.isEmpty()}" class="card">
                 <h5 class="display-5">Matches Description</h5>
                 <div class="card-body">
                     <div class="container bootstrap snippets bootdeys">
@@ -127,7 +127,7 @@
             <!--ends here-->
 
             <!--tag search-->
-            <div th:if="${searchedTags != null}" class="card">
+            <div th:unless="${searchedTags.isEmpty()}" class="card">
                 <h5 class="display-5">Matches Tags</h5>
                 <div class="card-body">
                     <div class="container">
@@ -160,20 +160,20 @@
 
             <!--ends here-->
 
-            <div th:if="${searchedCategories != null}" class="card">
-                <div class="card-body">
-                    <h5 class="display-5">Categories</h5>
-                    <div th:each="category : ${searchedCategories}">
-                        <span th:text="${category.category}"></span>
-                    </div>
-                </div>
-            </div>
+<!--            <div th:if="${searchedCategories != null}" class="card">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="display-5">Categories</h5>-->
+<!--                    <div th:each="category : ${searchedCategories}">-->
+<!--                        <span th:text="${category.category}"></span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="display-5">Related to: </h5>
-                </div>
-            </div>
+<!--            <div class="card">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="display-5">Related to: </h5>-->
+<!--                </div>-->
+<!--            </div>-->
 
             <!--give error on this page-->
             <div th:if="${error}">
