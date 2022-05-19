@@ -5,7 +5,6 @@ import com.capstone.recycode.Models.User;
 import com.capstone.recycode.Repositories.PostRepository;
 import com.capstone.recycode.Repositories.PostStatRepository;
 import com.capstone.recycode.Repositories.UserRepository;
-import com.capstone.recycode.SecurityConfiguration;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -34,7 +33,7 @@ public class UserController {
     @GetMapping("/signup")
     public String showSignUpForm(Model model) {
         model.addAttribute("user", new User());
-        return "/users/signup";
+        return "users/signup";
     }
 
     @PostMapping("/signup")
@@ -58,15 +57,15 @@ public class UserController {
                     return "redirect:/signin";
                 } else {
                     model.addAttribute("error", "Password must be 8 characters or more");
-                    return "/users/signup";
+                    return "users/signup";
                 }
             } else {
                 model.addAttribute("error", "Passwords do not match");
-                return "/users/signup";
+                return "users/signup";
             }
         } else {
             model.addAttribute("error", "Username or email already taken");
-            return "/users/signup";
+            return "users/signup";
         }
 
     }
@@ -75,7 +74,7 @@ public class UserController {
     public String editUserGet(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
-        return "/users/editUser";
+        return "users/editUser";
     }
 
     @PostMapping("editUser")
@@ -92,11 +91,11 @@ public class UserController {
                 return "redirect:/profile";
             } else {
                 model.addAttribute("error", "Password must be 8 characters or more");
-                return "/users/editUser";
+                return "users/editUser";
             }
         } else {
             model.addAttribute("error", "Passwords do not match");
-            return "/users/editUser";
+            return "users/editUser";
         }
     }
 
@@ -110,7 +109,9 @@ public class UserController {
         }
         postDao.deleteAll(postsToDelete);
         userDao.deleteById(user.getId());
+
         SecurityContextHolder.clearContext();
+
         return "redirect:/signin?signout";
     }
 
