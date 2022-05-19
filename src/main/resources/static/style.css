@@ -347,6 +347,23 @@ a:hover, a:focus {
     }
 }
 
+
 button:hover {
     animation: bounce 1s;
 }
+
+
+textarea {
+    width: 300px;
+    height: 150px;
+}
+
+.createpost {
+    color: whitesmoke;
+}
+
+/*button:hover {*/
+/*    animation: bounce 1s;*/
+/*}*/
+
+

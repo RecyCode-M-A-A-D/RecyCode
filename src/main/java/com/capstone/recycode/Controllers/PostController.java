@@ -63,7 +63,9 @@ public class PostController {
         List<Tag> t2;
 
         for (String s : string) {
-            tagDao.save(new Tag(s));
+            if(tagDao.findTagByName(s) == null) {
+                tagDao.save(new Tag(s));
+            }
             t2 = tagDao.findTagsByName(s);
             t1.addAll(t2);
         }
