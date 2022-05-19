@@ -45,16 +45,16 @@
                             <i class="bi bi-book"></i> Explore</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light mx-1" sec:authorize="isAuthenticated()" href="/post" id="2">
+                        <a class="btn btn-outline-light mx-1" sec:authorize="isAuthenticated()" href="/post" id="id2">
                             <i class="bi bi-plus-circle-dotted"></i> Create</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light mx-1" sec:authorize="isAuthenticated()" href="/profile" id="3">
+                        <a class="btn btn-outline-light mx-1" sec:authorize="isAuthenticated()" href="/profile" id="id3">
                             <i class="bi bi-person-circle"></i> Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-outline-light mx-1" href="/about" id="id4">
-                            <i class="bi bi-question-circle"></i> About Us</a>
+                            <i class="bi bi-question-circle" style="font-size: small;"></i> About Us</a>
                     </li>
                     <li class="nav-item">
 
@@ -79,7 +79,7 @@
                 <div class="navbar-nav ms-auto align-items-center">
                     <form class="form-floating" style="width: auto; height: auto; " method="post"
                           th:action="@{/search/results}">
-                        <input type="search" style="width: 15rem" class="form-control form-control-dark" placeholder="Search..."
+                        <input type="search" style="width: 15rem" class="form-control form-control-dark searchbar" placeholder="Search..."
                                aria-label="Search" name="searched_value" id="search_bar">
                         <label for="search_bar">Search</label>
                     </form>
@@ -163,42 +163,40 @@
         <!--favorites button ends here-->
     </div>
 </div>
-<!--ending test fragment ask mario for questions-->
-
 
 <div th:fragment="favorites">
-    <h5 class="display-5 text-center">Favorites</h5>
-
-    <!--favorites fragment-->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-12 col-sm-12 content-card" th:each="favorite : ${favorites}">
-                <div class="card-big-shadow">
-                    <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
-                        <div class="content">
-                            <h6 class="category">Category</h6>
-                            <a th:href="@{|/post/${favorite.getPostId()}|}"><h2 class="title mb-1"
-                                                                                th:text="*{favorite.title}"></h2></a>
-                            <p class="description" th:text="*{favorite.description}"></p>
-                            <img th:src="*{favorite.image_url}" class="">
-                            <p class="mt-3" th:text="*{favorite.date_published}"></p>
-                            <a th:href="@{|/profile/*{favorite.user.getUserName()}|}"><p class="mt-3"
-                                                                                         th:text="*{favorite.user.getUserName()}"></p>
-                            </a>
-                        </div>
+    <div th:each="favorite : ${favorites}">
+        <div class="card mb-3 mt-3" style="max-width: 50rem;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img th:src="*{favorite.image_url}" class="img-fluid rounded-start"
+                         alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <span th:text="${favorite.getTitle()}"></span>
+                        </h5>
+                        <p class="card-text"><span
+                                th:text="${favorite.description}"></span></p>
+                        <p class="card-text"><small class="text-muted">Last updated <span
+                                th:text="${favorite.getDate_published()}"></span></small>
+                        </p>
+                    </div>
+                    <div class="card-footer justify-content-evenly align-items-baseline d-flex">
                         <form th:action="@{profile/favorites/delete}" method="post"
                               class="d-flex justify-content-center">
                             <input type="text" hidden name="post_id_value" th:value="${favorite.postId}">
                             <button type="submit" class="btn btn-danger">Remove from Favorites</button>
                         </form>
-                    </div> <!-- end card -->
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
-    <!---->
 </div>
+
+
 
 <!--favorites fragment-->
 

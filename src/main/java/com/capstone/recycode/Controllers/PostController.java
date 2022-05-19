@@ -89,6 +89,10 @@ public class PostController {
         post.setDate_published(java.time.LocalDate.now().toString());
         post.setCategories(categories);
 
+        if(post.getImage_url().equals("")) {
+            post.setImage_url("/img/RecyCodeLogoTransparent.png");
+        }
+
         //we have to save the post bofore adjusting anything in it.
         postDao.save(post);
 
