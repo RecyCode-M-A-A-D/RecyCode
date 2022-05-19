@@ -30,13 +30,13 @@ public class UserController {
         this.postStatDao = postStatDao;
     }
 
-    @GetMapping("/register")
+    @GetMapping("/signup")
     public String showSignUpForm(Model model) {
         model.addAttribute("user", new User());
-        return "signup";
+        return "/users/signup";
     }
 
-    @PostMapping("/register")
+    @PostMapping("/signup")
     public String saveUser(@RequestParam(name = "password") String password,
                            @RequestParam(name = "confirm_password") String confirmPass,
                            Model model,
@@ -54,18 +54,18 @@ public class UserController {
                     /*sets a default image for the user*/
                     user.setAvatarImg("/img/default_avatar.png");
                     userDao.save(user);
-                    return "redirect:/login";
+                    return "redirect:/signin";
                 } else {
                     model.addAttribute("error", "Password must be 8 characters or more");
-                    return "signup";
+                    return "/users/signup";
                 }
             } else {
                 model.addAttribute("error", "Passwords do not match");
-                return "signup";
+                return "/users/signup";
             }
         } else {
             model.addAttribute("error", "Username or email already taken");
-            return "signup";
+            return "/users/signup";
         }
 
     }
