@@ -6,6 +6,7 @@
 </head>
 
 <body>
+<div th:replace="partials :: #loading"></div>
 <nav th:replace="partials :: nav"></nav>
 
 <!-- Jumbotron -->
@@ -46,7 +47,7 @@
 				<div class="card-body">
 					<h3 class="card-title display-3"><i class="bi bi-search"></i></h3>
 					<p class="card-text">Find useful code that you implement on your own projects, help others find theirs</p>
-					<a href="/register"><button class="btn btn-outline-dark btn-lg fw-bold my-2">Join The Community</button></a>
+					<a href="/signin"><button class="btn btn-outline-dark btn-lg fw-bold my-2">Join The Community</button></a>
 				</div>
 			</div>
 		</div>
@@ -55,6 +56,7 @@
 			<div class="card mb-3" style="max-width: 18rem; background-color:#FF914D">
 				<div class="card-body">
 					<h3 class="card-title display-3"><i class="bi bi-people-fill"></i></h3>
+
 					<p class="card-text">Click the button below to see the founders of RecyCode and connect with us!</p>
 					<a href="/about"><button class="btn btn-outline-dark btn-lg fw-bold my-2">Meet The Team</button></a>
 				</div>
