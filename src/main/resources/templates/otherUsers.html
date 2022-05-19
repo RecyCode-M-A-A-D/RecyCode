@@ -17,18 +17,6 @@
                             th:text="${user.userName}"></h3>
 
                         <img th:src="${user.avatarImg}" height="300" width="300">
-                        <div class="mt-1 d-flex justify-content-between">
-
-                            <a th:href="@{/editUser}">
-                                <button class="btn btn-secondary">Edit Profile</button>
-                            </a>
-
-                            <a th:href="@{/deleteUser}"
-                               onclick="return confirm('Are you sure you want to delete this profile?')"
-                               class="">
-                                <button class="btn btn-danger">Delete Profile</button>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
