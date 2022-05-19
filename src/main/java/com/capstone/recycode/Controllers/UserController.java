@@ -5,6 +5,7 @@ import com.capstone.recycode.Models.User;
 import com.capstone.recycode.Repositories.PostRepository;
 import com.capstone.recycode.Repositories.PostStatRepository;
 import com.capstone.recycode.Repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,9 @@ public class UserController {
         this.postDao = postDao;
         this.postStatDao = postStatDao;
     }
+
+    @Value("${filestack.api.key}")
+    private String apiKey;
 
     @GetMapping("/signup")
     public String showSignUpForm(Model model) {
@@ -74,6 +78,7 @@ public class UserController {
     public String editUserGet(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
+        model.addAttribute("apiKey", apiKey);
         return "users/editUser";
     }
 
