@@ -5,6 +5,7 @@ import com.capstone.recycode.Repositories.CategoryRepository;
 import com.capstone.recycode.Repositories.PostRepository;
 import com.capstone.recycode.Repositories.PostStatRepository;
 import com.capstone.recycode.Repositories.TagRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +30,10 @@ public class PostController {
         this.tagDao = tagDao;
     }
 
+    @Value("${filestack.api.key}")
+    private String apiKey;
+
+
     @GetMapping("/")
     public String showPosts() {
         return "landingPage";
@@ -49,6 +54,7 @@ public class PostController {
     @GetMapping("/post")
     public String showCreateAPost(Model model) {
         model.addAttribute("post", new Post());
+        model.addAttribute("apiKey", apiKey);
         return "CreateAPost";
     }
 
@@ -95,6 +101,7 @@ public class PostController {
     @GetMapping("/edit/post/{id}")
     public String editPostGet(@PathVariable long id, Model model) {
         model.addAttribute("post", postDao.getById(id));
+        model.addAttribute("apiKey", apiKey);
 //        model.addAttribute("stat", postStatDao.findPostStatById(id));
         return "editPost";
     }
