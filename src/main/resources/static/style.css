@@ -288,6 +288,7 @@ a:hover, a:focus {
     color: #252422;
 }
 
+/*NAVBAR LOGO ANIMATION*/
 .nav-img {
     border-radius: 50%;
     transition: transform .7s ease-in-out;
