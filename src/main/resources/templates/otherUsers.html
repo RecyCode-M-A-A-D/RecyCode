@@ -2,126 +2,145 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials :: head">
     <meta charset="UTF-8">
-    <title>Profile</title>
+    <title>Other User</title>
 </head>
 <body>
 
 <nav th:replace="partials :: nav"></nav>
-<div class="container justify-content-center d-flex" id="userImage">
-    <div class="row align-items-baseline">
-        <div class="col">
-            <img th:src="${user.avatarImg}" height="200" width="200">
-        </div>
-        <div class="col-2">
-            <h5 class="text-center" th:text="${user.userName}"></h5>
-        </div>
-    </div>
-</div>
-
-<div class="container justify-content-center d-flex border-bottom">
+<div class="container-fluid" style="height: 75vh">
     <div class="row">
-        <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-                        type="button" role="tab" aria-controls="pills-home" aria-selected="true">Posts
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
-                        type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Favorites
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact
-                </button>
-            </li>
-        </ul>
-    </div>
+        <div class="col">
+            <div class="container justify-content-center d-flex" id="userImage">
+                <div class="row align-items-baseline">
+                    <div class="col mt-3">
+                        <h3 class="text-center text-uppercase my-3" style="color: #FF914D"
+                            th:text="${user.userName}"></h3>
 
-</div>
-<!--content starts here-->
-<div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-12 col-sm-12 content-card" th:each="postStat : ${postStats}">
-                    <div class="card-big-shadow">
-                        <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
-                            <div class="content">
-                                <h6 class="category">Category</h6>
-                                <a th:href="@{|/post/${postStat.getPost().postId}|}"><h2 class="title mb-1"
-                                                                                         th:text="*{postStat.getPost().title}"></h2>
-                                </a>
-                                <p class="description" th:text="*{postStat.getPost().description}"></p>
-                                <!--                        <code class="" th:text="*{postStat.getPost().content}"></code>-->
-                                <p class="mt-3" th:text="*{postStat.getPost().date_published}"></p>
-                            </div>
-                            <div class="d-flex justify-content-center align-items-center my-2">
-                                <form th:action="@{/profile/addToFavorites}" method="post">
-                                    <button class="btn btn-warning" type="submit">
-                                        <input type="text" th:value="${postStat.getPost().getPostId()}"
-                                               name="post_id_value"
-                                               hidden>
-                                        <i class="bi bi-star"></i>
-                                        Add to Favorites
-                                    </button>
-                                </form>
-                                <form th:action="@{/profile/copyPost}" method="post">
-                                    <button class="btn btn-secodary" type="submit">
-                                        <input type="text" th:value="${postStat.getPost().getPostId()}"
-                                               name="post_id_value"
-                                               hidden>
-                                        <i class="bi bi-star"></i>
-                                        Copy Post
-                                    </button>
-                                </form>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mt-4">
-                                <form th:action="@{/profile/upvote}" method="post">
-                                    <input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value"
-                                           hidden>
-                                    <button type="submit" class="btn btn-secondary" >
-                                <span>
-                                    Likes
-                                    <i class="bi bi-caret-up-square"></i>
-                                    <span th:text="${postStat.getUpVotesCount()}"></span>
-                                </span>
-                                    </button>
-                                </form>
-                                <form th:action="@{/profile/downvote}" method="post">
-                                    <input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value"
-                                           hidden>
-                                    <button type="submit" class="btn btn-secondary" >
-                            <span>Dislikes
-                                <i class="bi bi-caret-down-square"></i>
-                                -<span th:text="${postStat.getDownVotesCount()}"></span>
-                            </span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div> <!-- end card -->
+                        <img th:src="${user.avatarImg}" height="300" width="300">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-        <!--favorites section-->
-        <!--this partials is shared by the OtherUsers.html and Profile.html-->
+        <div class="col-9">
+            <div class="container justify-content-center d-flex border-bottom">
+                <div class="row">
+                    <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-home"
+                                    type="button" role="tab" aria-controls="pills-home" aria-selected="true">Posts
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-profile"
+                                    type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
+                                Favorites
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-contact"
+                                    type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact
+                            </button>
+                        </li>
+                    </ul>
+                </div>
 
-        <div th:replace="partials :: favorites"></div>
+            </div>
+            <!--content starts here-->
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div class="container">
+                        <div class="row">
+                            <div th:each="postStat : ${postStats}">
+                                <div class="card mb-3 mt-3" style="max-width: 50rem;">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img th:src="*{postStat.post.image_url}" class="img-fluid rounded-start"
+                                                 alt="...">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <span th:text="${postStat.getPost().getTitle()}"></span>
+                                                </h5>
+                                                <p class="card-text"><span
+                                                        th:text="${postStat.post.description}"></span></p>
+                                                <p class="card-text"><small class="text-muted">Last updated <span
+                                                        th:text="${postStat.getPost().getDate_published()}"></span></small>
+                                                </p>
+                                            </div>
+                                            <div class="card-footer justify-content-evenly align-items-baseline d-flex">
+                                                <!--upvites-->
+                                                <form th:action="@{/profile/upvote}" method="post">
+                                                    <input type="text" th:value="${postStat.getPost().getPostId()}"
+                                                           name="post_id_value" hidden>
+                                                    <button type="submit" class="btn btn-secondary">
+													<span><i class="bi bi-caret-up-fill"></i> Like
+														<span th:text="${postStat.getUpVotesCount()}"></span>
+													</span>
+                                                    </button>
+                                                </form>
+                                                <!--downvotes-->
+                                                <form th:action="@{/profile/downvote}" method="post">
+                                                    <input type="text" th:value="${postStat.getPost().getPostId()}"
+                                                           name="post_id_value" hidden>
+                                                    <button type="submit" class="btn btn-secondary">
+													<span><i class="bi bi-caret-down-fill"></i> Dislike
+														-<span th:text="${postStat.getDownVotesCount()}"></span>
+													</span>
+                                                    </button>
+                                                </form>
+                                                <!--upvotes and downvotes end-->
 
-        <!--ends favorites sections-->
-    </div>
-    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-        <div class="container">
-            <a th:href="${user.linkedInURL}" class="btn btn-primary my-5"><i class="bi bi-linkedin"></i></a>
-            <a th:href="${user.githubURL}" class="btn btn-dark my-5"><i class="bi bi-github"></i></a>
+                                                <!--favorite button starts here-->
+                                                <form th:action="@{/profile/addToFavorites}" method="post">
+                                                    <button class="btn btn-warning" type="submit">
+                                                        <input type="text" th:value="${postStat.getPost().getPostId()}"
+                                                               name="post_id_value"
+                                                               hidden>
+                                                        <i class="bi bi-star"></i>
+                                                        Add to Favorites
+                                                    </button>
+                                                </form>
+                                                <!--favorites button ends here-->
+
+                                                <form th:action="@{/profile/copyPost}" method="post">
+                                                    <input type="text" th:value="${postStat.getPost().getPostId()}"
+                                                           name="post_id_value"
+                                                           hidden>
+                                                    <button type="submit"
+                                                       class="btn btn-secondary">Make A Copy</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <!--favorites section-->
+                    <!--this partials is shared by the OtherUsers.html and Profile.html-->
+
+                    <div th:replace="partials :: favorites"></div>
+
+                    <!--ends favorites sections-->
+                </div>
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <div class="container">
+                        <a th:href="${user.linkedInURL}" class="btn btn-primary my-5"><i class="bi bi-linkedin"></i></a>
+                        <a th:href="${user.githubURL}" class="btn btn-dark my-5"><i class="bi bi-github"></i></a>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
-
 </div>
+
 
 <footer th:replace="partials :: footer"></footer>
 
