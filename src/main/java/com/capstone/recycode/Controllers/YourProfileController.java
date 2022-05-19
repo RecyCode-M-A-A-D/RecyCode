@@ -61,12 +61,12 @@ public class YourProfileController {
         model.addAttribute("postStats", postStats);
         model.addAttribute("favorites", favoritePosts);
         model.addAttribute("user", user);
-        return "/profile";
+        return "profile";
     }
 
     @PostMapping("/profile/favorites/delete")
     public String removeFromFavorites(@RequestParam(name = "post_id_value") Long id) {
         favDao.removeFromFavoritesByPostId(id);
-        return "redirect:profile";
+        return "redirect:/profile";
     }
 }
