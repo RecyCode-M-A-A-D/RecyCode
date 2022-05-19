@@ -14,6 +14,6 @@ public interface TagRepository extends JpaRepository<Tag, Long> {
     @Query(value = "SELECT * FROM tags WHERE tag = ?1 ", nativeQuery = true)
     List<Tag> findTagsByName(@RequestParam(name = "tag") String tagName);
 
-    @Query(value = "SELECT * FROM tags WHERE tag = ?1 ", nativeQuery = true)
+    @Query(value = "SELECT * FROM tags WHERE tag = ?1 LIMIT 1", nativeQuery = true)
     Tag findTagByName(@RequestParam(name = "tag") String tagName);
 }
