@@ -13,7 +13,7 @@
 <nav th:replace="partials :: nav"></nav>
 
 
-<div class="container">
+<div class="container createpost">
 	<div class="row">
 
 		<div class="col-md-8 col-md-offset-2">
@@ -56,10 +56,39 @@
 					          aria-describedby="description" th:field="*{description}"></textarea>
 				</div>
 
+<!--				<div class="form-group">-->
+<!--					<label for="tag">Tags</label>-->
+<!--					<input type="text" class="form-control" id="tag" name="tag"-->
+<!--					       aria-describedby="tags">-->
+<!--				</div>-->
+
 				<div class="form-group">
-					<label for="tag">Tags</label>
-					<input type="text" class="form-control" id="tag" name="tag"
+					<label for="tag" class="form-label">Tags
+						<br>
+						<span class="text-muted">
+                            separate by commas ", "
+                        </span>
+					</label>
+					<input type="text" class="form-control mb-1" id="tag" name="tag"
 					       aria-describedby="tags">
+					<button class="btn btn-warning btn-sm" id="question">
+						<i class="bi bi-question-circle"></i>
+					</button>
+					<div id="display_pop_up" class="pop">
+                        <span class="text-muted">
+                            Help others by using tags to find your posts.
+                            <br>
+                            Ex:
+                        </span>
+						<span class="text-primary">dynamic-navbar</span><span class="text-secondary">,</span>
+						<span class="text-primary">footer</span><span class="text-secondary">,</span>
+						<span class="text-primary">animations</span><span class="text-secondary">,</span>
+						<span class="text-primary">css-tricks</span><span class="text-secondary">,</span>
+						<span class="text-primary">retro style</span><span class="text-secondary">,</span>
+						<span class="text-primary">javascript tricks</span><span class="text-secondary">,</span>
+						<span class="text-primary">carousel photo</span><span class="text-secondary">,</span>
+
+					</div>
 				</div>
 
 				<label for="category" hidden>Category</label>
@@ -73,7 +102,9 @@
 					</select>
 				</div>
 
-				<div id="inline" style="width:600px;height:500px;padding:20px;"></div>
+<!--				<div id="inline" style="width:600px;height:500px;padding:20px;"></div>-->
+
+				<button class="btn btn-outline-dark btn-lg fw-bold my-5" type="button" id="open" style="max-width: 18rem; background-color:#FF914D">Add a Thumbnail Image</button>
 
 				<input type="text" id="postImage" name="postImage"
 				       th:field="*{image_url}" hidden>
@@ -82,8 +113,8 @@
 <!--				       th:field="${stat.statId}" th:value="${stat.statId}" >-->
 
 				<div class="form-group">
-					<button type="submit" class="btn btn-primary">
-						Edit
+					<button type="submit" class="btn btn-outline-dark btn-lg fw-bold text-light" style="max-width: 18rem; background-color:#5271FF">
+						Submit Changes
 					</button>
 				</div>
 			</form>

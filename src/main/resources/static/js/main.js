@@ -2,8 +2,8 @@ window.addEventListener('DOMContentLoaded', function () {
     const apikey = key;
     const client = filestack.init(apikey);
     const options = {
-        displayMode: 'inline',
-        container: '#inline',
+        // displayMode: 'inline',
+        // container: '#inline',
         maxFiles: 20,
         uploadInBackground: false,
         onUploadDone: (res) => {let imgUrl = res.filesUploaded[0].url;
@@ -11,7 +11,9 @@ window.addEventListener('DOMContentLoaded', function () {
             document.getElementById("postImage").value = imgUrl;
         }
     };
-    client.picker(options).open();
+    const picker = client.picker(options);
+    const openBtn = document.getElementById('open');
+    openBtn.addEventListener('click', () => picker.open());
 
     /*create a post pop up for tags;*/
     document.getElementById("question").addEventListener("click", e => {
