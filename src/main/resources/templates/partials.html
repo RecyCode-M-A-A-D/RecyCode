@@ -19,7 +19,7 @@
             <a class="navbar-brand" href="/"
             ><img
                     id="recycode-logo"
-                    th:src="@{/img/LogoTransparent.png}"
+                    th:src="@{/img/NavbarArrows.png}"
                     alt="RecyCode logo"
                     draggable="false"
                     height="80"
@@ -41,32 +41,36 @@
 
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
-                        <a href="/posts" class="btn btn-outline-light mx-1" id="id1">
+                        <a href="/posts" class="btn btn-outline-light mx-1" id="1">
                             <i class="bi bi-book"></i> Explore</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light mx-1" sec:authorize="isAuthenticated()" href="/post" id="id2">
+                        <a class="btn btn-outline-light mx-1" sec:authorize="isAuthenticated()" href="/post" id="2">
                             <i class="bi bi-plus-circle-dotted"></i> Create</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light mx-1" sec:authorize="isAuthenticated()" href="/profile" id="id3">
+                        <a class="btn btn-outline-light mx-1" sec:authorize="isAuthenticated()" href="/profile" id="3">
                             <i class="bi bi-person-circle"></i> Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light mx-1" href="/about">
+                        <a class="btn btn-outline-light mx-1" href="/about" id="id4">
                             <i class="bi bi-question-circle"></i> About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light mx-1" sec:authorize="isAnonymous()" href="/signin" id="id4">
+
+                        <a class="btn btn-outline-light mx-1" sec:authorize="isAnonymous()" href="/signin" id="id5">
                             <i class="bi bi-box-arrow-in-right"></i> Sign In</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light mx-1" sec:authorize="isAnonymous()" href="/signup" id="id5">
+                        <a class="btn btn-outline-light mx-1" sec:authorize="isAnonymous()" href="/signup" id="id6">
+
                             <i class="bi bi-person-plus-fill"></i> Sign Up</a>
                     </li>
                     <li class="nav-item">
                         <form th:action="@{/logout}" method="post">
-                            <button type="submit" class="btn btn-outline-light mx-1" sec:authorize="isAuthenticated()" id="id6">
+
+                            <button type="submit" class="btn btn-outline-light mx-1" sec:authorize="isAuthenticated()" id="id7">
+
                                 <i class="bi bi-box-arrow-left"></i> Logout
                             </button>
                         </form>
@@ -234,7 +238,7 @@
 <!--search fragment-->
 
 <!--Footer Partial-->
-<footer th:fragment="footer" class="footer">
+<footer th:fragment="footer">
     <div class="container">
         <footer class="d-flex flex-wrap align-items-center justify-content-center py-3 my-4">
             <div class="col-md-4 d-flex justify-content-center align-items-center">
