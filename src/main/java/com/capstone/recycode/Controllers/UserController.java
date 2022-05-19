@@ -1,13 +1,12 @@
 package com.capstone.recycode.Controllers;
 
 import com.capstone.recycode.Models.Post;
-import com.capstone.recycode.Models.PostStat;
 import com.capstone.recycode.Models.User;
 import com.capstone.recycode.Repositories.PostRepository;
 import com.capstone.recycode.Repositories.PostStatRepository;
 import com.capstone.recycode.Repositories.UserRepository;
+import com.capstone.recycode.SecurityConfiguration;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,13 +31,13 @@ public class UserController {
         this.postStatDao = postStatDao;
     }
 
-    @GetMapping("/register")
+    @GetMapping("/signup")
     public String showSignUpForm(Model model) {
         model.addAttribute("user", new User());
-        return "/users/register";
+        return "/users/signup";
     }
 
-    @PostMapping("/register")
+    @PostMapping("/signup")
     public String saveUser(@RequestParam(name = "password") String password,
                            @RequestParam(name = "confirm_password") String confirmPass,
                            Model model,
@@ -56,18 +55,18 @@ public class UserController {
                     /*sets a default image for the user*/
                     user.setAvatarImg("/img/default_avatar.png");
                     userDao.save(user);
-                    return "redirect:/login";
+                    return "redirect:/signin";
                 } else {
                     model.addAttribute("error", "Password must be 8 characters or more");
-                    return "/users/register";
+                    return "/users/signup";
                 }
             } else {
                 model.addAttribute("error", "Passwords do not match");
-                return "/users/register";
+                return "/users/signup";
             }
         } else {
             model.addAttribute("error", "Username or email already taken");
-            return "/users/register";
+            return "/users/signup";
         }
 
     }
@@ -111,7 +110,8 @@ public class UserController {
         }
         postDao.deleteAll(postsToDelete);
         userDao.deleteById(user.getId());
-        return "redirect:/";
+        SecurityContextHolder.clearContext();
+        return "redirect:/signin?signout";
     }
 
 }
