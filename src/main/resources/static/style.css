@@ -350,3 +350,7 @@ a:hover, a:focus {
 button:hover {
     animation: bounce 1s;
 }
+
+.createpost {
+    color: whitesmoke;
+}
