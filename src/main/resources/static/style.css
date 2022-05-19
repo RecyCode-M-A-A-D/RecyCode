@@ -380,7 +380,7 @@ textarea {
         text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
     }
 }
-<<<<<<< HEAD
+
 
 .footer {
     width: 100%;
@@ -388,7 +388,7 @@ textarea {
     height: 10vh;
     padding-top: 25px;
 }
-=======
+
 /**Explore**/
 
 #id1 {
@@ -491,7 +491,6 @@ textarea {
         bottom: 100%;
     }
 }
-
 /**Create**/
 #id2 {
     position: relative;
@@ -594,7 +593,7 @@ textarea {
     }
 }
 
-/**Profile***/
+/**PROFILE***/
 #id3 {
     position: relative;
     display: inline-block;
