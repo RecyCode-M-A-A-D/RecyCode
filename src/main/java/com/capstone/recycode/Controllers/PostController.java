@@ -30,7 +30,12 @@ public class PostController {
     }
 
     @GetMapping("/")
-    public String showPosts(Model model) {
+    public String showPosts() {
+        return "landingPage";
+    }
+
+    @GetMapping("/posts")
+    public String showPosts(Model model){
         model.addAttribute("post", postDao.findAll());
         return "homePage";
     }
