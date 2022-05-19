@@ -81,7 +81,8 @@
 										</div>
 									</div>
 
-									<div id="inline" style="width:400px;height:500px;padding:20px;"></div>
+<!--									<div id="inline" style="width:400px;height:500px;padding:20px;"></div>-->
+									<button class="btn btn-outline-dark btn-lg fw-bold m-3 mb-5" type="button" id="open" onclick="upload()" style="max-width: 18rem; background-color:#FF914D">Add a Profile Image</button>
 									<input type="text" id="postImage" name="postImage"
 									       th:field="*{avatarImg}" hidden>
 
@@ -108,7 +109,7 @@
 									       th:field="*{id}" th:value="*{id}" required hidden/>
 
 									<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-										<button type="submit" value="Submit" class="btn btn-primary btn-lg">Submit
+										<button type="submit" value="Submit" class="btn btn-primary btn-lg">Submit Changes
 										</button>
 									</div>
 
@@ -117,7 +118,7 @@
 							</div>
 							<div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
-								<img th:src="@{/img/RecyCodeLogo.png}"
+								<img th:src="@{img/LogoTransparent.png}"
 								     class="img-fluid" alt="RecyCode Logo">
 
 							</div>
@@ -128,6 +129,25 @@
 		</div>
 	</div>
 	<footer th:replace="partials :: footer"></footer>
+	<script th:inline="javascript">
+        function upload(){
+            const apiKey = [[${apiKey}]]
+            const client = filestack.init(apiKey);
+            const options = {
+                // displayMode: 'inline',
+                // container: '#inline',
+                maxFiles: 20,
+                uploadInBackground: false,
+                onUploadDone: (res) => {let imgUrl = res.filesUploaded[0].url;
+                    console.log(imgUrl);
+                    document.getElementById("postImage").value = imgUrl;
+                }
+            };
+            const picker = client.picker(options);
+            const openBtn = document.getElementById('open');
+            openBtn.addEventListener('click', () => picker.open());
+        }
+	</script>
 	<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 
 </section>
