@@ -29,26 +29,38 @@
 <div class="container-fluid" id="avatar">
 	<div class="row">
 		<div class="col">
-			<img th:src="@{/img/LogoTransparent.png}" height="500" width="500"/>
+			<img th:src="@{/img/LogoTransparent.png}" height="300" width="300"/>
 		</div>
 	</div>
 </div>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col">
-			<h1 class="text-center m-5" style="color: #FF914D">Create - Search - Recycle</h1>
-			<h3 class="text-center m-5" style="color: #A6A6A6">A one-stop shop for code snippets. Are you a beginner with coding? Don't be afraid. We welcome all levels of coders here to utilize and share each others' work. Thought their post was useful? Leave them a like! Liked a post and want to reference back to it without searching for it? Favorite it so you can view it on your profile! Dislike a post? Dislike it and maybe the coder can go back and refactor the code. You can never go wrong with recycling.</h3>
+			<h1 class="text-center m-1" style="color: #FF914D">Create - Search - Recycle</h1>
+			<h3 class="text-center m-3" style="color: #A6A6A6">A one-stop shop for code snippets. Are you a beginner with coding? Don't be afraid. We welcome all levels of coders here to utilize and share each others' work. Thought their post was useful? Leave them a like! Liked a post and want to reference back to it without searching for it? Favorite it so you can view it on your profile! Dislike a post? Dislike it and maybe the coder can go back and refactor the code. You can never go wrong with recycling.</h3>
 		</div>
 	</div>
-	<div class="row d-flex text-center m-5">
-		<div class="col">
-			<a href="/login"><button class="btn" style="background-color:#80D959">Login</button></a>
+	<div class="row d-flex text-center justify-content-evenly align-items-baseline m-2">
+		<div class="col d-flex justify-content-center align-items-center">
+			<div class="card mb-3" style="max-width: 18rem; background-color:#80D959">
+				<div class="card-body">
+					<h3 class="card-title display-3"><i class="bi bi-search"></i></h3>
+					<p class="card-text">Find useful code that you implement on your own projects, help others find theirs</p>
+					<a href="/register"><button class="btn btn-outline-dark btn-lg fw-bold my-2">Join The Comunnity</button></a>
+				</div>
+			</div>
 		</div>
-		<div class="col">
+<!--		<div class="col">
 			<a href="/register"><button class="btn" style="background-color:#FF914D">Register</button></a>
-		</div>
-		<div class="col">
-			<a href="/posts"><button class="btn" style="background-color:#5271FF" >Explore</button></a>
+		</div>-->
+		<div class="col d-flex justify-content-center align-items-center">
+			<div class="card mb-3" style="max-width: 18rem; background-color:#5271FF">
+				<div class="card-body">
+					<h3 class="card-title display-3"><i class="bi bi-book"></i></h3>
+					<p class="card-text">Learn from the community, search code from experienced UI/UX designers</p>
+					<a href="/posts"><button class="btn btn-outline-light btn-lg fw-bold my-2" >Explore</button></a>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
