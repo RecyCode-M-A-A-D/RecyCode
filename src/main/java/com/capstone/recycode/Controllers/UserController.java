@@ -109,7 +109,7 @@ public class UserController {
         }
         postDao.deleteAll(postsToDelete);
         userDao.deleteById(user.getId());
-        return "redirect:/";
+        return "redirect:/signin?signout";
     }
 
 }
