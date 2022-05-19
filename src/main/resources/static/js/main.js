@@ -21,3 +21,14 @@ window.addEventListener('DOMContentLoaded', function () {
         document.getElementById("display_pop_up").className = "pop_up";
     });
 });
+
+
+// loading screen delay
+// let delay = 4000; // delay time in milliseconds
+// let timeoutId = setTimeout(function () {
+//     // alert('Loading . . .');
+//     let loading = document.getElementById("loading");
+//     loading.className = "d-none";
+//     let mainPage = document.getElementById("");
+//     mainPage.className = "d-block fluid-container text-center";
+// }, delay);
