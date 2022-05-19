@@ -352,6 +352,12 @@ button:hover {
     animation: bounce 1s;
 }
 
+
+textarea {
+    width: 300px;
+    height: 150px;
+}
+
 .createpost {
     color: whitesmoke;
 }
@@ -359,4 +365,5 @@ button:hover {
 /*button:hover {*/
 /*    animation: bounce 1s;*/
 /*}*/
+
 
