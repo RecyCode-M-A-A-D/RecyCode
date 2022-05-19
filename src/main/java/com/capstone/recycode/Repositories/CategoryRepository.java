@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {
-    @Query(value = "SELECT * FROM categories WHERE category = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM categories WHERE category = ?1 LIMIT 1", nativeQuery = true)
     Category findByCategoryName(@Param("name")String name);
 }

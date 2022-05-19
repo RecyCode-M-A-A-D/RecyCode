@@ -95,9 +95,22 @@ public class OtherUsersController {
     public String addToFavorites(@RequestParam(name = "post_id_value") Long postId) {
         //save current time, user logged in, and post info into the users favorites
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(postId);
-
         favDao.save(new Favorite(java.time.LocalDate.now().toString(), user, postDao.getById(postId)));
+
+        return "redirect:/profile";
+    }
+
+    @PostMapping("/profile/copyPost")
+    public String copyPost(@RequestParam(name = "post_id_value") Long postId) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        PostStat postStat = postStatDao.findPostStatById(postId);
+        //copy constructor on models
+        Post post = new Post(postStat.getPost());
+
+        post.setUser(user);
+        postDao.save(post);
+
+        postStatDao.save(new PostStat(0,0, post));
 
         return "redirect:/profile";
     }

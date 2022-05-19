@@ -75,14 +75,13 @@ public class Post {
     }
 
     public Post(Post copy) {
-        postId = copy.postId;
-        title = copy.title;
-        html = copy.html;
-        css = copy.css;
-        js = copy.js;
-        description = copy.description;
-        date_published = copy.date_published;
-        image_url = copy.image_url;
+        this.title = copy.title;
+        this.html = copy.html;
+        this.css = copy.css;
+        this.js = copy.js;
+        this.description = copy.description;
+        this.date_published = copy.date_published;
+        this.image_url = copy.image_url;
     }
 
     public long getPostId() {
