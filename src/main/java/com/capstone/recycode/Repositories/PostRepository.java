@@ -27,7 +27,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     @Transactional
     @Modifying(clearAutomatically = true, flushAutomatically = true)
-    @Query(value = "UPDATE posts SET title = ?1, content = ?2 , description = ?3, date_published = ?4 WHERE post_id  = ?5", nativeQuery = true)
+    @Query(value = "UPDATE posts SET title = ?1, content = ?2 , description = ?3, date_published = ?4 WHERE post_id  = ?5 LIMIT 1", nativeQuery = true)
     void updatePost(@Param("title") String title,
                      @Param("content") String content,
                      @Param("description") String description,
@@ -37,7 +37,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     /*overloaded update Post with img*/
     @Transactional
     @Modifying(clearAutomatically = true, flushAutomatically = true)
-    @Query(value = "UPDATE posts SET title = ?1, content = ?2 , description = ?3, date_published = ?4, image_url = ?5 WHERE post_id  = ?6", nativeQuery = true)
+    @Query(value = "UPDATE posts SET title = ?1, content = ?2 , description = ?3, date_published = ?4, image_url = ?5 WHERE post_id  = ?6 LIMIT 1", nativeQuery = true)
     void updatePost(@Param("title") String title,
                     @Param("content") String content,
                     @Param("description") String description,

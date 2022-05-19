@@ -15,6 +15,6 @@ public interface FavoritesRepository extends JpaRepository<Favorite, Long> {
 
     @Transactional
     @Modifying(clearAutomatically = true, flushAutomatically = true)
-    @Query(value = "DELETE FROM favorites WHERE post_post_id = ?1", nativeQuery = true)
+    @Query(value = "DELETE FROM favorites WHERE post_post_id = ?1 LIMIT 1", nativeQuery = true)
     void removeFromFavoritesByPostId(@Param("post_post_id") Long postId);
 }
