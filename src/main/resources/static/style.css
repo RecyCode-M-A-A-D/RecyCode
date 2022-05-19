@@ -290,6 +290,11 @@ a:hover, a:focus {
 
 .nav-img {
     border-radius: 50%;
+    transition: transform .7s ease-in-out;
+}
+
+.nav-img:hover{
+    transform: rotate(360deg);
 }
 
 /*navbar*/
