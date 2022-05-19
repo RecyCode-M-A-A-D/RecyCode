@@ -5,6 +5,7 @@ import com.capstone.recycode.Models.User;
 import com.capstone.recycode.Repositories.PostRepository;
 import com.capstone.recycode.Repositories.PostStatRepository;
 import com.capstone.recycode.Repositories.UserRepository;
+import com.capstone.recycode.SecurityConfiguration;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -109,6 +110,7 @@ public class UserController {
         }
         postDao.deleteAll(postsToDelete);
         userDao.deleteById(user.getId());
+        SecurityContextHolder.clearContext();
         return "redirect:/signin?signout";
     }
 
