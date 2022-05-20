@@ -18,4 +18,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = "SELECT * FROM users WHERE user_name LIKE %?1%", nativeQuery = true)
     List<User> findSimilarUsersByName(@Param("user_name") String username);
 
+    @Query(value = "SELECT * FROM users WHERE id > ?1 LIMIT 10", nativeQuery = true)
+    List<User> findNewUsers(@Param("random") Long random);
+
 }

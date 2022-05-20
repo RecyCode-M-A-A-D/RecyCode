@@ -4,20 +4,20 @@
 	<meta charset="UTF-8">
 	<title>Profile</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
 <nav th:replace="partials :: nav"></nav>
-<div class="container-fluid" style="height: 75vh">
+<div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-3 col-md-12 mb-5">
 			<div class="container justify-content-center d-flex" id="userImage">
 				<div class="row align-items-baseline">
 					<div class="col mt-3">
 						<div class="justify-content-evenly align-items-baseline d-flex">
-							<h3 class="text-center text-uppercase my-3" style="color: #FF914D"
+							<h3 class="text-center text-uppercase my-3 display-4" style="color: #FF914D"
 							    th:text="${user.userName}"></h3>
-							<a th:href="${user.linkedInURL}" class="btn btn-primary my-5"><i class="bi bi-linkedin"></i></a>
-							<a th:href="${user.githubURL}" class="btn btn-dark my-5"><i class="bi bi-github"></i></a>
+<!--							<a th:href="${user.linkedInURL}" class="btn btn-primary my-5"><i class="bi bi-linkedin"></i></a>-->
+<!--							<a th:href="${user.githubURL}" class="btn btn-dark my-5"><i class="bi bi-github"></i></a>-->
 						</div>
 
 						<img th:src="${user.avatarImg}" height="300" width="300">
@@ -169,7 +169,7 @@
 </div>
 
 
-<footer th:replace="partials :: footer"></footer>
+<footer th:replace="partials :: footer" class="mt-auto"></footer>
 
 </body>
 </html>

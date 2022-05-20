@@ -1,10 +1,7 @@
 package com.capstone.recycode.Controllers;
 
 import com.capstone.recycode.Models.*;
-import com.capstone.recycode.Repositories.CategoryRepository;
-import com.capstone.recycode.Repositories.PostRepository;
-import com.capstone.recycode.Repositories.PostStatRepository;
-import com.capstone.recycode.Repositories.TagRepository;
+import com.capstone.recycode.Repositories.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -21,13 +18,16 @@ public class PostController {
     private CategoryRepository catDao;
     private PostStatRepository postStatDao;
     private TagRepository tagDao;
+    private UserRepository userDao;
 
     private PostController(PostRepository postDao, CategoryRepository catDao,
-                           PostStatRepository postStatDao, TagRepository tagDao) {
+                           PostStatRepository postStatDao, TagRepository tagDao,
+                           UserRepository userDao) {
         this.postDao = postDao;
         this.catDao = catDao;
         this.postStatDao = postStatDao;
         this.tagDao = tagDao;
+        this.userDao = userDao;
     }
 
     @Value("${filestack.api.key}")
@@ -41,7 +41,15 @@ public class PostController {
 
     @GetMapping("/posts")
     public String showPosts(Model model){
-        model.addAttribute("post", postDao.findAll());
+        int max = userDao.findAll().size();
+        if(max < 10) {
+            model.addAttribute("users", userDao.findAll());
+        } else {
+            Long random = (long) ((Math.random() * (max - 1)) + 1);
+            model.addAttribute("users", userDao.findNewUsers(random));
+        }
+        model.addAttribute("postStats", postStatDao.findAll());
+
         return "homePage";
     }
 
