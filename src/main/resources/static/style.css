@@ -260,8 +260,6 @@ a:hover, a:focus {
         flex-direction: row;
         justify-content: center;
     }
-
-
 }
 
 /*create a post pop up*/
@@ -397,17 +395,12 @@ textarea {
 }
 
 /**Explore**/
-
 #id1 {
-    position: relative;
-    display: inline-block;
-    padding: 25px 30px;
-    margin: 40px 0;
+    padding: 20px 20px;
     color: #03e9f4;
     text-decoration: none;
     text-transform: uppercase;
     transition: 0.5s;
-    letter-spacing: 4px;
     overflow: hidden;
 }
 #id1:hover {
@@ -500,15 +493,11 @@ textarea {
 }
 /**Create**/
 #id2 {
-    position: relative;
-    display: inline-block;
-    padding: 25px 30px;
-    margin: 40px 0;
+    padding: 20px 20px;
     color: #03e9f4;
     text-decoration: none;
     text-transform: uppercase;
     transition: 0.5s;
-    letter-spacing: 4px;
     overflow: hidden;
 }
 #id2:hover {
@@ -602,10 +591,7 @@ textarea {
 
 /**PROFILE***/
 #id3 {
-    position: relative;
-    display: inline-block;
-    padding: 25px 30px;
-    margin: 40px 0;
+    padding: 20px 20px;
     color: #03e9f4;
     text-decoration: none;
     text-transform: uppercase;
@@ -704,10 +690,7 @@ textarea {
 
 /**About Us**/
 #id4 {
-    position: relative;
-    display: inline-block;
-    padding: 25px 30px;
-    margin: 40px 0;
+    padding: 20px 20px;
     color: #03e9f4;
     text-decoration: none;
     text-transform: uppercase;
@@ -807,10 +790,7 @@ textarea {
 
 /**Sign-In**/
 #id5 {
-    position: relative;
-    display: inline-block;
-    padding: 25px 30px;
-    margin: 40px 0;
+    padding: 20px 20px;
     color: #03e9f4;
     text-decoration: none;
     text-transform: uppercase;
@@ -909,10 +889,7 @@ textarea {
 
 /**Sign-Up**/
 #id6 {
-    position: relative;
-    display: inline-block;
-    padding: 25px 30px;
-    margin: 40px 0;
+    padding: 20px 20px;
     color: #03e9f4;
     text-decoration: none;
     text-transform: uppercase;
@@ -1011,10 +988,7 @@ textarea {
 
 /**Log Out**/
 #id7 {
-    position: relative;
-    display: inline-block;
-    padding: 25px 30px;
-    margin: 40px 0;
+    padding: 20px 20px;
     color: #03e9f4;
     text-decoration: none;
     text-transform: uppercase;
@@ -1138,3 +1112,5 @@ textarea {
 .search_button:hover {
     background-color: hsl(0, 0%, 85%);
 }
+
+

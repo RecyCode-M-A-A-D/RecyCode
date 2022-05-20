@@ -1007,7 +1007,6 @@ VALUES (1, 1),
 (5, 1);
 
 
-
 INSERT INTO post_stats (down_votes_count, up_votes_count, post_post_id )
 VALUES (0,0,1),
 (0,0,2),
