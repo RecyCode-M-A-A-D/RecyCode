@@ -48,6 +48,7 @@ public class PostController {
     @GetMapping("/post/{id}")
     public String showSinglePost(@PathVariable long id, Model model) {
         model.addAttribute("post", postDao.getById(id));
+        model.addAttribute("postStats", postStatDao.findPostStatById(id));
         return "singlePost";
     }
 
