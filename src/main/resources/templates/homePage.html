@@ -62,7 +62,7 @@
 						<div class="col-md-4">
 							<a th:href="@{|/post/${postStat.getPost().postId}|}">
 								<img th:src="*{postStat.post.image_url}" class="img-fluid rounded-start"
-								     alt="...">
+								     alt="..." style="width: 15rem; height: 15rem">
 							</a>
 						</div>
 						<div class="col-md-8">
@@ -78,7 +78,7 @@
 										th:text="${postStat.getPost().getDate_published()}"></span></small>
 								</p>
 							</div>
-							<div class="card-footer justify-content-evenly align-items-baseline d-flex">
+							<div class="card-footer justify-content-evenly align-items-baseline d-flex mt-5">
 								<!--upvites-->
 								<form th:action="@{/profile/upvote}" method="post">
 									<input type="text" th:value="${postStat.getPost().getPostId()}"
@@ -103,7 +103,7 @@
 
 								<!--favorite button starts here-->
 								<form th:action="@{/profile/addToFavorites}" method="post">
-									<button class="btn btn-warning" type="submit">
+									<button class="btn" style="background-color: #FF914D" type="submit">
 										<input type="text" th:value="${postStat.getPost().getPostId()}"
 										       name="post_id_value"
 										       hidden>
