@@ -79,7 +79,9 @@
 									<div class="col-md-8">
 										<div class="card-body">
 											<h2 class="card-title text-center">
-												<span th:text="*{post.title}"></span>
+												<a th:href="@{|/post/${post.postId}|}"
+												   class="text-decoration-none stretched-link text-dark">
+													<span th:text="*{post.title}"></span></a>
 											</h2>
 											<p class="card-text text center mt-5"><span
 													th:text="${post.description}"></span></p>
@@ -161,7 +163,9 @@
 										<div class="col-md-8">
 											<div class="card-body">
 												<h2 class="card-title text-center">
-													<span th:text="*{post.title}"></span>
+													<a th:href="@{|/post/${post.postId}|}"
+													   class="text-decoration-none stretched-link text-dark">
+														<span th:text="*{post.title}"></span></a>
 												</h2>
 												<p class="card-text text center mt-5"><span
 														th:text="${post.description}"></span></p>
@@ -246,7 +250,9 @@
 										<div class="col-md-8">
 											<div class="card-body">
 												<h2 class="card-title text-center">
-													<span th:text="*{post.title}"></span>
+													<a th:href="@{|/post/${post.postId}|}"
+													   class="text-decoration-none stretched-link text-dark">
+														<span th:text="*{post.title}"></span></a>
 												</h2>
 												<p class="card-text text center mt-5"><span
 														th:text="${post.description}"></span></p>
