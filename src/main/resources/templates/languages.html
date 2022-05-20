@@ -7,6 +7,7 @@
 <body>
 <nav th:replace="partials :: nav"></nav>
 <div class="container">
+    <h1 class="title text-center mb-5 display-1" style="color: #FF914D">Search Results</h1>
 <!--    <form th:action="@{/languages/search}" method="Post">-->
 <!--        <label for="cats">Filter By</label>-->
 <!--        <select aria-label="category selection"-->
@@ -34,22 +35,22 @@
     <!--we could either style tihs page to show search results or just put this fragment somewhere else-->
     <form th:action="@{/search/results}">
         <div th:fragment="search">
-            <div th:unless="${searchedUsers.isEmpty()}" class="card">
+            <div th:unless="${searchedUsers.isEmpty()}" class="card bg-secondary">
                 <div class="card-body">
-                    <h5 class="display-5">Users</h5>
+                    <h5 class="display-5 m-3" style="color: #FF914D">Users</h5>
                     <div th:each="user : ${searchedUsers}">
-                        <div class="card mb-3" style="max-width: 540px; background-color: #212529">
+                        <div class="card mb-3 w-50" style="background-color: #212529">
                             <div class="row g-0">
                                 <div class="col-md-4">
                                     <img th:src="${user.avatarImg}" class="img-fluid rounded-start" alt="...">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title">
-                                            <a th:href="@{|/profile/${user.userName}|}">
-                                                <span th:text="${user.userName}"></span>
+                                        <h1 class="card-body">
+                                            <a th:href="@{|/profile/${user.userName}|}" class="text-decoration-none stretched-link">
+                                                <span th:text="${user.userName}" class="text-center text-uppercase text-decoration-none" style="color: #FF914D"></span>
                                             </a>
-                                        </h5>
+                                        </h1>
                                         <p class="card-text"><span th:text="${user.githubURL}"></span></p>
                                         <p class="card-text"><span th:text="${user.linkedInURL}"></span></p>
                                     </div>
@@ -93,8 +94,8 @@
             </div>
 
             <!--description search-->
-            <div th:unless="${searchedDescription.isEmpty()}" class="card">
-                <h5 class="display-5">Matches Description</h5>
+            <div th:unless="${searchedDescription.isEmpty()}" class="card bg-secondary">
+                <h5 class="display-5 m-3" style="color: #FF914D">Matches Description</h5>
                 <div class="card-body">
                     <div class="container bootstrap snippets bootdeys">
                         <div class="row">
@@ -127,8 +128,8 @@
             <!--ends here-->
 
             <!--tag search-->
-            <div th:unless="${searchedTags.isEmpty()}" class="card">
-                <h5 class="display-5">Matches Tags</h5>
+            <div th:unless="${searchedTags.isEmpty()}" class="card bg-secondary">
+                <h5 class="display-5 m-3" style="color: #FF914D">Matches Tags</h5>
                 <div class="card-body">
                     <div class="container">
                         <div class="row">
