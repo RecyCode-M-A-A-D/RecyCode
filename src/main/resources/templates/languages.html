@@ -1,188 +1,343 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials :: head">
-    <meta charset="UTF-8">
-    <title>Languages</title>
+	<meta charset="UTF-8">
+	<title>Languages</title>
 </head>
 <body>
 <nav th:replace="partials :: nav"></nav>
 <div class="container">
-    <h1 class="title text-center mb-5 display-1" style="color: #FF914D">Search Results</h1>
-<!--    <form th:action="@{/languages/search}" method="Post">-->
-<!--        <label for="cats">Filter By</label>-->
-<!--        <select aria-label="category selection"-->
-<!--                class="form-select form-select-lg mb-3"-->
-<!--                name="category"-->
-<!--                id="cats">-->
-<!--            <option value="HTML">HTML</option>-->
-<!--            <option value="CSS">CSS</option>-->
-<!--            <option value="JavaScript">JS</option>-->
-<!--        </select>-->
-<!--        <input type="submit">-->
-<!--    </form>-->
+	<h1 class="title text-center mb-5 display-1" style="color: #FF914D">Search Results</h1>
+	<!--    <form th:action="@{/languages/search}" method="Post">-->
+	<!--        <label for="cats">Filter By</label>-->
+	<!--        <select aria-label="category selection"-->
+	<!--                class="form-select form-select-lg mb-3"-->
+	<!--                name="category"-->
+	<!--                id="cats">-->
+	<!--            <option value="HTML">HTML</option>-->
+	<!--            <option value="CSS">CSS</option>-->
+	<!--            <option value="JavaScript">JS</option>-->
+	<!--        </select>-->
+	<!--        <input type="submit">-->
+	<!--    </form>-->
 
-<!--    <div th:if="${posts != null}">-->
-<!--        <span th:text="${Languages.category}"></span>-->
-<!--        <span th:each="post : ${posts}">-->
-<!--        <span th:text="${post.title}"></span>-->
-<!--            &lt;!&ndash;        <span th:text="${post.content}"></span>&ndash;&gt;-->
-<!--        <span th:text="${post.description}"></span>-->
-<!--        <span th:text="${post.date_published}"></span>-->
-<!--    </span>-->
-<!--    </div>-->
+	<!--    <div th:if="${posts != null}">-->
+	<!--        <span th:text="${Languages.category}"></span>-->
+	<!--        <span th:each="post : ${posts}">-->
+	<!--        <span th:text="${post.title}"></span>-->
+	<!--            &lt;!&ndash;        <span th:text="${post.content}"></span>&ndash;&gt;-->
+	<!--        <span th:text="${post.description}"></span>-->
+	<!--        <span th:text="${post.date_published}"></span>-->
+	<!--    </span>-->
+	<!--    </div>-->
 
 
-    <!--we could either style tihs page to show search results or just put this fragment somewhere else-->
-    <form th:action="@{/search/results}">
-        <div th:fragment="search">
-            <div th:unless="${searchedUsers.isEmpty()}" class="card bg-secondary">
-                <div class="card-body">
-                    <h5 class="display-5 m-3" style="color: #FF914D">Users</h5>
-                    <div th:each="user : ${searchedUsers}">
-                        <div class="card mb-3 w-50" style="background-color: #212529">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img th:src="${user.avatarImg}" class="img-fluid rounded-start" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h1 class="card-body">
-                                            <a th:href="@{|/profile/${user.userName}|}" class="text-decoration-none stretched-link">
-                                                <span th:text="${user.userName}" class="text-center text-uppercase text-decoration-none" style="color: #FF914D"></span>
-                                            </a>
-                                        </h1>
-                                        <p class="card-text"><span th:text="${user.githubURL}"></span></p>
-                                        <p class="card-text"><span th:text="${user.linkedInURL}"></span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+	<!--we could either style tihs page to show search results or just put this fragment somewhere else-->
+	<form th:action="@{/search/results}">
+		<div th:fragment="search">
+			<div th:unless="${searchedUsers.isEmpty()}" class="card bg-secondary">
+				<div class="card-body">
+					<h5 class="display-5 m-3" style="color: #FF914D">Users</h5>
+					<div th:each="user : ${searchedUsers}">
+						<div class="card mb-3 w-50" style="background-color: #212529">
+							<div class="row g-0">
+								<div class="col-md-4">
+									<img th:src="${user.avatarImg}" class="img-fluid rounded-start" alt="...">
+								</div>
+								<div class="col-md-8">
+									<div class="card-body">
+										<h1 class="card-body">
+											<a th:href="@{|/profile/${user.userName}|}"
+											   class="text-decoration-none stretched-link">
+												<span th:text="${user.userName}"
+												      class="text-center text-uppercase text-decoration-none"
+												      style="color: #FF914D"></span>
+											</a>
+										</h1>
+										<p class="card-text"><span th:text="${user.githubURL}"></span></p>
+										<p class="card-text"><span th:text="${user.linkedInURL}"></span></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-            searched section
-            <div th:unless="${searchedPosts.isEmpty()}" class="card bg-secondary">
-                <h5 class="display-5 m-3" style="color: #FF914D">Code Snippets</h5>
-                <div class="card-body">
-                    <div class="container bootstrap snippets bootdeys">
-                        <div class="row">
-                            <div class="col-md-4 col-sm-6 content-card" th:each="post : ${searchedPosts}">
-                                <div class="card-big-shadow">
-                                    <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
-                                        <div class="content">
-                                            <h6 class="category">Category</h6>
-                                            <a th:href="@{|/post/${post.getPostId()}|}"><h2 class="title mb-1" th:text="*{post.title}"></h2></a>						<p class="description" th:text="*{post.description}"></p>
-                                            <p class="description" th:text="*{post.description}"></p>
-                                            <!--                        <code class="" th:text="*{postStat.getPost().content}"></code>-->
-                                            <p class="mt-3" th:text="*{post.date_published}"></p>
-                                        </div>
+			searched section
+			<div th:unless="${searchedPosts.isEmpty()}" class="card bg-secondary">
+				<h5 class="display-5 m-3" style="color: #FF914D">Code Snippets</h5>
+				<div class="card-body">
+					<div class="container bootstrap snippets bootdeys">
+						<div class="row">
+							<div class="card mb-3 mt-3" style="max-width: 60rem;" th:each="post : ${searchedPosts}">
+								<div class="row g-0">
+									<div class="col-md-4">
+										<img th:src="*{post.image_url}" class="img-fluid rounded-start"
+										     alt="...">
+									</div>
+									<div class="col-md-8">
+										<div class="card-body">
+											<h2 class="card-title text-center">
+												<span th:text="*{post.title}"></span>
+											</h2>
+											<p class="card-text text center mt-5"><span
+													th:text="${post.description}"></span></p>
+											<p class="card-text mt-5"><small class="text-muted">Last updated <span
+													th:text="${post.date_published}"></span></small>
+											</p>
+										</div>
+<!--										<div class="card-footer justify-content-evenly align-items-baseline d-flex">-->
+<!--											&lt;!&ndash;upvites&ndash;&gt;-->
+<!--											<form th:action="@{/profile/upvote}" method="post">-->
+<!--												<input type="text" th:value="${post.postId}"-->
+<!--												       name="post_id_value" hidden>-->
+<!--												<button type="submit" class="btn btn-secondary">-->
+<!--													<span><i class="bi bi-caret-up-fill"></i> Like-->
+<!--														<span th:text="${postStat.getUpVotesCount()}"></span>-->
+<!--													</span>-->
+<!--												</button>-->
+<!--											</form>-->
+<!--											&lt;!&ndash;downvotes&ndash;&gt;-->
+<!--											<form th:action="@{/profile/downvote}" method="post">-->
+<!--												<input type="text" th:value="${postStat.getPost().getPostId()}"-->
+<!--												       name="post_id_value" hidden>-->
+<!--												<button type="submit" class="btn btn-secondary">-->
+<!--													<span><i class="bi bi-caret-down-fill"></i> Dislike-->
+<!--														-<span th:text="${postStat.getDownVotesCount()}"></span>-->
+<!--													</span>-->
+<!--												</button>-->
+<!--											</form>-->
+<!--											&lt;!&ndash;upvotes and downvotes end&ndash;&gt;-->
 
-                                        <form th:action="@{/profile/addToFavorites}" method="post">
-                                            <button class="btn btn-warning" type="submit">
-                                                <input type="text" th:value="${post.getPostId()}" name="post_id_value" hidden>
-                                                <i class="bi bi-star"></i>
-                                                Add to Favorites
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div> <!-- end card -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!--											&lt;!&ndash;favorite button starts here&ndash;&gt;-->
+<!--											<form th:action="@{/profile/addToFavorites}" method="post">-->
+<!--												<button class="btn" style="background-color: #FF914D" type="submit">-->
+<!--													<input type="text" th:value="${postStat.getPost().getPostId()}"-->
+<!--													       name="post_id_value"-->
+<!--													       hidden>-->
+<!--													<i class="bi bi-star"></i>-->
+<!--													Add to Favorites-->
+<!--												</button>-->
+<!--											</form>-->
+<!--											&lt;!&ndash;favorites button ends here&ndash;&gt;-->
 
-            <!--description search-->
-            <div th:unless="${searchedDescription.isEmpty()}" class="card bg-secondary">
-                <h5 class="display-5 m-3" style="color: #FF914D">Matches Description</h5>
-                <div class="card-body">
-                    <div class="container bootstrap snippets bootdeys">
-                        <div class="row">
-                            <div class="col-md-4 col-sm-6 content-card" th:each="post : ${searchedDescription}">
-                                <div class="card-big-shadow">
-                                    <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
-                                        <div class="content">
-                                            <h6 class="category">Category</h6>
-                                            <a th:href="@{|/post/${post.getPostId()}|}"><h2 class="title mb-1" th:text="*{post.title}"></h2></a>						<p class="description" th:text="*{post.description}"></p>
-                                            <p class="description" th:text="*{post.description}"></p>
-                                            <!--                        <code class="" th:text="*{postStat.getPost().content}"></code>-->
-                                            <p class="mt-3" th:text="*{post.date_published}"></p>
-                                        </div>
+<!--											<form th:action="@{|/edit/post/*{postStat.post.getPostId()}|}"-->
+<!--											      method="get">-->
+<!--												<button class="btn" type="submit" style="background-color: #80D959">-->
+<!--													<input type="text" th:value="${postStat.getPost().getPostId()}"-->
+<!--													       name="post_id_value"-->
+<!--													       hidden>-->
+<!--													Edit Post-->
+<!--												</button>-->
+<!--											</form>-->
 
-                                        <form th:action="@{/profile/addToFavorites}" method="post">
-                                            <button class="btn btn-warning" type="submit">
-                                                <input type="text" th:value="${post.getPostId()}" name="post_id_value" hidden>
-                                                <i class="bi bi-star"></i>
-                                                Add to Favorites
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div> <!-- end card -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!--											<div class="d-flex justify-content-center align-items-center my-2">-->
+<!--												<a th:href="@{|/posts/*{postStat.post.getPostId()}/delete|}"-->
+<!--												   onclick="return confirm('Are you sure you want to delete this item?')"-->
+<!--												   class="btn btn-danger">Delete</a>-->
+<!--											</div>-->
+<!--										</div>-->
+									</div>
+								</div>
+								<!-- end card -->
+							</div>
+						</div>
+					</div>
+				</div>
 
-            <!--ends here-->
+				<!--description search-->
+				<div th:unless="${searchedDescription.isEmpty()}" class="card bg-secondary">
+					<h5 class="display-5 m-3" style="color: #FF914D">Matches Description</h5>
+					<div class="card-body">
+						<div class="container bootstrap snippets bootdeys">
+							<div class="row">
+								<div class="card mb-3 mt-3" style="max-width: 60rem;" th:each="post : ${searchedDescription}">
+									<div class="row g-0">
+										<div class="col-md-4">
+											<img th:src="*{post.image_url}" class="img-fluid rounded-start"
+											     alt="...">
+										</div>
+										<div class="col-md-8">
+											<div class="card-body">
+												<h2 class="card-title text-center">
+													<span th:text="*{post.title}"></span>
+												</h2>
+												<p class="card-text text center mt-5"><span
+														th:text="${post.description}"></span></p>
+												<p class="card-text mt-5"><small class="text-muted">Last updated <span
+														th:text="${post.date_published}"></span></small>
+												</p>
+											</div>
+											<!--										<div class="card-footer justify-content-evenly align-items-baseline d-flex">-->
+											<!--											&lt;!&ndash;upvites&ndash;&gt;-->
+											<!--											<form th:action="@{/profile/upvote}" method="post">-->
+											<!--												<input type="text" th:value="${post.postId}"-->
+											<!--												       name="post_id_value" hidden>-->
+											<!--												<button type="submit" class="btn btn-secondary">-->
+											<!--													<span><i class="bi bi-caret-up-fill"></i> Like-->
+											<!--														<span th:text="${postStat.getUpVotesCount()}"></span>-->
+											<!--													</span>-->
+											<!--												</button>-->
+											<!--											</form>-->
+											<!--											&lt;!&ndash;downvotes&ndash;&gt;-->
+											<!--											<form th:action="@{/profile/downvote}" method="post">-->
+											<!--												<input type="text" th:value="${postStat.getPost().getPostId()}"-->
+											<!--												       name="post_id_value" hidden>-->
+											<!--												<button type="submit" class="btn btn-secondary">-->
+											<!--													<span><i class="bi bi-caret-down-fill"></i> Dislike-->
+											<!--														-<span th:text="${postStat.getDownVotesCount()}"></span>-->
+											<!--													</span>-->
+											<!--												</button>-->
+											<!--											</form>-->
+											<!--											&lt;!&ndash;upvotes and downvotes end&ndash;&gt;-->
 
-            <!--tag search-->
-            <div th:unless="${searchedTags.isEmpty()}" class="card bg-secondary">
-                <h5 class="display-5 m-3" style="color: #FF914D">Matches Tags</h5>
-                <div class="card-body">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-4 col-sm-6 content-card" th:each="post : ${searchedTags}">
-                                <div class="card-big-shadow">
-                                    <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
-                                        <div class="content">
-                                            <h6 class="category">Category</h6>
-                                            <a th:href="@{|/post/${post.getPostId()}|}"><h2 class="title mb-1" th:text="*{post.title}"></h2></a>						<p class="description" th:text="*{post.description}"></p>
-                                            <p class="description" th:text="*{post.description}"></p>
-                                            <!--                        <code class="" th:text="*{postStat.getPost().content}"></code>-->
-                                            <p class="mt-3" th:text="*{post.date_published}"></p>
-                                        </div>
+											<!--											&lt;!&ndash;favorite button starts here&ndash;&gt;-->
+											<!--											<form th:action="@{/profile/addToFavorites}" method="post">-->
+											<!--												<button class="btn" style="background-color: #FF914D" type="submit">-->
+											<!--													<input type="text" th:value="${postStat.getPost().getPostId()}"-->
+											<!--													       name="post_id_value"-->
+											<!--													       hidden>-->
+											<!--													<i class="bi bi-star"></i>-->
+											<!--													Add to Favorites-->
+											<!--												</button>-->
+											<!--											</form>-->
+											<!--											&lt;!&ndash;favorites button ends here&ndash;&gt;-->
 
-                                        <form th:action="@{/profile/addToFavorites}" method="post">
-                                            <button class="btn btn-warning" type="submit">
-                                                <input type="text" th:value="${post.getPostId()}" name="post_id_value" hidden>
-                                                <i class="bi bi-star"></i>
-                                                Add to Favorites
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div> <!-- end card -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+											<!--											<form th:action="@{|/edit/post/*{postStat.post.getPostId()}|}"-->
+											<!--											      method="get">-->
+											<!--												<button class="btn" type="submit" style="background-color: #80D959">-->
+											<!--													<input type="text" th:value="${postStat.getPost().getPostId()}"-->
+											<!--													       name="post_id_value"-->
+											<!--													       hidden>-->
+											<!--													Edit Post-->
+											<!--												</button>-->
+											<!--											</form>-->
 
-            <!--ends here-->
+											<!--											<div class="d-flex justify-content-center align-items-center my-2">-->
+											<!--												<a th:href="@{|/posts/*{postStat.post.getPostId()}/delete|}"-->
+											<!--												   onclick="return confirm('Are you sure you want to delete this item?')"-->
+											<!--												   class="btn btn-danger">Delete</a>-->
+											<!--											</div>-->
+											<!--										</div>-->
+										</div>
+									</div>
+									<!-- end card -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-<!--            <div th:if="${searchedCategories != null}" class="card">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="display-5">Categories</h5>-->
-<!--                    <div th:each="category : ${searchedCategories}">-->
-<!--                        <span th:text="${category.category}"></span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
+				<!--ends here-->
 
-<!--            <div class="card">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="display-5">Related to: </h5>-->
-<!--                </div>-->
-<!--            </div>-->
-            <!--give error on this page-->
-            <div th:if="${error}">
-                <h4 class="display-4 text-center">No Results</h4>
-                <button onclick="history.back()" class="btn btn-primary">Go Back</button>
-            </div>
+				<!--tag search-->
+				<div th:unless="${searchedTags.isEmpty()}" class="card bg-secondary">
+					<h5 class="display-5 m-3" style="color: #FF914D">Matches Tags</h5>
+					<div class="card-body">
+						<div class="container">
+							<div class="row">
+								<div class="card mb-3 mt-3" style="max-width: 60rem;" th:each="post : ${searchedTags}">
+									<div class="row g-0">
+										<div class="col-md-4">
+											<img th:src="*{post.image_url}" class="img-fluid rounded-start"
+											     alt="...">
+										</div>
+										<div class="col-md-8">
+											<div class="card-body">
+												<h2 class="card-title text-center">
+													<span th:text="*{post.title}"></span>
+												</h2>
+												<p class="card-text text center mt-5"><span
+														th:text="${post.description}"></span></p>
+												<p class="card-text mt-5"><small class="text-muted">Last updated <span
+														th:text="${post.date_published}"></span></small>
+												</p>
+											</div>
+											<!--										<div class="card-footer justify-content-evenly align-items-baseline d-flex">-->
+											<!--											&lt;!&ndash;upvites&ndash;&gt;-->
+											<!--											<form th:action="@{/profile/upvote}" method="post">-->
+											<!--												<input type="text" th:value="${post.postId}"-->
+											<!--												       name="post_id_value" hidden>-->
+											<!--												<button type="submit" class="btn btn-secondary">-->
+											<!--													<span><i class="bi bi-caret-up-fill"></i> Like-->
+											<!--														<span th:text="${postStat.getUpVotesCount()}"></span>-->
+											<!--													</span>-->
+											<!--												</button>-->
+											<!--											</form>-->
+											<!--											&lt;!&ndash;downvotes&ndash;&gt;-->
+											<!--											<form th:action="@{/profile/downvote}" method="post">-->
+											<!--												<input type="text" th:value="${postStat.getPost().getPostId()}"-->
+											<!--												       name="post_id_value" hidden>-->
+											<!--												<button type="submit" class="btn btn-secondary">-->
+											<!--													<span><i class="bi bi-caret-down-fill"></i> Dislike-->
+											<!--														-<span th:text="${postStat.getDownVotesCount()}"></span>-->
+											<!--													</span>-->
+											<!--												</button>-->
+											<!--											</form>-->
+											<!--											&lt;!&ndash;upvotes and downvotes end&ndash;&gt;-->
 
-        </div>
-    </form>
+											<!--											&lt;!&ndash;favorite button starts here&ndash;&gt;-->
+											<!--											<form th:action="@{/profile/addToFavorites}" method="post">-->
+											<!--												<button class="btn" style="background-color: #FF914D" type="submit">-->
+											<!--													<input type="text" th:value="${postStat.getPost().getPostId()}"-->
+											<!--													       name="post_id_value"-->
+											<!--													       hidden>-->
+											<!--													<i class="bi bi-star"></i>-->
+											<!--													Add to Favorites-->
+											<!--												</button>-->
+											<!--											</form>-->
+											<!--											&lt;!&ndash;favorites button ends here&ndash;&gt;-->
+
+											<!--											<form th:action="@{|/edit/post/*{postStat.post.getPostId()}|}"-->
+											<!--											      method="get">-->
+											<!--												<button class="btn" type="submit" style="background-color: #80D959">-->
+											<!--													<input type="text" th:value="${postStat.getPost().getPostId()}"-->
+											<!--													       name="post_id_value"-->
+											<!--													       hidden>-->
+											<!--													Edit Post-->
+											<!--												</button>-->
+											<!--											</form>-->
+
+											<!--											<div class="d-flex justify-content-center align-items-center my-2">-->
+											<!--												<a th:href="@{|/posts/*{postStat.post.getPostId()}/delete|}"-->
+											<!--												   onclick="return confirm('Are you sure you want to delete this item?')"-->
+											<!--												   class="btn btn-danger">Delete</a>-->
+											<!--											</div>-->
+											<!--										</div>-->
+										</div>
+									</div>
+									<!-- end card -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!--ends here-->
+
+				<!--            <div th:if="${searchedCategories != null}" class="card">-->
+				<!--                <div class="card-body">-->
+				<!--                    <h5 class="display-5">Categories</h5>-->
+				<!--                    <div th:each="category : ${searchedCategories}">-->
+				<!--                        <span th:text="${category.category}"></span>-->
+				<!--                    </div>-->
+				<!--                </div>-->
+				<!--            </div>-->
+
+				<!--            <div class="card">-->
+				<!--                <div class="card-body">-->
+				<!--                    <h5 class="display-5">Related to: </h5>-->
+				<!--                </div>-->
+				<!--            </div>-->
+				<!--give error on this page-->
+				<div th:if="${error}">
+					<h4 class="display-4 text-center">No Results</h4>
+					<button onclick="history.back()" class="btn btn-primary">Go Back</button>
+				</div>
+
+			</div>
+	</form>
 </div>
 
 <footer th:replace="partials :: footer"></footer>
