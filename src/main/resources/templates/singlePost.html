@@ -8,6 +8,74 @@
 <body>
 <nav th:replace="partials :: nav"></nav>
 
+<div class="container-fluid d-flex align-items-center justify-content-center">
+	<div class="row d-flex align-items-center justify-content-center">
+		<div th:each="postStat : ${postStats}">
+			<div class="card mb-3 mt-3 d-flex align-items-center justify-content-center" style="max-width: 60rem;">
+				<div class="row g-0 d-flex align-items-center justify-content-center">
+					<div class="col-md-4">
+						<img th:src="*{postStat.post.image_url}" class="img-fluid rounded-start"
+							 alt="...">
+					</div>
+					<div class="col-md-8">
+						<div class="card-body">
+							<h5 class="card-title">
+								<span th:text="${postStat.getPost().getTitle()}"></span>
+							</h5>
+							<p class="card-text"><span
+									th:text="${postStat.post.description}"></span></p>
+							<p class="card-text"><small class="text-muted">Last updated <span
+									th:text="${postStat.getPost().getDate_published()}"></span></small>
+							</p>
+						</div>
+						<div class="mt-5 card-footer justify-content-evenly align-items-baseline d-flex">
+							<!--upvites-->
+							<form th:action="@{/profile/upvote}" method="post">
+								<input type="text" th:value="${postStat.getPost().getPostId()}"
+									   name="post_id_value" hidden>
+								<button type="submit" class="btn btn-secondary">
+													<span><i class="bi bi-caret-up-fill"></i> Like
+														<span th:text="${postStat.getUpVotesCount()}"></span>
+													</span>
+								</button>
+							</form>
+							<!--downvotes-->
+							<form th:action="@{/profile/downvote}" method="post">
+								<input type="text" th:value="${postStat.getPost().getPostId()}"
+									   name="post_id_value" hidden>
+								<button type="submit" class="btn btn-secondary">
+													<span><i class="bi bi-caret-down-fill"></i> Dislike
+														-<span th:text="${postStat.getDownVotesCount()}"></span>
+													</span>
+								</button>
+							</form>
+							<!--upvotes and downvotes end-->
+
+							<!--favorite button starts here-->
+							<form th:action="@{/profile/addToFavorites}" method="post">
+								<button class="btn btn-warning" type="submit">
+									<input type="text" th:value="${postStat.getPost().getPostId()}"
+										   name="post_id_value"
+										   hidden>
+									<i class="bi bi-star"></i>
+									Add to Favorites
+								</button>
+							</form>
+							<!--favorites button ends here-->
+
+							<!--							<div class="d-flex justify-content-center align-items-center my-2">-->
+							<!--								<a th:href="@{|/posts/*{postStat.post.getPostId()}/delete|}"-->
+							<!--								   onclick="return confirm('Are you sure you want to delete this item?')"-->
+							<!--								   class="btn btn-danger">Delete</a>-->
+							<!--							</div>-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div
 		class="codepen"
 		data-prefill
@@ -28,73 +96,7 @@
 </pre>
 </div>
 
-<div class="container-fluid">
-	<div class="row">
-		<div th:each="postStat : ${postStats}">
-			<div class="card mb-3 mt-3" style="max-width: 60rem;">
-				<div class="row g-0">
-					<div class="col-md-4">
-						<img th:src="*{postStat.post.image_url}" class="img-fluid rounded-start"
-						     alt="...">
-					</div>
-					<div class="col-md-8">
-						<div class="card-body">
-							<h5 class="card-title">
-								<span th:text="${postStat.getPost().getTitle()}"></span>
-							</h5>
-							<p class="card-text"><span
-									th:text="${postStat.post.description}"></span></p>
-							<p class="card-text"><small class="text-muted">Last updated <span
-									th:text="${postStat.getPost().getDate_published()}"></span></small>
-							</p>
-						</div>
-						<div class="mt-5 card-footer justify-content-evenly align-items-baseline d-flex">
-							<!--upvites-->
-							<form th:action="@{/profile/upvote}" method="post">
-								<input type="text" th:value="${postStat.getPost().getPostId()}"
-								       name="post_id_value" hidden>
-								<button type="submit" class="btn btn-secondary">
-													<span><i class="bi bi-caret-up-fill"></i> Like
-														<span th:text="${postStat.getUpVotesCount()}"></span>
-													</span>
-								</button>
-							</form>
-							<!--downvotes-->
-							<form th:action="@{/profile/downvote}" method="post">
-								<input type="text" th:value="${postStat.getPost().getPostId()}"
-								       name="post_id_value" hidden>
-								<button type="submit" class="btn btn-secondary">
-													<span><i class="bi bi-caret-down-fill"></i> Dislike
-														-<span th:text="${postStat.getDownVotesCount()}"></span>
-													</span>
-								</button>
-							</form>
-							<!--upvotes and downvotes end-->
 
-							<!--favorite button starts here-->
-							<form th:action="@{/profile/addToFavorites}" method="post">
-								<button class="btn btn-warning" type="submit">
-									<input type="text" th:value="${postStat.getPost().getPostId()}"
-									       name="post_id_value"
-									       hidden>
-									<i class="bi bi-star"></i>
-									Add to Favorites
-								</button>
-							</form>
-							<!--favorites button ends here-->
-
-<!--							<div class="d-flex justify-content-center align-items-center my-2">-->
-<!--								<a th:href="@{|/posts/*{postStat.post.getPostId()}/delete|}"-->
-<!--								   onclick="return confirm('Are you sure you want to delete this item?')"-->
-<!--								   class="btn btn-danger">Delete</a>-->
-<!--							</div>-->
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
 
 
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>

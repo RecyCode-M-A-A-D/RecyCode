@@ -292,11 +292,11 @@ a:hover, a:focus {
 /*NAVBAR LOGO ANIMATION*/
 .nav-img {
     border-radius: 50%;
-    transition: transform .7s ease-in-out;
+    transition: transform 1.4s ease-in-out;
 }
 
 .nav-img:hover{
-    transform: rotate(360deg);
+    transform: rotate(1080deg);
 }
 
 /*navbar*/
