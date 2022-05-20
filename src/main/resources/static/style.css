@@ -313,14 +313,13 @@ a:hover, a:focus {
 
 /*search bar*/
 #search_bar {
-    width: 200%;
+    width: 100%;
 
 }
-@media screen and (max-width: 769px) {
+@media only screen and (min-width: 1440px) {
     #search_bar {
-        width: 100%;
+        width: 200%;
     }
-
 
 }
 
