@@ -117,7 +117,7 @@ public class UserController {
 
         SecurityContextHolder.clearContext();
 
-        return "redirect:/signin/signout";
+        return "redirect:/signin?signout";
     }
 
 }

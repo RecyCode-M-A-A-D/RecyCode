@@ -41,7 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .logout()
-                .logoutSuccessUrl("/signin?logout")
+                .logoutSuccessUrl("/signin?signout")
 
                 .and()
                 .authorizeRequests()
