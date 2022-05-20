@@ -53,7 +53,7 @@
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                     <div class="container">
                         <div class="row">
-                            <div class="card mb-3 mt-3" style="max-width: 50rem;">
+                            <div class="card mb-3 mt-3" th:each="postStat : ${postStats}" style="max-width: 50rem;">
                                 <div class="row g-0">
                                     <div class="col-md-4">
                                         <img th:src="*{postStat.post.image_url}" class="img-fluid rounded-start"
