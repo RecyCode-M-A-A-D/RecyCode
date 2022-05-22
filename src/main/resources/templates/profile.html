@@ -10,8 +10,8 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-3 col-md-12">
-            <div class="card bg-dark border-none position-sticky vh-100 min-vh-100 sticky-top mt-5" >
-                <div class="card-body bg-dark border-none position-sticky vh-100 min-vh-100 sticky-top">
+            <div class="card bg-dark border-none min-vh-100 position-sticky sticky-top mt-5" >
+                <div class="card-body">
                     <div class="container justify-content-center d-flex" id="userImage">
                         <div class="row align-items-baseline">
                             <div class="col mt-3">
@@ -22,7 +22,7 @@
                                     <!--							<a th:href="${user.githubURL}" class="btn btn-dark my-5"><i class="bi bi-github"></i></a>-->
                                 </div>
 
-                                <img th:src="${user.avatarImg}" height="300" width="300">
+                                <img th:src="${user.avatarImg}" class="img-fluid" height="300" width="300">
                                 <div class="mt-1 d-flex justify-content-between">
 
                                     <a th:href="@{/editUser}">
@@ -67,7 +67,7 @@
                     <div class="container">
                         <div class="row">
                             <div th:each="postStat : ${postStats}">
-                                <div class="card mt-3 bg-dark" style="max-width: 60rem;">
+                                <div class="card bg-dark mt-3" style="max-width: 60rem;">
                                     <div class="row g-0">
                                         <div class="col-md-4 justify-content-center d-flex">
                                             <img th:src="*{postStat.post.image_url}" class="img-fluid rounded-start"
@@ -83,7 +83,6 @@
 
                                                 <p class="card-text text-green"><span
                                                         th:text="${postStat.post.description}"></span></p>
-                                                </p>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
