@@ -37,13 +37,11 @@ public class OtherUsersController {
         this.userDao = userDao;
         this.postStatDao = postStatDao;
         this.favDao = favDao;
-
     }
 
     @GetMapping("/profile/{username}")
     public String viewUsersProfile(Model model, @PathVariable String username) {
         User user = userDao.findUserByUserName(username);
-
         model.addAttribute("user", user);
 
         List<Favorite> favorites = favDao.findFavoritesByUserId(user.getId());
@@ -80,15 +78,16 @@ public class OtherUsersController {
         PostStat postStat = postStatDao.findPostStatById(postId);
         postStat.setUpVotesCount(postStat.getUpVotesCount() + 1L);
         postStatDao.updateVotes(postStat.getUpVotesCount(), postStat.getDownVotesCount(), postStat.getPost().getPostId());
-        return "redirect:";
+        return "redirect:/profile/" + postStat.getPost().getUser().getUserName();
     }
 
     @PostMapping("/profile/downvote")
-    public String downVote(@RequestParam(name = "post_id_value") long postId) {
+    public String downVote(@RequestParam(name = "post_id_value") long postId, Model model) {
+        User user = (User) model.getAttribute("user");
         PostStat postStat = postStatDao.findPostStatById(postId);
         postStat.setDownVotesCount(postStat.getDownVotesCount() + 1L);
         postStatDao.updateVotes(postStat.getUpVotesCount(), postStat.getDownVotesCount(), postStat.getPost().getPostId());
-        return "redirect:";
+        return "redirect:/profile/" + postStat.getPost().getUser().getUserName();
     }
 
     @PostMapping("/profile/addToFavorites")
