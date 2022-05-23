@@ -400,6 +400,7 @@ textarea {
     text-decoration: none;
     text-transform: uppercase;
     transition: 0.5s;
+    letter-spacing: 4px;
     overflow: hidden;
 }
 #id1:hover {
@@ -497,6 +498,7 @@ textarea {
     text-decoration: none;
     text-transform: uppercase;
     transition: 0.5s;
+    letter-spacing: 4px;
     overflow: hidden;
 }
 #id2:hover {
