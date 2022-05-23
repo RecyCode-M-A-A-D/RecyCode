@@ -10,24 +10,24 @@
 <nav th:replace="partials :: nav"></nav>
 <th:block th:switch="${error}">
     <div th:case="'Not Found'">
-        <h4 class="display-5 text-center text-danger">Oooops, Page Not Found</h4>
-        <div class="imgcontainer">
+        <h4 class="display-5 text-center" style="color: #FF914D">Oooops, Page Not Found</h4>
+        <div class="imgcontainer my-5">
               <img src="" alt="" id="doggo" height="400px">
         </div>
-        <p class="text-center">We were unable to find the page you are looking for</p>
+        <p class="display-6 text-center" style="color: #FF914D">We were unable to find the page you are looking for</p>
     </div>
     <div th:case="'Forbidden'">
         <h4 class="display-5 text-center text-danger">You don't have permission to view this page.</h4>
-        <p class="text-center">Stop trying to hack us!</p>
+        <p class="text-center" style="color: #FF914D">Stop trying to hack us!</p>
     </div>
     <div th:case="'Default'">
         <h4 class="display-5 text-center text-danger">Something Went Wrong</h4>
-        <p class="text-center">We don't know what happened</p>
+        <p class="text-center" style="color: #FF914D">We don't know what happened</p>
     </div>
 </th:block>
 <div class="row justify-content-center align-items-center">
-    <img th:src="@{/img/RecyCodeLogoTransparent.png}" style="width: 50vh; height: 300px;"
-         class="rounded-circle"/>
+    <img th:src="@{/img/LogoTransparent.png}" style="width: 20rem; height: 20rem;"
+         class="rounded-circle img-fluid"/>
 </div>
 <div class="row">
     <div class="container w-50">
