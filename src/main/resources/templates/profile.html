@@ -70,8 +70,11 @@
                                 <div class="card bg-dark mt-3" style="max-width: 60rem;" th:each="postStat : ${postStats}">
                                     <div class="row g-0">
                                         <div class="col-md-4 justify-content-center d-flex">
+                                            <a th:href="@{|/post/${postStat.getPost().postId}|}">
+
                                             <img th:src="*{postStat.post.image_url}" class="img-fluid rounded-start"
-                                                 alt="post image" style="max-height: 250px; width: auto;">
+                                                 th:alt="${postStat.getPost().getTitle()} + ' ' + thumbnail" style="max-height: 250px; width: auto;">
+                                            </a>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
@@ -97,8 +100,8 @@
                                                 <form th:action="@{/profile/upvote}" method="post">
                                                     <input type="text" th:value="${postStat.getPost().getPostId()}"
                                                            name="post_id_value" hidden>
-                                                    <button type="submit" class="btn btn-secondary">
-													<span><i class="bi bi-caret-up-fill"></i> Like
+                                                    <button type="submit" class="btn btn-primary" disabled>
+													<span><i class="bi bi-hand-thumbs-up-fill"></i> Like
 														<span th:text="${postStat.getUpVotesCount()}"></span>
 													</span>
                                                     </button>
@@ -107,8 +110,8 @@
                                                 <form th:action="@{/profile/downvote}" method="post">
                                                     <input type="text" th:value="${postStat.getPost().getPostId()}"
                                                            name="post_id_value" hidden>
-                                                    <button type="submit" class="btn btn-secondary">
-													<span><i class="bi bi-caret-down-fill"></i> Dislike
+                                                    <button type="submit" class="btn btn-primary" disabled>
+													<span><i class="bi bi-hand-thumbs-down"></i></i> Dislike
 														-<span th:text="${postStat.getDownVotesCount()}"></span>
 													</span>
                                                     </button>
