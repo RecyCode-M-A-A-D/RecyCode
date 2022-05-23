@@ -35,9 +35,11 @@
 	<!--we could either style tihs page to show search results or just put this fragment somewhere else-->
 	<form th:action="@{/search/results}">
 		<div th:fragment="search">
-			<div th:unless="${searchedUsers.isEmpty()}" class="card bg-secondary">
+
+<!--			Searched Users-->
+			<div th:unless="${searchedUsers.isEmpty()}" class="p-2 card bg-dark" style="border: none">
+				<h5 class="display-5 m-3" style="color: #FF914D">Users</h5>
 				<div class="card-body">
-					<h5 class="display-5 m-3" style="color: #FF914D">Users</h5>
 					<div th:each="user : ${searchedUsers}">
 						<div class="card mb-3 w-50" style="background-color: #212529">
 							<div class="row g-0">
@@ -64,8 +66,8 @@
 				</div>
 			</div>
 
-			searched section
-			<div th:unless="${searchedPosts.isEmpty()}" class="card bg-secondary">
+<!--			searched section-->
+			<div th:unless="${searchedPosts.isEmpty()}" class="p-2 card bg-dark" style="border: none">
 				<h5 class="display-5 m-3" style="color: #FF914D">Code Snippets</h5>
 				<div class="card-body">
 					<div class="container bootstrap snippets bootdeys">
@@ -149,7 +151,7 @@
 				</div>
 
 				<!--description search-->
-				<div th:unless="${searchedDescription.isEmpty()}" class="card bg-secondary">
+				<div th:unless="${searchedDescription.isEmpty()}" class="p-2 card bg-dark" style="border: none">
 					<h5 class="display-5 m-3" style="color: #FF914D">Matches Description</h5>
 					<div class="card-body">
 						<div class="container bootstrap snippets bootdeys">
@@ -236,7 +238,7 @@
 				<!--ends here-->
 
 				<!--tag search-->
-				<div th:unless="${searchedTags.isEmpty()}" class="card bg-secondary">
+				<div th:unless="${searchedTags.isEmpty()}" class="p-2 card bg-dark" style="border: none">
 					<h5 class="display-5 m-3" style="color: #FF914D">Matches Tags</h5>
 					<div class="card-body">
 						<div class="container">
