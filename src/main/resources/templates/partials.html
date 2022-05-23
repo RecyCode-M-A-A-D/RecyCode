@@ -158,8 +158,7 @@
 		<form th:action="@{/profile/downvote}" method="post">
 			<input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value" hidden>
 			<button type="submit" class="btn btn-secondary">
-				    <span><i class="bi bi-caret-down-fill"></i> Dislike
-					    <span th:text="${postStat.getDownVotesCount()}"></span>
+				    <span><i class="bi bi-caret-down-fill"></i> Dislike <span th:text="${postStat.getDownVotesCount()}"></span>
 				    </span>
 			</button>
 		</form>
