@@ -60,9 +60,9 @@ public class OtherUsersController {
             favoritePosts.add(favorites.get(i).getPost());
         }
 
-        for (int i = 0; i < favorites.size(); i++) {
-            favoritePosts.add(favorites.get(i).getPost());
-        }
+//        for (int i = 0; i < favorites.size(); i++) {
+//            favoritePosts.add(favorites.get(i).getPost());
+//        }
 
         model.addAttribute("postStats", postStats);
         model.addAttribute("favorites", favoritePosts);
