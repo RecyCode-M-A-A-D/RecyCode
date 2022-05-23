@@ -159,8 +159,50 @@
                     <!--favorites section-->
                     <!--this partials is shared by the OtherUsers.html and Profile.html-->
 
-                    <div th:replace="partials :: favorites"></div>
+<!--                    <div th:replace="partials :: favorites"></div>-->
 
+                    <div class="container">
+                        <div class="row">
+                            <div class="card bg-dark mt-3" style="max-width: 60rem;" th:each="favorite : ${favorites}">
+                                <div class="row g-0">
+                                    <div class="col-md-4 justify-content-center d-flex">
+                                        <a th:href="@{|/post/${favorite.postId}|}">
+                                            <img th:src="*{favorite.image_url}" class="img-fluid rounded-start"
+                                                 th:alt="${favorite.getTitle()}"
+                                                 style="max-height: 250px; width: auto;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <a th:href="@{|/post/${favorite.postId}|}"
+                                               class="text-decoration-none text-orange">
+                                                <h5 class="card-title">
+                                                    <span th:text="${favorite.getTitle()}"></span>
+                                                </h5></a>
+
+                                            <p class="card-text text-green"><span
+                                                    th:text="${favorite.description}"></span></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card-footer d-flex justify-content-between align-items-baseline flex-md-row flex-xl-row flex-column flex-xxl-row">
+                                            <p class="card-text"><small class="text-light">Last updated <span
+                                                    th:text="${favorite.getDate_published()}"></span></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-footer justify-content-evenly align-items-baseline d-flex">
+                                            <form th:action="@{profile/favorites/delete}" method="post"
+                                                  class="d-flex justify-content-center">
+                                                <input type="text" hidden name="post_id_value" th:value="${favorite.postId}">
+                                                <button type="submit" class="btn btn-danger">Remove from Favorites</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!--ends favorites sections-->
                 </div>
                 <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
