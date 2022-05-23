@@ -158,7 +158,8 @@
 		<form th:action="@{/profile/downvote}" method="post">
 			<input type="text" th:value="${postStat.getPost().getPostId()}" name="post_id_value" hidden>
 			<button type="submit" class="btn btn-secondary">
-				    <span><i class="bi bi-caret-down-fill"></i> Dislike <span th:text="${postStat.getDownVotesCount()}"></span>
+				    <span><i class="bi bi-caret-down-fill"></i> Dislike <span
+						    th:text="${postStat.getDownVotesCount()}"></span>
 				    </span>
 			</button>
 		</form>
@@ -176,27 +177,73 @@
 	</div>
 </div>
 
+<!--<div th:fragment="favorites">-->
+<!--	&lt;!&ndash;    <div th:each="favorite : ${favorites}">&ndash;&gt;-->
+<!--	<div class="container">-->
+<!--		<div class="row">-->
+<!--			<div class="card bg-dark mb-3 mt-3" style="max-width: 60rem;" th:each="favorite : ${favorites}">-->
+<!--				<div class="row g-0">-->
+<!--					<div class="col-md-4">-->
+<!--						<img th:src="*{favorite.image_url}" class="img-fluid rounded-start"-->
+<!--						     th:alt="${favorite.getTitle()}">-->
+<!--					</div>-->
+<!--					<div class="col-md-8">-->
+<!--						<div class="card-body">-->
+<!--							<h5 class="card-title text-decoration-none" style="color: #FF914D">-->
+<!--								<span th:text="${favorite.getTitle()}"></span>-->
+<!--							</h5>-->
+<!--							<p class="card-text" style="color: #80D959"><span-->
+<!--									th:text="${favorite.description}"></span></p>-->
+<!--							<p class="card-text"><small class="text-muted">Last Updated <span-->
+<!--									th:text="${favorite.getDate_published()}"></span></small>-->
+<!--							</p>-->
+<!--						</div>-->
+<!--						<div class="card-footer justify-content-evenly align-items-baseline d-flex">-->
+<!--							<form th:action="@{profile/favorites/delete}" method="post"-->
+<!--							      class="d-flex justify-content-center">-->
+<!--								<input type="text" hidden name="post_id_value" th:value="${favorite.postId}">-->
+<!--								<button type="submit" class="btn btn-danger">Remove from Favorites</button>-->
+<!--							</form>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--	&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--</div>-->
+
 <div th:fragment="favorites">
-	<!--    <div th:each="favorite : ${favorites}">-->
 	<div class="container">
 		<div class="row">
-			<div class="card bg-dark mb-3 mt-3" style="max-width: 60rem;" th:each="favorite : ${favorites}">
+			<div class="card bg-dark mt-3" style="max-width: 60rem;" th:each="favorite : ${favorites}">
 				<div class="row g-0">
-					<div class="col-md-4">
-						<img th:src="*{favorite.image_url}" class="img-fluid rounded-start"
-						     th:alt="${favorite.getTitle()}">
+					<div class="col-md-4 justify-content-center d-flex">
+						<a th:href="@{|/post/${favorite.postId}|}">
+							<img th:src="*{favorite.image_url}" class="img-fluid rounded-start"
+							     th:alt="${favorite.getTitle()}"
+							     style="max-height: 250px; width: auto;">
+						</a>
 					</div>
 					<div class="col-md-8">
 						<div class="card-body">
-							<h5 class="card-title text-decoration-none" style="color: #FF914D">
-								<span th:text="${favorite.getTitle()}"></span>
-							</h5>
-							<p class="card-text" style="color: #80D959"><span
+							<a th:href="@{|/post/${favorite.postId}|}"
+							   class="text-decoration-none text-orange">
+								<h5 class="card-title">
+									<span th:text="${favorite.getTitle()}"></span>
+								</h5></a>
+
+							<p class="card-text text-green"><span
 									th:text="${favorite.description}"></span></p>
-							<p class="card-text"><small class="text-muted">Last Updated <span
-									th:text="${favorite.getDate_published()}"></span></small>
-							</p>
 						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="card-footer d-flex justify-content-between align-items-baseline flex-md-row flex-xl-row flex-column flex-xxl-row">
+							<p class="card-text"><small class="text-light">Last updated <span
+									th:text="${favorite.getDate_published()}"></span></small>
+						</div>
+					</div>
+					<div class="col-md-8">
 						<div class="card-footer justify-content-evenly align-items-baseline d-flex">
 							<form th:action="@{profile/favorites/delete}" method="post"
 							      class="d-flex justify-content-center">
@@ -209,50 +256,7 @@
 			</div>
 		</div>
 	</div>
-	<!--    </div>-->
 </div>
-
-<!--<div th:fragment="favorites" class="card bg-dark mt-3" style="max-width: 60rem;" th:each="favorite : ${favorites}">-->
-<!--	<div class="row g-0">-->
-<!--		<div class="col-md-4 justify-content-center d-flex">-->
-<!--			<a th:href="@{|/post/${favorite.postId}|}">-->
-<!--				<img th:src="*{favorite.image_url}" class="img-fluid rounded-start"-->
-<!--					 th:alt="${favorite.getTitle()}"-->
-<!--					 style="max-height: 250px; width: auto;">-->
-<!--			</a>-->
-<!--		</div>-->
-<!--		<div class="col-md-8">-->
-<!--			<div class="card-body">-->
-<!--				<a th:href="@{|/post/${favorite.postId}|}"-->
-<!--				   class="text-decoration-none text-orange">-->
-<!--					<h5 class="card-title">-->
-<!--						<span th:text="${favorite.getTitle()}"></span>-->
-<!--					</h5></a>-->
-
-<!--				<p class="card-text text-green"><span-->
-<!--						th:text="${favorite.description}"></span></p>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--		<div class="col-md-4">-->
-<!--			<div class="card-footer d-flex justify-content-between align-items-baseline flex-md-row flex-xl-row flex-column flex-xxl-row">-->
-<!--				<p class="card-text"><small class="text-light">Last updated <span-->
-<!--						th:text="${favorite.getDate_published()}"></span></small>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--		<div class="col-md-8">-->
-<!--			<div class="card-footer justify-content-evenly align-items-baseline d-flex">-->
-<!--				<form th:action="@{profile/favorites/delete}" method="post"-->
-<!--					  class="d-flex justify-content-center">-->
-<!--					<input type="text" hidden name="post_id_value" th:value="${favorite.postId}">-->
-<!--					<button type="submit" class="btn btn-danger">Remove from Favorites</button>-->
-<!--				</form>-->
-<!--			</div>-->
-<!--		</div>-->
-
-<!--	</div>-->
-<!--	&lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--</div>-->
-
 
 
 <!--favorites fragment-->
