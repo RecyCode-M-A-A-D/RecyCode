@@ -18,46 +18,46 @@
 
         <div class="col-md-12 col-md-offset-2">
 
-            <h1>Create Post</h1>
+            <h1 class="text-center display-3 mt-3" style="color: #FF914D;">Create Post</h1>
 
             <form th:action="@{/post}" method="post" th:object="${post}" id="date_submit">
 
                 <div class="form-group">
-                    <label for="title" class="form-label">Title<span class="require">*</span></label>
+                    <label for="title" class="form-label h4 mt-5" style="color: #80D959">Title<span class="require">*</span></label>
                     <br>
                     <input placeholder="Name Your Post" class="form-control" type="text" id="title" name="title" aria-describedby="title"
                            th:field="*{title}"/>
                 </div>
 
                 <div class="form-group">
-                    <label for="html" class="form-label">HTML</label>
+                    <label for="html" class="form-label h4 mt-4" style="color: #80D959">HTML</label>
                     <br>
                     <textarea placeholder="<Enter HTML Code Here>" class="form-control" id="html" name="html" aria-describedby="html"
                               th:field="*{html}"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="css" class="form-label">CSS</label>
+                    <label for="css" class="form-label h4 mt-4" style="color: #80D959">CSS</label>
                     <br>
                     <textarea placeholder="<Enter CSS Code Here>" class="form-control" id="css" name="css" aria-describedby="css"
                               th:field="*{css}"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="js" class="form-label">JS</label>
+                    <label for="js" class="form-label h4 mt-4" style="color: #80D959">JS</label>
                     <br>
                     <textarea placeholder="<Enter JS Code Here>" class="form-control" id="js" name="js" aria-describedby="js"
                               th:field="*{js}"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="description" class="require">Description</label>
+                    <label for="description" class="require h4 mt-4" style="color: #80D959">Description</label>
                     <textarea placeholder="Describe Your Post . . ." rows="5" class="form-control" id="description" name="description"
                               aria-describedby="description" th:field="*{description}"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="tag" class="form-label">Tags
+                    <label for="tag" class="form-label h4 mt-4" style="color: #80D959">Tags
                         <br>
                         <span class="text-primary">
                             separate by commas ", "
