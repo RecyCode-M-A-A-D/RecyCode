@@ -99,7 +99,7 @@ public class PostController {
         post.setCategories(categories);
 
         if(post.getImage_url().equals("")) {
-            post.setImage_url("/img/RecyCodeLogoTransparent.png");
+            post.setImage_url("/img/LogoTransparent.png");
         }
 
         //we have to save the post bofore adjusting anything in it.

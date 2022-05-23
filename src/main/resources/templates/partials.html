@@ -172,11 +172,11 @@
 
 <div th:fragment="favorites">
     <div th:each="favorite : ${favorites}">
-        <div class="card mb-3 mt-3" style="max-width: 50rem;">
+        <div class="card bg-dark mb-3 mt-3" style="max-width: 50rem;">
             <div class="row g-0">
                 <div class="col-md-4">
                     <img th:src="*{favorite.image_url}" class="img-fluid rounded-start"
-                         alt="...">
+                         th:alt="${favorite.getTitle()}">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
