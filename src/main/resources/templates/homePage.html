@@ -43,7 +43,7 @@
                             <form th:action="@{/profile/upvote}" method="post">
                                 <input type="text" th:value="${postStat.getPost().getPostId()}"
                                        name="post_id_value" hidden>
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" style="background-color: #5271FF">
                                     <i class="bi bi-hand-thumbs-up-fill"></i>
                                     <span th:text="Like + ' ' + ${postStat.getUpVotesCount()}"></span>
 
@@ -53,7 +53,7 @@
                             <form th:action="@{/profile/downvote}" method="post">
                                 <input type="text" th:value="${postStat.getPost().getPostId()}"
                                        name="post_id_value" hidden>
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" style="background-color: #5271FF">
                                     <i class="bi bi-hand-thumbs-down"></i>
                                     <span th:text="Dislike + ' ' + ${postStat.getDownVotesCount()}"></span>
                                 </button>
@@ -74,7 +74,7 @@
 
                             <form th:action="@{/profile/copyPost}"
                                   method="post">
-                                <button class="btn btn-secondary" type="submit">
+                                <button class="btn btn-secondary" type="submit" style="color: #FF914D">
                                     <input type="text" th:value="${postStat.getPost().getPostId()}"
                                            name="post_id_value"
                                            hidden>

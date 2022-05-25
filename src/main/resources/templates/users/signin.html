@@ -25,14 +25,14 @@
 							<div class="card-body p-4 p-lg-5 text-black">
 
 								<form th:action="@{/signin}" method="post">
-									<h4 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h4>
+									<h2 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h2>
 									<div class="form-outline mb-4">
+										<label class="form-label h5" for="username">Username</label>
 										<input type="text" id="username" name="username" class="form-control form-control-lg" />
-										<label class="form-label" for="username">Username</label>
 									</div>
 									<div class="form-outline mb-4">
+										<label class="form-label h5" for="password">Password</label>
 										<input type="password" id="password" name="password" class="form-control form-control-lg" />
-										<label class="form-label" for="password">Password</label>
 									</div>
 									<div class="text-danger" th:if="${param.error}">
 										Invalid Username and Password.
